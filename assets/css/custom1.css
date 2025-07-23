@@ -1,0 +1,66 @@
+body{
+  border: 3px groove black;
+  color: black;
+  padding:2px ;
+  
+}
+table{
+    direction: rtl;
+    border: 1px solid black;
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 10px;
+    color: black;
+}
+
+
+table, th, td {
+    border: 1px solid;
+    border-radius: 10px;
+    color: black;
+  } 
+
+  th {
+    background-color: rgb(37, 20, 20);
+    color: gray;
+    border: 1px solid;
+    border-radius: 10px;
+    color: black;
+    
+    
+    
+
+  }
+  label{
+    text-align: end;
+    
+  }
+
+  #xyz td,th{
+  
+    border-radius: 10px;
+
+    border: 0px solid white;
+    color: black;
+
+
+  }
+  #signtable td,th{
+
+    
+    border: 0px solid white;
+    color: black;
+
+  }
+
+  table button {
+    display: none;
+  }
+
+  #asd{
+    text-align: center;
+  }
+
+  .hi{
+    display: none;
+  }

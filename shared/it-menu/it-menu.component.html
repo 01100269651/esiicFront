@@ -1,0 +1,78 @@
+
+<div class="d-flex">
+   
+
+  <!-- //====================================================================================
+  =================================================================================================== -->
+  <div id="container" class="align-content-center mat-elevation-z24 ">
+    <ul id="menu" >
+      <li >   <mat-icon  href="#" aria-hidden="false" aria-label="Example home icon"
+          [routerLink]="['Home']" fontIcon="home"></mat-icon>
+      </li>
+      <li><a  href="javascript:void(0)"> أكواد التطبيقات و المستخدمين<mat-icon>keyboard_arrow_down</mat-icon></a>
+        <ul>
+          <li><a class="dropdown-item" [routerLink]="['CrtGrp']" routerLinkActive="router-link-active"  href="javascript:void(0)">أكواد التطبيقات</a></li>
+          <li><a class="dropdown-item" [routerLink]="['CrtUsr']" routerLinkActive="router-link-active"  href="javascript:void(0)">  أكواد مستخدمى التطبيقات</a></li>
+          <li><a class="dropdown-item" [routerLink]="['SystemConfig']" routerLinkActive="router-link-active" href="javascript:void(0)"> بيانات النظام</a></li>
+        </ul>
+      </li>
+      <li><a href="javascript:void(0)" >   أكواد حسابات المخازن<mat-icon>keyboard_arrow_down</mat-icon></a>
+        <ul>
+          <li><a class="dropdown-item" [routerLink]="['CrtFct']" routerLinkActive="router-link-active"  href="javascript:void(0)">أكواد المصانع</a></li>
+          <li><a class="dropdown-item" [routerLink]="['CrtItm']" routerLinkActive="router-link-active"  href="javascript:void(0)">تكويد صنف جديد</a></li>
+          <li><a class="dropdown-item" [routerLink]="['CrtStr']">أكواد المخازن</a></li>
+          <li><a class="dropdown-item" [routerLink]="['AddToMstr']" > إضافة الصنف لملف الأرصدة</a></li>
+          <li><a class="dropdown-item" [routerLink]="['Crtcst']"  >مراكز التكاليف</a></li>
+          <li><a class="dropdown-item" [routerLink]="['Spplr']" > الموردين </a></li>
+          <li><a class="dropdown-item" [routerLink]="['unit']" > وحدات القياس </a></li>
+          
+        </ul>
+      </li>
+      <li><a href="javascript:void(0)" >  أكواد مراقبة المخزون <mat-icon>keyboard_arrow_down</mat-icon> </a>
+        <ul>
+          <li><a class="dropdown-item" [routerLink]="['DMTypes']">أنواع الطلبيات</a></li>
+              
+                
+          <li><a class="dropdown-item" [routerLink]="['OrdStats']">أكواد موقف الطلبات وأوامر التوريد</a></li>
+      
+          <li><a class="dropdown-item"  [routerLink]="['SupOrds']" >أنواع التوريد</a></li>
+        
+          <!-- <li><a class="dropdown-item"  [routerLink]="['SupStats']" >حالات نوع التوريد</a></li> -->
+        
+          <li><a class="dropdown-item" [routerLink]="['MnDpt']" > الأقسام الرئيسية</a></li>
+        
+
+        </ul>
+      </li>
+      <li><a class="text-danger" href="javascript:void(0)" >{{usrName}} <mat-icon>keyboard_arrow_down</mat-icon></a>
+        <ul>
+          <li><a href="javascript:void(0)" (click)="SignOut()" > خروج</a></li>
+         
+
+        </ul>
+      </li>
+      <li> <form  [formGroup]="itUserSearchForm"> <a><input formControlName="userId" type="text" class="text-danger" placeholder="الاستعلام عن طلب او مستخدم" (change)="search()" href="javascript:void(0)" > 
+      </a>
+      
+    </form>
+      </li>
+
+
+      <!-- <li><a href="#">Clients</a>
+        <ul>
+          <li><a href="#">Lorem ipsum dolor</a></li>
+          <li><a href="#">Maecenas lacinia sem</a></li>
+          <li><a href="#">Suspendisse fringilla</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Contact Me</a>
+        <ul>
+          <li><a href="#">Lorem ipsum dolor</a></li>
+          <li><a href="#">Maecenas dignissim fermentum luctus</a></li>
+          <li><a href="#">Suspendisse fringilla</a></li>
+        </ul>
+      </li> -->
+   
+    </ul>
+    </div>
+  </div>

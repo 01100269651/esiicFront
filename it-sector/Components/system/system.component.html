@@ -1,0 +1,42 @@
+<p class="text-dark display-3 fs-2 fw-bolder text-center text-primary">بيانات النظام</p>
+<form [formGroup]="systemForm">
+    <div class="d-flex ">
+        <div class=" mx-auto" style="width: 50%;">
+          <mat-form-field style="width: 50%;" class="text-dark display-1 fs-5 fw-bolder" appearance="outline">
+            <mat-label style="width: 50%;" class="text-dark display-1 fs-5 fw-bolder">اسم الشركة</mat-label>
+            <input style="width: 100%;" class="text-dark display-1 fs-5 fw-bolder" matInput [class.is-valid]="Com_Name?.valid" [class.is-invalid]="Com_Name?.invalid" formControlName="Com_Name">
+          </mat-form-field>
+        </div>
+        <div  style="width:400px;">
+          <mat-form-field style="width: 100%;" class="text-dark display-1 fs-5 fw-bolder"  appearance="outline">
+            <mat-label  class="text-dark display-1 fs-5 fw-bolder">اسم النظام</mat-label>
+            <input style="width: 100%;"  class="text-dark display-1 fs-5 fw-bolder" matInput [class.is-valid]="System_Name?.valid" [class.is-invalid]="System_Name?.invalid" formControlName="System_Name">
+          </mat-form-field>
+        </div>
+      </div>
+<div class="d-flex">
+
+        <div  class=" mx-auto" style="width: 50%;">
+            <mat-form-field style="width: 50%;" class="text-dark display-1 fs-5 fw-bolder " appearance="outline">
+                <mat-label style="width: 50%;" class="text-dark display-1 fs-5 fw-bolder "> بداية السنة المالية </mat-label>
+                <input class="text-dark display-1 fs-5 fw-bolder "  matInput type="date | date : 'dd/MM/yyyy'"
+                [class.is-valid]="Fin_Start?.valid" [class.is-invalid]="Fin_Start?.invalid" 
+                formControlName="Fin_Start" style="width: 100%;" 
+                >
+              </mat-form-field>
+        </div>
+        <div style="width:400px;">
+            <mat-form-field  class="text-dark display-1 fs-5 fw-bolder "  appearance="outline">
+                <mat-label  class="text-dark display-1 fs-5 fw-bolder ">نهاية السنة المالية </mat-label>
+                <input style="width: 100%;"  class="text-dark display-1 fs-5 fw-bolder " matInput type="date | date : 'yyyy/MM/dd'"
+                [class.is-valid]="Fin_End?.valid" [class.is-invalid]="Fin_End?.invalid" 
+                formControlName="Fin_End"
+                >
+              </mat-form-field>
+        </div>
+    </div>
+    </form>
+    <div class="row m-2">
+      <button class="col-2 mx-auto fw-bolder fs-5  " mat-flat-button color="primary" (click)="updSystem()"><mat-icon>update</mat-icon>تعديل</button>
+   
+    </div>

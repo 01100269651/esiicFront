@@ -1,0 +1,26 @@
+.editable-select-panel {
+    .mat-select-panel {
+      .mat-select-panel-wrapper {
+        .mat-select-panel-trigger {
+          .mat-select-panel-trigger-value {
+            display: none; /* Hide the default selected value */
+          }
+        }
+      }
+    }
+  }
+  
+  .editable-select-panel .mat-select-panel-wrapper .mat-select-panel-trigger .mat-select-panel-trigger-value {
+    display: none; /* Hide the default selected value */
+  }
+  
+  .editable-select-panel .mat-select-panel-wrapper .mat-select-panel-trigger .mat-select-panel-trigger-value {
+    display: none; /* Hide the default selected value */
+  }
+  
+  .editable-select-panel .mat-select-panel-wrapper input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }

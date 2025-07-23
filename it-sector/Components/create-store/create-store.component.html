@@ -1,0 +1,137 @@
+<h1 class="display-4 text-center fw-bold fs-5">تكويد مخزن جديد</h1>
+<div class="col-xxl ">
+  <div class="card mb-4">
+
+    <div class="card-body">
+      <form class="fw-bold fs-5" [formGroup]="storeForm">
+        <div class="row mb-3">
+          <label class="col-sm-2 col-form-label" for="basic-default-name">كود المخزن</label>
+          <div class="col-sm-2">
+            <input type="text" class="form-control" id="basic-default-name" placeholder="" [class.is-valid]="Id?.valid"
+              [class.is-invalid]="Id?.invalid" formControlName="Id" (blur)="getStoreById()">
+          </div>
+
+          <label class="col-sm-2 col-form-label" for="basic-default-company">اسم المخزن الجديد</label>
+          <div class="col-sm-4">
+            <input type="text" [class.is-valid]="Name?.valid" [class.is-invalid]="Name?.invalid" formControlName="Name"
+              class="form-control" id="basic-default-company" placeholder="أدخل اسم المخزن">
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="col-sm-2 col-form-label" for="basic-default-name">رقم محاسبي دائن</label>
+          <div class="col-sm-2">
+            <input type="text" [class.is-valid]="Account1?.valid" [class.is-invalid]="Account1?.invalid"
+              formControlName="Account1" class="form-control" id="basic-default-name" placeholder="أدخل الرقم المحاسبي">
+          </div>
+
+          <label class="col-sm-2 col-form-label" for="basic-default-company">رقم محاسبي مدين</label>
+          <div class="col-sm-4">
+            <input type="text" [class.is-valid]="Account2?.valid" [class.is-invalid]="Account2?.invalid"
+              formControlName="Account2" class="form-control" id="basic-default-company"
+              placeholder="أدخل الرقم المحاسبي">
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="col-sm-2 col-form-label" for="basic-default-name">نوع المخزن</label>
+          <div class="col">
+            <!-- (ngModel)="this.storeForm.get('Kind_Code')?.value()"  -->
+
+            <mat-radio-group aria-labelledby="example-radio-group-label" class="  example-radio-group"
+              (change)="onKindCodeChange($event)">
+              <mat-radio-button [checked]="this.storeForm.get('Kind_Code')?.value === kind.id"
+                *ngFor="let kind of kinds" class=" fs-5 bg-warning fw-bolder example-radio-button" [value]="kind.id">
+                {{ kind.name }}
+              </mat-radio-button>
+            </mat-radio-group>
+
+
+            <!-- <input type="text" 
+              [class.is-valid]="Kind_Code?.valid" [class.is-invalid]="Kind_Code?.invalid" 
+              formControlName="Kind_Code"
+              class="form-control" id="basic-default-company" placeholder = "أدخل النوع"> -->
+            <!-- <select class="  p-2 bd-highlight form-select  text-center" id="inputGroupSelect04" aria-label="Example select with button addon">
+                  <option selected=""> أختر النوع</option>
+                  <option value="1">قيمة</option>
+                  <option value="2">جمرك</option>
+                  <option value="3">ضريبة </option>
+                   <option value="3">إسكندرية</option> -->
+            <!-- </select>  -->
+
+
+
+          </div>
+        </div>
+
+
+
+
+
+        <div class="row mb-3">
+          <label class="col-sm-2 col-form-label" for="basic-default-name">نوع المخزون</label>
+
+          <div class="col-8 bg-secondary">
+
+            <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
+              (change)="onStoreCodeChange($event)">
+              <mat-radio-button [checked]="this.storeForm.get('Store_Code')?.value === stor.id"
+                *ngFor="let stor of storesCodes" class=" fw-bold display-4 example-radio-button" [value]="stor.id">
+                {{ stor.name }}
+              </mat-radio-button>
+            </mat-radio-group>
+
+            <!-- <select class="  p-2 bd-highlight form-select text-center" id="inputGroupSelect04" aria-label="Example select with button addon">
+                  <option selected=""> أختر النوع</option>
+                  <option value="1">محلي</option>
+                  <option value="2">مستورد</option>
+                  <option value="3">ضريبة </option> -->
+            <!-- <option value="3">إسكندرية</option> -->
+            <!-- </select>  -->
+            <!-- <input type="text" [class.is-valid]="Local_Code?.valid" [class.is-invalid]="Local_Code?.invalid"
+              formControlName="Local_Code" class="form-control" id="basic-default-company" placeholder="نوع المخزون"> -->
+
+          </div>
+
+        </div>
+
+
+        <div class="row mb-3">
+          <label class="col-sm-2 col-form-label" for="basic-default-name">نوع السلعي</label>
+          <div class="col-sm-3">
+    
+
+
+              <mat-radio-group  aria-labelledby="example-radio-group-label" class="example-radio-group"
+              (change)="onLocalCodeChange($event)">
+              <mat-radio-button  
+              [checked]="this.storeForm.get('Local_Code')?.value === loc.id"
+                *ngFor="let loc of localCodes" class=" fw-bold display-4 example-radio-button" [value]="loc.id">
+                {{ loc.name }}
+              </mat-radio-button>
+            </mat-radio-group>
+
+
+          </div>
+        </div>
+        <div class="row text-center ">
+          <div class="col">
+            <button type="submit" class="btn btn-secondary" (click)="ClearForm()">جديد</button>
+          </div>
+          <div class="col">
+            <button type="submit" class="btn btn-primary" (click)="addStore()">اضافة</button>
+          </div>
+          <div class="col">
+            <button type="submit" class="btn btn-success" (click)="updStore()">تعديل</button>
+          </div>
+
+          <div class="col">
+            <button type="submit" class="btn btn-danger" (click)="delStore()">حذف</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<app-stores-inqr></app-stores-inqr>

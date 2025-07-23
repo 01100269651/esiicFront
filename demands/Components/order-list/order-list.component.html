@@ -1,0 +1,69 @@
+
+<div class="text-center">
+  <app-spinner *ngIf="!isLoading" ></app-spinner>
+</div>
+<div class="card">
+   
+  <p class=" display-5 fw-bold fs-4 text-center">قائمة طلبات الشراء بالمصنع</p>
+    
+
+    <table class="text-dark display-1 fs-5 fw-bolder  mt-4"  mat-table [dataSource]="itms"  >
+      <ng-container matColumnDef="scM_Fact.name">
+        <th  mat-header-cell *matHeaderCellDef  class="text-dark display-1 fs-5 fw-bolder "> اسم المصنع </th>
+        <td  mat-cell *matCellDef="let element" > {{element.scM_Fact.name}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="scM_Dept.name">
+        <th  mat-header-cell *matHeaderCellDef class="text-dark display-1 fs-5 fw-bolder "> قسم طالب </th>
+        <td  mat-cell *matCellDef="let element" > {{element.scM_Dept.name}} </td>
+      </ng-container>
+      <ng-container matColumnDef="ord_Date">
+        <th  mat-header-cell *matHeaderCellDef class="text-dark display-1 fs-5 fw-bolder ">تاريخ</th>
+        <td  mat-cell *matCellDef="let element" > {{ element.ord_Date | date : "yyyy/MM/dd"}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="cause">
+        <th  mat-header-cell *matHeaderCellDef class="text-dark display-1 fs-5 fw-bolder ">سبب الاستعمال</th>
+        <td  mat-cell *matCellDef="let element" > {{ element.cause}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="type">
+        <th  mat-header-cell *matHeaderCellDef class="text-dark display-1 fs-5 fw-bolder ">نوع الطلب</th>
+        <td  mat-cell *matCellDef="let element" > {{ element.type}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="ord_Id">
+        <th  mat-header-cell *matHeaderCellDef class="text-dark display-1 fs-5 fw-bolder ">رقم الطلب</th>
+        <td  mat-cell *matCellDef="let element" > {{ element.ord_Id}}</td>
+      </ng-container>
+      
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>اجراء</th>
+        <td mat-cell *matCellDef="let row">
+          <button mat-button (click)="fun(row.type,row.ord_Id)" class=" bg-success display-1 fs-5 fw-bolder ">اعتماد</button>
+        </td>
+      </ng-container>
+     
+      <ng-container matColumnDef="actionsNo">
+     
+        <th mat-header-cell *matHeaderCellDef></th>
+     
+        <td mat-cell *matCellDef="let row">
+     
+          <button mat-button (click)="funNo(row.type,row.ord_Id)" class=" bg-danger display-1 fs-5 fw-bolder ">رفض</button>
+     
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+     
+      <tr class="text-dark display-1 fs-5 fw-bolder " (dblclick)="openDialog2(row.fact_Id,row.season,row.type,row.ord_Id)" mat-row  *matRowDef="let row; columns: displayedColumns;" [ngClass]="{'bg-warning': row.tran_Code==2}"></tr>
+     
+      <!-- (click)="asd(row.fact_Id,row.item_No)" -->
+    </table>
+
+
+   
+    
+  </div>
+  

@@ -1,0 +1,6 @@
+<h1 mat-dialog-title>هل تريد الحذف</h1>
+
+<div mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="0" (click)="onNoClick()">لا </button>
+  <button mat-button [mat-dialog-close]="1" (click)="onYesClick()"   cdkFocusInitial>نعم</button>
+</div>

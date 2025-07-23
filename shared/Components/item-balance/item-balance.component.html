@@ -1,0 +1,131 @@
+<form class="example-form bg-white mt-3 p-2" [formGroup]="balanceForm">
+    
+<div class="row">
+
+    <!-- <div class="col" >
+        <mat-form-field class="text-dark display-1 fs-5 fw-bolder "  appearance="outline" >
+          <mat-label class="text-dark display-1 fs-5 fw-bolder ">اختر المصنع</mat-label>
+          <mat-select   class="text-dark display-1 fs-5 fw-bolder "  formControlName="Fact_Id" >
+            <mat-option class="text-dark display-1 fs-5 fw-bolder "  *ngFor="let fact of facts" [value]="fact.id"
+            [class.is-valid]="Fact_Id?.valid" [class.is-invalid]="Fact_Id?.invalid " 
+  >{{ fact.name }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+      </div> -->
+
+      <div class="col">
+        <mat-form-field class="text-dark display-1 fs-5 fw-bolder " class="example-full-width" appearance="outline" >
+            <mat-label class="text-dark display-1 fs-5 fw-bolder ">رقم الصنف</mat-label>
+            
+            <input matInput class="text-dark display-1 fs-5 fw-bolder " type="text" placeholder="مثال 123456789"
+            [class.is-valid]="Itm_Id?.valid" [class.is-invalid]="Itm_Id?.invalid" 
+            formControlName="Itm_Id" (change)="getItmName()">
+            
+            
+          </mat-form-field>
+    </div>
+
+
+</div>
+</form>
+<div class="row">
+ <div class="col">
+  <mat-form-field>
+  <mat-label>بحث</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+  </mat-form-field> 
+ </div>
+ <div class="col">
+ <p class="text-dark   text-center mt-3">
+  <button class="  btn btn-primary text-white fw-bolder   " (click)="showBalance()" > أظهر الأرصدة</button>
+</p>
+</div>
+
+    
+
+
+</div>
+
+ 
+  <div class="text-white display-1 fs-5 fw-bolder " *ngIf="!isLoading" class="mat-elevation-z8">
+   
+    <!-- <p class="text-dark   text-center display-1 fs-3 fw-bolder ">أرصدة الوحدات</p> -->
+    
+<table class="text-dark   mt-4"  mat-table [dataSource]="dataSource"  >
+    
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+  
+    <!-- Position Column -->
+    <!-- <ng-container matColumnDef="Fact_Id">
+      <th  mat-header-cell *matHeaderCellDef > رقم المصنع</th>
+      <td   mat-cell *matCellDef="let element"> {{element.fact_Id}} </td>
+    </ng-container> -->
+    <ng-container matColumnDef="fact_Name">
+        <th  mat-header-cell *matHeaderCellDef > اسم المصنع </th>
+        <td  mat-cell *matCellDef="let element" > {{element.fact_Name}} </td>
+      </ng-container>
+  
+    <!-- Name Column -->
+    <!-- <ng-container  matColumnDef="Store_Id">
+      <th  mat-header-cell *matHeaderCellDef > رقم المخزن </th>
+      <td   mat-cell *matCellDef="let element"> {{element.store_Id}} </td>
+    </ng-container> -->
+
+
+   <!-- Name Column -->
+  
+<!-- 
+  <ng-container matColumnDef="scM_Store.name">
+    <th  mat-header-cell *matHeaderCellDef > اسم المخزن </th>
+    <td  mat-cell *matCellDef="let element"> {{element.scM_Store.name}} </td>
+  </ng-container>
+
+
+  <ng-container matColumnDef="Tran_Date">
+    <th  mat-header-cell *matHeaderCellDef >تاريخ الحركة </th>
+    <td  mat-cell *matCellDef="let element"> {{element.tran_Date |date:'yyyy/MM/dd'}} </td>
+  </ng-container>
+  <ng-container matColumnDef="Page">
+    <th  mat-header-cell *matHeaderCellDef >الصفحة</th>
+    <td  mat-cell *matCellDef="let element"> {{element.page}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Ser">
+    <th  mat-header-cell *matHeaderCellDef >سطر</th>
+    <td  mat-cell *matCellDef="let element"> {{element.ser}} </td>
+  </ng-container> -->
+
+  <ng-container matColumnDef="item_Name">
+    <th  mat-header-cell *matHeaderCellDef >اسم الصنف</th>
+    <td  mat-cell *matCellDef="let element"> {{element.item_Name}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="quantity_Master">
+    <th  mat-header-cell *matHeaderCellDef >   الكمية المرحلة</th>
+    <td  mat-cell *matCellDef="let element"> {{element.quantity_Master}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="quantity_Trans">
+    <th  mat-header-cell *matHeaderCellDef > الكمية المسجلة</th>
+    <td  mat-cell *matCellDef="let element"> {{element.quantity_Trans}} </td>
+  </ng-container>
+  
+  
+
+  <!-- [ngClass]="{'bg-warning': row.tran_Code==2}" -->
+    <tr mat-header-row class="text-white fw-bolder display-5 fs-5  text-center bg-primary" *matHeaderRowDef="displayedColumns"></tr>
+    <tr class="text-dark display-1 fs-5 fw-bolder " [ngClass]="{hoverclass: row.quantity_Trans > 0 , 'bg-warning':row.quantity_Trans > 0}"  mat-row (click)="asd(row.fact_Id,row.item_No)" *matRowDef="let row; columns: displayedColumns;" ></tr>
+  </table>
+  <mat-paginator #paginator  [pageSizeOptions]="[5, 10, 20,40]" matSort 
+  showFirstLastButtons      aria-label="Select page of periodic elements">
+</mat-paginator>
+  <!-- <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"
+    aria-label="Select page of users"></mat-paginator> -->
+</div>
+<div class="text-center" *ngIf="isLoading">
+    <app-sh-spinner></app-sh-spinner>
+    </div>
+   
+

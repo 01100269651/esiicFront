@@ -1,0 +1,228 @@
+
+<div class="col m-1 " >
+  <div class="card mb-4" id="print-section">
+    <table class="mt-1 me-3" id="xyz" style=" border: 0px solid white;">
+      <tr style="direction: rtl; border: 0px solid white;">
+        <th class="fs-3 fw-bolder text-dark display-4" style="direction: rtl; border: 0px solid white; text-align: right;" colspan="5">
+          شركة السكر و الصناعات التكاملية المصرية
+      
+      </th>
+      <th></th>
+      <th>  تاريخ الطباعة:{{cdate | date : "yyyy/MM/dd hh:mm"}}</th>
+
+    </tr>
+    <tbody style="border: 0px solid white;">
+   
+      <tr  style="border: 0px solid white;">
+        <td class="fs-4 text-dark fw-bolder" style="width: 50px;">مصنع</td>
+        <td class="fs-4 text-dark fw-bolder" style="width: 50px;"> {{   factId}}</td>
+        <td class="fs-4 text-dark fw-bolder" style="width: 50px;">{{   fact}}</td>
+        <td></td>
+        <td rowspan="2" class="fs-1 display-1 text-dark fw-bolder" style="text-decoration: underline; font-size: 36px;text-align: right; padding-right:150px;"> {{typeName}}
+
+        </td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr  style="border: 0px solid white;">
+        <td class="fs-5 text-dark fw-bolder"  colspan="2">القسم الطالب:</td>
+        <td class="fs-4 text-dark fw-bolder" colspan="2">{{dept}}</td>
+       
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      
+      <tr  style="border: 0px solid white;">
+
+        <td class="fs-5 text-dark  bg-secondary fw-bold" colspan="2">رقم الطلب م.م.:</td>
+
+        <td class="fs-4 text-dark fw-bolder">{{ordId}}</td>
+
+        <td class="fs-4 text-dark fw-bolder">{{this.ordDate  | date : "yyyy/MM/dd "}}</td>
+
+        <td  >                 </td>
+
+        <td class="fs-4 text-dark  fw-bold" style="padding-left:1px ;"><span class="fs-4 text-dark bg-secondary fw-bold">رقم مشتريات:{{this.fnlId}}</span></td> 
+        
+        <td  style="padding-right: 1px;"><span class="fs-4 text-dark bg-secondary fw-bold">تاريخ: {{this.fnlDate|date : "yyyy/MM/dd"}}</span></td> 
+
+      </tr>
+    </tbody>
+    </table>
+ 
+   
+    <div class="card-body">
+        
+
+        <div class="card" >
+            <!-- <h3 class="card-header">
+           
+            </h3> -->
+            <div class="card-body" >
+         
+           
+              <table class="text-dark mt-1 fs-5 fw-bolder bg-info mt-4"  mat-table [dataSource]="itms"  >
+    
+                <ng-container matColumnDef="position">
+                  <th mat-header-cell *matHeaderCellDef >م</th>
+                  <td mat-cell *matCellDef="let element; let i = index">{{i + 1}}</td>
+                 
+                </ng-container>
+        
+                <ng-container matColumnDef="item_No">
+                  <th mat-header-cell *matHeaderCellDef>رقم الصنف</th>
+                  <td mat-cell *matCellDef="let element">{{element.item_No ?? ''}}</td>
+               
+                </ng-container>
+                <ng-container matColumnDef="tech_Descr">
+                  <th mat-header-cell *matHeaderCellDef>مواصفات فنية</th>
+                  <td mat-cell *matCellDef="let element">{{element.tech_Descr ?? ''}}</td>
+                </ng-container>
+                
+
+                <ng-container matColumnDef="scM_Item.name">
+
+                  <th  mat-header-cell *matHeaderCellDef > الصنف </th>
+
+                  <td  mat-cell *matCellDef="let element " >  {{element.scM_Item.name??''}} </td>
+
+                </ng-container>
+
+                
+        
+                <ng-container matColumnDef="quantity">
+
+                  <th  mat-header-cell *matHeaderCellDef > الكمية </th>
+
+                  <td  mat-cell *matCellDef="let element "   >  <input style="width:90px;" class="form-control text-danger display-1 fs-5 fw-bolder" #qty value="{{element.quantity??'0'}}" (change)="updateQty(element.fact_Id,element.type,element.season,element.ordId,element.item_No ,qty.value)"> </td>
+
+                  <tfoot mat-footer-cell *matfootercelldef>     total hours: {{ total }}                </tfoot>
+
+                </ng-container>
+
+    
+                <ng-container matColumnDef="balance">
+
+                  <th  mat-header-cell *matHeaderCellDef >الرصيد</th>
+
+                  <td  mat-cell *matCellDef="let element " >  {{element.balance??'0'}} </td>
+
+                </ng-container>
+    
+                <ng-container matColumnDef="cons1">
+
+                  <th  mat-header-cell *matHeaderCellDef >2021</th>
+                  <td  mat-cell *matCellDef="let element " >  {{element.cons1??'0'}} </td>
+                </ng-container>
+    
+                <ng-container matColumnDef="cons2">
+                  <th  mat-header-cell *matHeaderCellDef >2022</th>
+                  <td  mat-cell *matCellDef="let element " >  {{element.cons2??'0'}} </td>
+                </ng-container>
+    
+                <ng-container matColumnDef="cons3">
+                  <th  mat-header-cell *matHeaderCellDef >2023</th>
+                  <td  mat-cell *matCellDef="let element " >  {{element.cons3??'0'}} </td>
+                </ng-container>
+    
+                <ng-container >
+                  <th  mat-header-cell *matHeaderCellDef >المعدل</th>
+                  <td  mat-cell *matCellDef="let element " >  {{(element.cons3 +element.cons2+element.cons1) / 3}} </td>
+                </ng-container>
+        
+                <ng-container matColumnDef="incomeJuly">
+                  <th  mat-header-cell *matHeaderCellDef >1/7</th>
+                  <td  mat-cell *matCellDef="let element " >  {{element.incomeJuly??'0'}} </td>
+                </ng-container>
+    
+                <ng-container matColumnDef="old_Rec_Id">
+                  <th  mat-header-cell *matHeaderCellDef >ع أ</th>
+                  <td  mat-cell *matCellDef="let element " >  {{element.old_Rec_Id??'0'}} </td>
+                </ng-container>
+    
+                <ng-container matColumnDef="old_Rec_Date">
+                  <th  mat-header-cell *matHeaderCellDef >تاريخ ع أ</th>
+                  <td  mat-cell *matCellDef="let element " >  {{element.old_Rec_Date | date : "yyyy/MM/dd"}} </td>
+                </ng-container>
+        
+                <ng-container matColumnDef="old_Price">
+                  <th  mat-header-cell *matHeaderCellDef >السعر</th>
+                  <td  mat-cell *matCellDef="let element " >  {{element.old_Price }} </td>
+                </ng-container>
+    
+                <ng-container matColumnDef="old_Sup_Id">
+                  <th  mat-header-cell *matHeaderCellDef >المورد</th>
+                  <td  mat-cell *matCellDef="let element " >  {{element.old_Sup_Id ?? 0}} </td>
+                </ng-container>
+                
+             
+        
+        
+                <tr mat-header-row class="text-dark display-1 fs-5 fw-bolder bg-secondary  mt-4" *matHeaderRowDef="displayedColumns"></tr>
+      
+                <tr class="text-dark display-1 fs-5 fw-bolder table-row "  mat-row  *matRowDef="let row; columns: displayedColumns;" ></tr>
+         
+          
+             
+              </table>
+              <br>
+              <div style="font-style: normal;font-weight: bolder; font-size: 26px;" style="direction: rtl;">
+                <label style="font-style: normal;font-weight: bolder; font-size: 20px;margin: 2px;">سبب الأستعمال:</label>
+                <LABEL>{{cause}}</LABEL>
+              </div>
+              <table class="fs-5 text-dark fw-bold" style="width:100%;border: 1px solid white;margin:3px ;text-align: center; " id="signtable">
+                <tr>
+                  <td>مسؤل الطلب</td>
+                  <td>مراقبة المخزون</td>
+
+                  <td> المخزن العام</td>
+                  <td> حسابات المخازن</td>
+              
+
+                </tr>
+                <tr >
+                  <td>--------</td>
+                  <td>--------</td>
+                  <td>--------</td>
+                  <td>-------</td>
+                
+                </tr>
+                <tr>
+                  <td>مدير عام الإدارة الهندسية</td>
+                  <td>مدير عام المراجعة  </td>
+                  <td>مدير عام الإدارة المالية</td>
+            
+                    <td style="font-size: 20px; font-weight: bolder;text-decoration: double;">رئيس قطاعات المصانع</td>
+                 
+                </tr>
+                <tr>
+                  <td>--------</td>
+                  <td>--------</td>
+                  <td>--------</td>
+                  <td>-------</td>
+                
+                </tr>
+              </table>
+           
+
+            </div>
+         </div>
+        
+
+         
+    
+
+        
+    </div>
+  </div>
+
+  <div class="text-center">    <button styleSheetFile="assets/css/custom1.css"  class="btn btn-primary  " printSectionId="print-section" ngxPrint> <mat-icon>print</mat-icon>طباعة</button>
+      
+  </div>
+
+</div>
+
+
+<!-- [printStyle]="{h1 : {'color': 'red'}, h2 : {'border': 'solid 1px'}}"
+ -->

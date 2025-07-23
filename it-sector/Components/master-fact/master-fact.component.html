@@ -1,0 +1,24 @@
+<p class="display-4 text-center"  >أكواد المصانع و الوحدات</p>
+
+<div class="col-xxl " *ngIf="!isLoading" >
+    <div class="card mb-4">
+    
+      <div class="card-body">
+        <form class="fw-bold fs-5"  [formGroup]="masterfactForm" >
+          <div class="row mb-3">
+            <label class="col-sm-2 col-form-label" for="basic-default-name">كود المصنع</label>
+            <div class="col-sm-2">
+              <input type="text" class="form-control" id="basic-default-name" placeholder="أدخل رقم المصنع"
+              [class.is-valid]="Fact?.valid" [class.is-invalid]="Fact?.invalid" 
+                 formControlName="Fact">
+            </div>
+                 </div>
+                 <button class="btn btn-primary" (click)="newFact()"> تحديث</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+  <div class="text-center" *ngIf="isLoading">
+    <app-sh-spinner></app-sh-spinner>
+    </div>

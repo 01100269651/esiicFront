@@ -1,0 +1,332 @@
+<div class="row" style="background-image:url('/assets/img/backgrounds/Ic.jpeg');">
+    <!-- Basic Layout -->
+    <div class="col-9 ">
+      <div class="card mt-4 mb-4">
+        <div class="card-header  ">
+          <p class="display-5 fw-bold fs-4 text-center"> البيانات الأساسية لطلب الشراء</p>
+        
+        </div>
+        <div class="card-body">
+          <form class="p-2" [formGroup]="Orderform">
+           
+            <div class="row mt-3 mb-2 justify-content-center">
+
+              <div class="col"  >
+
+                <mat-form-field class="text-dark display-1 fs-5 fw-bolder "   appearance="outline" >
+
+                  <mat-label class="text-dark display-1 fs-5 fw-bolder ">اختر المصنع</mat-label>
+
+                  <mat-select class="text-dark display-1 fs-5 fw-bolder "  
+          
+                  
+                  formControlName="Fact_Id"  #matSelect = 'matSelect'>
+
+                    <mat-option class="text-dark display-1 fs-5 fw-bolder " *ngFor="let fact of facts" [value]="fact.id"
+
+                    [class.is-valid]="Fact_Id?.valid" [class.is-invalid]="Fact_Id?.invalid " >
+                  
+                    {{ fact.name }}
+                  
+                  </mat-option>
+
+                  </mat-select>
+
+                </mat-form-field>
+      
+              </div>
+            
+              <div class="col">
+                <mat-form-field class="text-dark display-1 fs-5 fw-bolder " class="example-full-width" appearance="outline" >
+                  <mat-label class="text-dark display-1 fs-5 fw-bolder ">الموسم</mat-label>
+                  
+                  <input matInput class="text-dark display-1 fs-5 fw-bolder " type="text" placeholder="مثال 2024"
+                  [class.is-valid]="Season?.valid" [class.is-invalid]="Season?.invalid" 
+                  formControlName="Season" #Ses>
+                  
+                  
+                </mat-form-field>
+              </div>
+       
+              <div class="col"> 
+                <mat-form-field class="text-dark display-1 fs-5 fw-bolder " class="example-full-width" appearance="outline">
+                  <mat-label class="text-dark display-1 fs-5 fw-bolder ">تاريخ الطلب </mat-label>
+                  <input class="text-dark display-1 fs-5 fw-bolder " matInput type="date | date : 'yyyy/MM/dd'"
+                  [class.is-valid]="Ord_Date?.valid" [class.is-invalid]="Ord_Date?.invalid" 
+                  formControlName="Ord_Date"
+                  >
+                </mat-form-field>
+
+              </div>
+              
+
+            </div>
+            <div class="row mb-2 justify-content-center">
+
+              <div class="col">
+                <mat-form-field class="text-dark display-1 fs-5 fw-bolder " appearance="outline" >
+                  <mat-label class="text-dark display-1 fs-5 fw-bolder ">القسم الطالب</mat-label>
+                  <mat-select  class="text-dark display-1 fs-5 fw-bolder "       formControlName="Main_Dept">
+                    <mat-option class="text-dark display-1 fs-5 fw-bolder "  [class.is-valid]="Main_Dept?.valid" [class.is-invalid]="Main_Dept?.invalid" 
+                    *ngFor="let dept of depts" [value]="dept.id" >{{dept.name}}</mat-option>
+                  
+                  </mat-select>
+                </mat-form-field>
+
+
+               </div>
+
+
+              <!-- <label class=" col-sm-2 col-form-label" for="basic-default-company">القسم الطالب</label>
+              <div class="col-sm-1">
+
+                <input type="text" class="form-control text-start" 
+                [class.is-valid]="Main_Dept?.valid" [class.is-invalid]="Main_Dept?.invalid" 
+                formControlName="Main_Dept"
+                (change)="getDeptName()"
+                id="basic-default-name5" >
+           
+               </div>
+               <div class="col-2"><label class="col-form-label text-danger ">{{DeptName}} </label></div> -->
+
+          
+
+               <div class="col">
+                <mat-form-field class="text-dark display-1 fs-5 fw-bolder " appearance="outline" >
+                  <mat-label class="text-dark display-1 fs-5 fw-bolder "> نوع الطلب</mat-label>
+                  <mat-select  class="text-dark display-1 fs-5 fw-bolder "       formControlName="Type">
+                    <mat-option class="text-dark display-1 fs-5 fw-bolder "  [class.is-valid]="Type?.valid" [class.is-invalid]="Type?.invalid" 
+                    *ngFor="let ord of ordTypes" [value]="ord.code" >{{ord.name}}</mat-option>
+                  
+                  </mat-select>
+                </mat-form-field>
+
+
+               </div>
+               <!-- <div class=" p-2 bd-highlight col-sm-2">
+                 <input type="text" id="basic-default-emailr" (change)="repairOrOrd()"  (change)="getTypeName()"
+                 formControlName="Type"
+                 [class.is-valid]="Type?.valid" [class.is-invalid]="Type?.invalid" 
+                
+
+                 class="form-control" aria-label="john.doe" aria-describedby="basic-default-email2">
+                </div> -->
+                <div class="col">
+                  <mat-form-field class="text-dark display-1 fs-5 fw-bolder " class="example-full-width" appearance="outline" >
+                    <mat-label class="text-dark display-1 fs-5 fw-bolder ">رقم الطلب</mat-label>
+                    
+                    <input matInput class="text-dark display-1 fs-5 fw-bolder " type="text" placeholder="مثال 123"
+                    [class.is-valid]="Ord_Id?.valid" [class.is-invalid]="Ord_Id?.invalid" 
+                    formControlName="Ord_Id" (change)="getOrdById()" >
+                    
+                    
+                  </mat-form-field>
+                </div>
+              
+            </div>
+            
+          
+            <div class="row mb-2 justify-content-center">
+                <div class="col">
+              <mat-form-field   appearance="outline">
+                <mat-label class="text-dark display-1 fs-5 fw-bolder "> اكتب أسباب الطلب</mat-label>
+                <textarea matInput class="text-dark display-1 fs-5 fw-bolder "  formControlName="Cause"
+                [class.is-valid]="Cause?.valid" [class.is-invalid]="Cause?.invalid"  placeholder="أدخل أسباب طلب هذه الأصناف"></textarea>
+              </mat-form-field>
+            </div>
+
+
+            <div class="col">
+              <mat-form-field class="text-dark display-1 fs-5 fw-bolder "  appearance="outline" >
+                <mat-label class="text-dark display-1 fs-5 fw-bolder ">رقم المشتريات</mat-label>
+                
+                <input matInput class="text-dark display-1 fs-5 fw-bolder " type="text" placeholder="مثال 123"
+                [class.is-valid]="Fnl_Id?.valid" [class.is-invalid]="Fnl_Id?.invalid" 
+                formControlName="Fnl_Id" >
+                
+                
+              </mat-form-field>
+
+            </div>
+            <div class="col">
+
+              <mat-form-field class="text-dark display-1 fs-5 fw-bolder "  appearance="outline">
+                <mat-label class="text-dark display-1 fs-5 fw-bolder ">ت مشتريات </mat-label>
+                <input class="text-dark display-1 fs-5 fw-bolder " matInput type="date | date : 'yyyy/MM/dd'"
+                [class.is-valid]="Fnl_Date?.valid" [class.is-invalid]="Fnl_Date?.invalid" 
+                formControlName="Fnl_Date"
+                >
+              </mat-form-field>
+
+
+            </div>
+          
+              <!-- <label class="col-sm-2 col-form-label" for="basic-default-message">{{cause}}</label>
+              <div class="col-sm-10">
+                <textarea  id="basic-default-message" class="form-control"
+                
+                formControlName="Cause"
+                [class.is-valid]="Cause?.valid" [class.is-invalid]="Cause?.invalid" 
+                placeholder="أدخل أسباب طلب هذه الأصناف" aria-label="Hi, Do you have a moment to talk Joe?" aria-describedby="basic-icon-default-message2"></textarea>
+              </div>-->
+            </div> 
+            <!-- <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-default-message">الإصلاح</label>
+                <div class="col-sm-10">
+                  <textarea id="basic-default-message" class="form-control" placeholder="ما هو الإصلاح المطلوب" aria-label="Hi, Do you have a moment to talk Joe?" aria-describedby="basic-icon-default-message2"></textarea>
+                </div>
+              </div> -->
+
+              <!-- <div class="d-flex flex-row mb-3">
+
+         
+
+              <label class="col-sm-2 col-form-label p-2 bd-highlight" for="basic-default-email">المقايسة التقديرية</label>
+              <div class="col-sm-3">
+                <div class="input-group input-group-merge">
+                  <input type="text" id="basic-default-email" class="form-control" aria-label="john.doe" aria-describedby="basic-default-email2">
+ 
+                </div>
+              
+              </div>
+                
+              </div> -->
+
+              <!-- <div class="row mb-4">
+                <div class="col-2"><label class="col-form-label">رقم المشتريات</label></div>
+                <div class="col-2"><input type="text" class="form-control text-start"
+                  [class.is-valid]="Fnl_Id?.valid" [class.is-invalid]="Fnl_Id?.invalid" formControlName="Fnl_Id" id="basic-default-name" ></div>
+
+                <!-- <input type="text" class="form-control" id="basic-default-name" placeholder="John Doe"> -->
+              <!-- <div class="col-3">    <label class="p-2  col-form-label bd-highlight" for="basic-default-name">تاريخ المشتريات</label> </div>
+              <div  class="col-3">
+                <input type="date" class="form-control text-start" 
+                [class.is-valid]="Fnl_Date?.valid" [class.is-invalid]="Fnl_Date?.invalid" 
+                formControlName="Fnl_Date"
+                
+                id="basic-default-name45" >
+              </div> -->
+            
+
+              <!-- </div> 
+
+         
+            </div>  -->
+              
+             <div class="row" *ngIf="isLoading" >
+              <div class="col-12">
+              <app-sh-spinner></app-sh-spinner>
+            </div>
+             </div> 
+            <div class="row  flex-row mb-3 row-cols-auto  justify-content-center">
+               
+              <div class="  col-auto" >
+                <button mat-raised-button matTooltip="تفريغ الحقول" class="display-1 fs-5 fw-bolder"   color="accent" (click)="newForm()"><mat-icon>clear</mat-icon>جديد </button>
+              </div>
+              <div class=" col-auto">
+                <button mat-raised-button matTooltip="إضافة بيانات طلب شراء جديد" class="display-1 fs-5 fw-bolder"  color="warn" (click)="addorder()"><mat-icon>add_shopping_cart</mat-icon>إضافة</button>
+              </div>
+              <div class="col-auto ">
+                <button type="submit" class="w-20 auto-mix
+                 display-1 fs-5 fw-bolder" matTooltip="حفظ التعديلات" mat-raised-button color="primary" (click)="updorder()"><mat-icon>update</mat-icon>تعديل</button>
+              </div>
+             
+              <div class="col-auto ">
+                <button type="submit" matTooltip="حذف بيانات الطلب الأساسية"  mat-raised-button class=" bg-dark text-warning display-1 fs-5 fw-bolder"  (click)="delorderForm()">حذف<mat-icon>delete_forever</mat-icon></button>
+              </div>
+
+             
+              <div class="col-auto " > 
+              <button mat-raised-button matTooltip="اضغط لإضافة أصناف الطلب" class="bg-warning display-1 fs-5 fw-bolder "   (click)="openDialog()">أصناف <mat-icon>reorder</mat-icon></button>
+            </div>
+              
+       
+              
+
+              
+
+
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- Basic with Icons -->
+    <div class="col-3 mt-4">
+      
+      <div class="card mb-4">
+        <div class="card-header ">
+          <p class="display-5 fw-bold fs-4 text-center">  أصناف الطلب</p>
+          
+        </div>
+        <div class="card-body">
+            
+
+            <div class="card">
+        
+                <div class="card-body">
+                  <div *ngFor="let i of OrdItems">
+                    <table  class="table table-bordered table-stripped">
+                      <tbody>
+                        <tr>
+                  <td ><div matBadge="{{i.quantity}}" matBadgeOverlap="true" matBadgeColor="warn"   class="demo-section">
+                     {{i.item_Name}}</div></td>
+                </tr>
+                </tbody>
+                    </table>
+                </div>
+                  <!-- <div class="table-responsive text-nowrap">
+                    <table class="table table-bordered">
+                      <thead>
+                        <tr>
+                         
+                          <th>رقم</th>
+                 
+                          <th>الكمية</th>
+           
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr  *ngFor="let i of OrdItems">
+                            <td class="text-end">
+                              <div matBadge="4" matBadgeOverlap="false" class="demo-section">{{i.scM_Item.name}}</div>
+                              <strong class="text-end">{{i.scM_Item.name}}</strong>
+                            </td>
+                            <td>{{i.quantity}}</td>
+                    
+                       
+                        
+                        
+                     
+                        
+                         
+                          
+                            
+                         
+                            <td>
+                              <div class="dropdown">
+                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                                  <i class="bx bx-dots-vertical-rounded"></i>
+                                </button>
+                                <div class="dropdown-menu">
+                                  <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-edit-alt me-1"></i> Edit</a>
+                                  <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i> Delete</a>
+                                </div>
+                              </div>
+                            </td>
+                          </tr>
+  
+                      </tbody>
+                    </table>
+                  </div> -->
+                </div>
+              </div>
+
+
+              <div class="col text-center" >
+                <button mat-raised-button   matTooltip=" أعرض طلب الشراء " color="accent" (click)="openDialog2()">التقرير </button>
+              </div>
+        </div>
+      </div>
+    </div>
+  </div>

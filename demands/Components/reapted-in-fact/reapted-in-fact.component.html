@@ -1,0 +1,80 @@
+<p class="display-4 fw-bold fs-3 text-center" >الأصناف المكررة داخل المصنع</p>
+
+<div class="w-100"  *ngIf="isLoading"  >
+  <app-sh-spinner ></app-sh-spinner>
+ 
+</div>
+
+<div class="col" *ngIf="!isLoading">
+    <mat-form-field>
+      <mat-label>بحث</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+      </mat-form-field> 
+  
+         <table class="text-dark   mt-4"  mat-table [dataSource]="dataSource"  >
+          
+          <!--- Note that these columns can be defined in any order.
+                The actual rendered columns are set as a property on the row definition" -->
+        
+          <!-- Position Column -->
+          <ng-container matColumnDef="position">
+            <th mat-header-cell *matHeaderCellDef >م</th>
+            <td class="bg-warning" mat-cell *matCellDef="let element; let i = index">{{i + 1}}</td>
+          </ng-container>
+          <ng-container matColumnDef="fact_Name">
+            <th  mat-header-cell *matHeaderCellDef > المصنع </th>
+            <td   mat-cell *matCellDef="let element"> {{element.fact_Name}} </td>
+          </ng-container>
+      
+          <ng-container matColumnDef="season">
+              <th  mat-header-cell *matHeaderCellDef > الموسم  </th>
+              <td  mat-cell *matCellDef="let element" > {{element.season}} </td>
+            </ng-container>
+        
+            <ng-container matColumnDef="type_Name">
+              <th  mat-header-cell *matHeaderCellDef > نوع الطلب  </th>
+              <td  mat-cell *matCellDef="let element" > {{element.type_Name}} </td>
+            </ng-container>
+        
+            <ng-container matColumnDef="item_No">
+              <th  mat-header-cell *matHeaderCellDef >رقم الصنف</th>
+              <td  mat-cell *matCellDef="let element" > {{element.item_No}} </td>
+            </ng-container>
+  
+            <ng-container matColumnDef="item_Name">
+              <th  mat-header-cell *matHeaderCellDef >  اسم الصنف  </th>
+              <td  mat-cell *matCellDef="let element" > {{element.item_Name}} </td>
+            </ng-container>
+         
+            <ng-container matColumnDef="itemCount">
+                <th  mat-header-cell *matHeaderCellDef >   عدد التكرار  </th>
+                <td  mat-cell *matCellDef="let element" > {{element.itemCount}} </td>
+              </ng-container>
+           
+              <ng-container matColumnDef="itemTot">
+                <th  mat-header-cell *matHeaderCellDef > إجمالي الكميات</th>
+                <td  mat-cell *matCellDef="let element" > {{element.itemTot}} </td>
+              </ng-container>
+           
+        
+        
+        
+        <!-- [ngClass]="{'bg-warning': row.tran_Code==2}" -->
+
+          <tr mat-header-row class="text-white fw-bolder display-5 fs-5  text-center bg-primary" *matHeaderRowDef="displayedColumns"></tr>
+
+          <tr class="text-dark display-1 fs-5 fw-bolder bg-info" 
+
+           (dblclick)="openOrdrs(row.fact , row.season , row.item_No , row.item_Name)" 
+
+             mat-row  *matRowDef="let row; columns: displayedColumns;" ></tr>
+
+        </table>
+
+        <mat-paginator #paginator  [pageSizeOptions]="[5, 10, 20,40]" matSort 
+
+        showFirstLastButtons     aria-label="Select page of periodic elements">
+
+        </mat-paginator>
+
+      </div>

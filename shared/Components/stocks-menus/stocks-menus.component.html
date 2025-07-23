@@ -1,0 +1,98 @@
+
+<div class="text-center" style="height: 50px;">
+  <mat-icon aria-hidden="false" aria-label="Example home icon"  [routerLink]="['stksbck']" fontIcon="home"></mat-icon>
+
+    <button color="accent" style="font-style: normal;font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif ;font-display:initial;"  class="text-center mat-display-1 fs-2 fw-bolder h1"   mat-button [matMenuTriggerFor]="animals"><mat-icon>keyboard_arrow_down</mat-icon> تسجيل الحركات</button>
+
+    <mat-menu class="underline" #animals="matMenu">
+      <button mat-menu-item [routerLink]="['Income']"  > <mat-icon>create_new_folder</mat-icon>تسجيل الوارد</button>
+      <button mat-menu-item [routerLink]="['Outcome']"> <mat-icon>indeterminate_check_box</mat-icon>تسجيل المنصرف</button>
+    </mat-menu>
+
+    <button  color="accent" style="font-family:'Times New Roman', Times, serif" class="text-center display-1 fs-2 fw-bolder h1" mat-button  [matMenuTriggerFor]="animals2"><mat-icon>keyboard_arrow_down</mat-icon> الاستعلامات</button>
+    <mat-menu #animals2="matMenu">
+        <button mat-menu-item [routerLink]="['Inqr']"   > استعلامات الحركة</button>
+        <button mat-menu-item> بيانات صنف محدد</button>
+        <button mat-menu-item [routerLink]="['stksSign']" >طلبات غير معتمدة</button>
+        <button mat-menu-item [routerLink]="['SignedOrdr']" >طلبات  معتمدة</button>
+        <button mat-menu-item [routerLink]="['inqrStrs']" >الاستعلام عن ارقام المخازن</button>
+        
+       
+
+      </mat-menu>
+
+<!-- 
+      <button color="accent" style="font-family:'Times New Roman', Times, serif"  class="text-center display-1 fs-2 fw-bolder h1"   mat-button [matMenuTriggerFor]="reports"><mat-icon>keyboard_arrow_down</mat-icon>تحديث البيانات</button>
+   
+      <mat-menu #reports="matMenu">
+      
+        <button mat-menu-item>  الترحيل الشهرى </button>
+      </mat-menu> -->
+      <button class="p-0 bg-info">
+      <li style="list-style:none;"> <form class="p-0" [formGroup]="itUserSearchForm"      >
+        <a><input formControlName="userId" type="text" class="text-danger" placeholder="الاستعلام عن صنف"
+           (change)="search()" href="javascript:void(0)" > 
+     </a>
+     
+   </form>
+     </li>
+    </button>
+      <button color="accent" style="font-family:'Times New Roman', Times, serif"  class="text-center display-1 fs-2 h1"    mat-button [matMenuTriggerFor]="usr"  ><mat-icon>keyboard_arrow_down</mat-icon> <span class="fs-6 text-danger">{{usrName}}</span></button>
+    
+    
+      <mat-menu #usr="matMenu">
+        <button mat-menu-item  (click)="asd()"   >  <mat-icon>dialpad</mat-icon>  خروج</button>
+       
+      </mat-menu>
+    
+    
+<!-- 
+    [matMenuTriggerFor]="vertebrates"
+     [matMenuTriggerFor]="invertebrates"
+    <mat-menu #vertebrates="matMenu">
+        <button mat-menu-item [matMenuTriggerFor]="fish">Fishes</button>
+        <button mat-menu-item [matMenuTriggerFor]="amphibians">Amphibians</button>
+        <button mat-menu-item [matMenuTriggerFor]="reptiles">Reptiles</button>
+        <button mat-menu-item>Birds</button>
+        <button mat-menu-item>Mammals</button>
+      </mat-menu>
+    <mat-menu #invertebrates="matMenu">
+      <button mat-menu-item>Insects</button>
+      <button mat-menu-item>Molluscs</button>
+      <button mat-menu-item>Crustaceans</button>
+      <button mat-menu-item>Corals</button>
+      <button mat-menu-item>Arachnids</button>
+      <button mat-menu-item>Velvet worms</button>
+      <button mat-menu-item>Horseshoe crabs</button>
+    </mat-menu>
+    
+    <mat-menu #fish="matMenu">
+      <button mat-menu-item [matMenuTriggerFor]="yaman">yaman</button>
+      <button mat-menu-item>Bala shark</button>
+      <button mat-menu-item>Ballan wrasse</button>
+      <button mat-menu-item>Bamboo shark</button>
+      <button mat-menu-item>Banded killifish</button>
+    </mat-menu>
+
+    <mat-menu #yaman="matMenu">
+        <button mat-menu-item>jjjjjjjjjj</button>
+
+    </mat-menu>
+    
+    <mat-menu #amphibians="matMenu">
+      <button mat-menu-item>Sonoran desert toad</button>
+      <button mat-menu-item>Western toad</button>
+      <button mat-menu-item>Arroyo toad</button>
+      <button mat-menu-item>Yosemite toad</button>
+    </mat-menu>
+    
+    <mat-menu #reptiles="matMenu">
+      <button mat-menu-item>Banded Day Gecko</button>
+      <button mat-menu-item>Banded Gila Monster</button>
+      <button mat-menu-item>Black Tree Monitor</button>
+      <button mat-menu-item>Blue Spiny Lizard</button>
+      <button mat-menu-item disabled>Velociraptor</button>
+    </mat-menu>
+    
+-->
+</div> 

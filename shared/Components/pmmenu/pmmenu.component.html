@@ -1,0 +1,76 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-primary mb-1 border " >
+    <div class="container-fluid">
+      <img src="assets\img\backgrounds\Logo.jfif" class="img-thumbnail img-circle rounded-circle" style="width:25px;height:25px;">
+      <a class="navbar-brand" href="javascript:void(0)" [routerLink]="['home']" style="width: 50px;">
+        المشتريات</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <!-- <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="javascript:void(0)">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="javascript:void(0)">Link</a>
+          </li> -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <mat-icon>question_answer</mat-icon>
+              الاستعلامات
+            </a>
+            <ul class="dropdown-menu text-end" aria-labelledby="navbarDropdown">
+              
+              <li><a class="dropdown-item" [routerLink]="['Signed']" href="javascript:void(0)">الطلبات المعتمدة</a></li>
+              <!-- <li><a class="dropdown-item" [routerLink]="['PreCom']" href="javascript:void(0)">لجنة المشتريات</a></li>
+              <li><a class="dropdown-item" [routerLink]="['Con']" href="javascript:void(0)">متابعة وارد المشتريات </a></li> -->
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <!-- <li><a class="dropdown-item" href="javascript:void(0)">Something else here</a></li> -->
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <mat-icon> monetization_on</mat-icon>عروض الأسعار
+            </a>
+            <ul class="dropdown-menu text-end" aria-labelledby="navbarDropdown">
+              
+              <li><a class="dropdown-item" [routerLink]="['newShow']"
+                 href="javascript:void(0)"> عرض سعر جديد</a></li>
+
+              <!-- <li><a class="dropdown-item" [routerLink]="['PreCom']" href="javascript:void(0)">لجنة المشتريات</a></li>
+
+              <li><a class="dropdown-item" [routerLink]="['Con']" href="javascript:void(0)">متابعة وارد المشتريات </a></li> -->
+            
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <!-- <li><a class="dropdown-item" href="javascript:void(0)">Something else here</a></li> -->
+            </ul>
+          </li>
+
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <mat-icon>supervised_user_circle</mat-icon>
+              {{usrName}} 
+             
+            </a>
+            <ul class="dropdown-menu text-end" aria-labelledby="navbarDropdown">
+              
+              <li><a class="dropdown-item" (click)="signOut()"  href="javascript:void(0)"> تسجيل خروج</a></li>
+          
+              <!-- <li><a class="dropdown-item" href="javascript:void(0)">Something else here</a></li> -->
+            </ul>
+          </li>
+     
+        </ul>
+        <form class="d-flex p-0" onsubmit="return false">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-primary" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>

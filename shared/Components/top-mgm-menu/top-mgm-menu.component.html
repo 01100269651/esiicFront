@@ -1,0 +1,55 @@
+<div class="d-flex">
+  <div></div>
+</div>
+<div id="container" class="mat-elevation-z24">
+    <ul id="menu" >
+      <li> <mat-icon aria-hidden="false" aria-label="Example home icon"  [routerLink]="['bckgrnd']" fontIcon="home"></mat-icon></li>
+      <li><a href="#">الاستعلامات</a>
+        <ul>
+          <li><a [routerLink]="['ordrlist']">الطلبات الغير معتمدة</a></li>
+          <li><a [routerLink]="['signedordrlist']">الطلبات  معتمدة</a></li>
+          <li><a [routerLink]="['inqrBal']"> رصيد صنف</a></li>
+        </ul>
+      </li>
+      <li><a href="#">التقارير</a>
+        <ul>
+          <li><a href="#">التقارير 1</a></li>
+          <li><a href="#">التقارير 2</a></li>
+          <li><a href="#">التقارير 3</a></li>
+
+        </ul>
+      </li>
+      <li><a href="#"><span class="fs-6 text-danger"> المستخدم:{{usrName}} </span></a>
+        <ul>
+          <li><a href="#" (click)="signOut()"> تسجيل خروج</a></li>
+          <li><a href="#">التقارير 2</a></li>
+          <li><a href="#">التقارير 3</a></li>
+
+        </ul>
+      </li>
+
+      <li> <form class="p-0" [formGroup]="itUserSearchForm">
+        <a><input formControlName="SearchItmId" type="text" class="text-danger" placeholder="الاستعلام عن صنف" (change)="search()" href="javascript:void(0)" > 
+     </a>
+     
+   </form>
+     </li>
+
+
+      <!-- <li><a href="#">Clients</a>
+        <ul>
+          <li><a href="#">Lorem ipsum dolor</a></li>
+          <li><a href="#">Maecenas lacinia sem</a></li>
+          <li><a href="#">Suspendisse fringilla</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Contact Me</a>
+        <ul>
+          <li><a href="#">Lorem ipsum dolor</a></li>
+          <li><a href="#">Maecenas dignissim fermentum luctus</a></li>
+          <li><a href="#">Suspendisse fringilla</a></li>
+        </ul>
+      </li> -->
+   
+    </ul>
+    </div>

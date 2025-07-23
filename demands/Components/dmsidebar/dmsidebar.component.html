@@ -1,0 +1,174 @@
+<div class="d-flex justify-content-center">
+<aside id="layout-menu"  style="width:200px;height: 600px; overflow-y: scroll;" class="layout-menu menu-vertical menu bg-menu-theme text-center" data-bg-class="bg-menu-theme">
+ 
+
+  
+<div style="height: 200px;">
+  <ul  class="menu-inner mt-0 py-1 ps ps--active-y ">
+
+
+    
+
+
+
+    <!-- Layouts -->
+    <li class="menu-item open" >
+      <a href="javascript:void(0);" class="menu-link menu-toggle">
+        <i class="menu-icon tf-icons bx bx-layout"></i>
+        <div data-i18n="Layouts">عناصر مهمة</div>
+      </a>
+
+      <ul class="menu-sub fs-4 ">
+        <li class="menu-item fs-4 ">
+          <a [routerLink]="['OrdList']" class="menu-link fs-4  text-primary">
+            الطلبات الغير معتمدة
+          </a>
+        </li>
+        <li class="menu-item fs-4 ">
+          <a  [routerLink]="['signedOrders']" class="menu-link fs-4 href text-primary">
+           الطلبات  المعتمدة          </a>
+        </li>
+      </ul>
+    </li>
+
+    <!-- User interface -->
+    <!-- <li class="menu-item" >
+      
+      <ul class="menu-sub">
+        <li class="menu-item">
+          <a href="ui-accordion.html" class="menu-link">
+            <div data-i18n="Accordion">Accordion</div>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="ui-alerts.html" class="menu-link">
+            <div data-i18n="Alerts">Alerts</div>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="ui-badges.html" class="menu-link">
+            <div data-i18n="Badges">Badges</div>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="ui-buttons.html" class="menu-link">
+            <div data-i18n="Buttons">Buttons</div>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="ui-carousel.html" class="menu-link">
+            <div data-i18n="Carousel">Carousel</div>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="ui-collapse.html" class="menu-link">
+            <div data-i18n="Collapse">Collapse</div>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="ui-dropdowns.html" class="menu-link">
+            <div data-i18n="Dropdowns">Dropdowns</div>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="ui-footer.html" class="menu-link">
+            <div data-i18n="Footer">Footer</div>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="ui-list-groups.html" class="menu-link">
+            <div data-i18n="List Groups">List groups</div>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="ui-modals.html" class="menu-link">
+            <div data-i18n="Modals">Modals</div>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="ui-navbar.html" class="menu-link">
+            <div data-i18n="Navbar">Navbar</div>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="ui-offcanvas.html" class="menu-link">
+            <div data-i18n="Offcanvas">Offcanvas</div>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="ui-pagination-breadcrumbs.html" class="menu-link">
+            <div data-i18n="Pagination &amp; Breadcrumbs">Pagination &amp; Breadcrumbs</div>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="ui-progress.html" class="menu-link">
+            <div data-i18n="Progress">Progress</div>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="ui-spinners.html" class="menu-link">
+            <div data-i18n="Spinners">Spinners</div>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="ui-tabs-pills.html" class="menu-link">
+            <div data-i18n="Tabs &amp; Pills">Tabs &amp; Pills</div>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="ui-toasts.html" class="menu-link">
+            <div data-i18n="Toasts">Toasts</div>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="ui-tooltips-popovers.html" class="menu-link">
+            <div data-i18n="Tooltips &amp; Popovers">Tooltips &amp; popovers</div>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="ui-typography.html" class="menu-link">
+            <div data-i18n="Typography">Typography</div>
+          </a>
+        </li>
+      </ul>
+    </li> -->
+
+ 
+   
+  <!-- <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
+    <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;">
+    </div></div><div class="ps__rail-y" style="top: 0px; height: 674px; right: 4px;">
+      <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 407px;"></div></div> -->
+    </ul> 
+  </div>
+  <div >
+  <table class="text-dark mt-0 display-1 fs-5 fw-bolder "  mat-table [dataSource]="itms"  >
+
+
+    <ng-container matColumnDef="main_Dept">
+      <th  mat-header-cell *matHeaderCellDef class="text-dark display-1 fs-5 fw-bolder "> قسم طالب </th>
+      <td  mat-cell *matCellDef="let element" > {{element.main_Dept}} </td>
+    </ng-container>
+    <ng-container matColumnDef="ord_Date">
+      <th  mat-header-cell *matHeaderCellDef class="text-dark display-1 fs-5 fw-bolder ">تاريخ</th>
+      <td  mat-cell *matCellDef="let element" > {{ element.ord_Date | date : "yyyy/MM/dd"}}</td>
+    </ng-container>
+
+   
+
+ 
+
+    <ng-container matColumnDef="ord_Id">
+      <th  mat-header-cell *matHeaderCellDef class="text-dark display-1 fs-5 fw-bolder ">رقم الطلب</th>
+      <td  mat-cell *matCellDef="let element" > {{ element.ord_Id}}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr class="text-dark display-1 fs-5 fw-bolder "  mat-row  *matRowDef="let row; columns: displayedColumns;" [ngClass]="{'bg-warning': row.tran_Code==2}"></tr>
+    <!-- (click)="asd(row.fact_Id,row.item_No)" -->
+  </table>
+
+</div>
+
+</aside>
+</div>

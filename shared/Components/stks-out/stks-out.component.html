@@ -1,0 +1,250 @@
+<h1 class="text-center display-1 fs-2 fw-bolder text-danger" aria-disabled="true"> <mat-icon>store</mat-icon>تسجيل
+    المنصرف</h1>
+  <form class="example-form  mt-3 border bg-white" [formGroup]="tranOutForm">
+  
+    <div class="row g-3">
+  
+      <div class="col">
+        <mat-form-field appearance="outline" class="text-dark display-1 fs-5 fw-bolder ">
+          <mat-label class="text-dark display-1 fs-5 fw-bolder ">اختر المصنع</mat-label>
+          <mat-select formControlName="Fact_Id" class="text-dark display-1 fs-5 fw-bolder ">
+            <mat-option class="text-dark display-1 fs-5 fw-bolder " *ngFor="let fact of facts" [value]="fact.id"
+              [class.is-valid]="Fact_Id?.valid" [class.is-invalid]="Fact_Id?.invalid ">{{ fact.name }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+  
+      </div>
+  
+  
+  
+      <div class="col">
+        <mat-form-field class="example-full-width" class="text-dark display-1 fs-5 fw-bolder " appearance="outline">
+          <mat-label class="text-dark display-1 fs-5 fw-bolder ">تاريخ الحركة </mat-label>
+          <input  matInput  class="text-dark display-1 fs-5 fw-bolder " type="date | date : 'yyyy/MM/dd'"
+            [class.is-valid]="Tran_Date?.valid" [class.is-invalid]="Tran_Date?.invalid" formControlName="Tran_Date" >
+        </mat-form-field>
+      </div>
+      <div class="col">
+  
+        <mat-form-field appearance="outline">
+          <mat-label class="text-dark display-1 fs-5 fw-bolder ">نوع الحركة</mat-label>
+          <mat-select class="text-dark display-1 fs-5 fw-bolder " [class.is-valid]="Tran_Code?.valid"
+            [class.is-invalid]="Tran_Code?.invalid" formControlName="Tran_Code">
+            <mat-option class="text-dark display-1 fs-5 fw-bolder " value="3">منصرف</mat-option>
+  
+          </mat-select>
+        </mat-form-field>
+  
+  
+      </div>
+  
+  
+  
+  
+  
+      <div class="col">
+        <mat-form-field class="text-dark display-1 fs-5 fw-bolder " class="example-full-width" appearance="outline">
+          <mat-label class="text-dark display-1 fs-5 fw-bolder ">رقم المخزن</mat-label>
+  
+          <input matInput  class="text-dark display-1 fs-5 fw-bolder " type="text" placeholder="مثال 161311014000"
+            [class.is-valid]="Store_Id?.valid" [class.is-invalid]="Store_Id?.invalid" formControlName="Store_Id"
+            (change)="getStoreName()">
+  
+  
+        </mat-form-field>
+      </div>
+  
+      <div class="col">
+        <mat-hint class="text-dark display-1 fs-5 fw-bolder " class="text-danger" id="xyz">{{storeName}}</mat-hint>
+      </div>
+  
+  
+  
+  
+    </div>
+  
+    <div class="row g-3">
+      <div class="col ">
+        <div>
+          <mat-form-field class="text-dark display-1 fs-5 fw-bolder " appearance="outline">
+            <mat-label class="text-dark display-1 fs-5 fw-bolder ">رقم الصفحة</mat-label>
+            <input matInput class="text-dark display-1 fs-5 fw-bolder " type="number" placeholder="ادخل الرقم"
+              [class.is-valid]="Page?.valid" [class.is-invalid]="Page?.invalid" formControlName="Page">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="col ">
+        <div>
+          <mat-form-field class="text-dark display-1 fs-5 fw-bolder " appearance="outline">
+            <mat-label class="text-dark display-1 fs-5 fw-bolder ">رقم السطر</mat-label>
+            <input matInput class="text-dark display-1 fs-5 fw-bolder " type="number" placeholder="ادخل الرقم"
+              [class.is-valid]="Ser?.valid" [class.is-invalid]="Ser?.invalid" formControlName="Ser"
+              (change)="getTranById()">
+          </mat-form-field>
+        </div>
+      </div>
+  
+      <div class="col ">
+        <div>
+          <mat-form-field class="text-dark display-1 fs-5 fw-bolder ">
+            <mat-label class="text-dark display-1 fs-5 fw-bolder ">مركز التكلفة</mat-label>
+            <!-- Cost_ID -->
+            <input matInput class="text-dark display-1 fs-5 fw-bolder " type="text" placeholder="ادخل الرقم"
+              [class.is-valid]="Cost_ID?.valid" [class.is-invalid]="Cost_ID?.invalid" formControlName="Cost_ID"
+              (change)="getCostName()">
+          </mat-form-field>
+        </div>
+      </div>
+  
+  
+      <div class="col">
+        <mat-label class="text-dark display-1 fs-5 fw-bolder " class="text-danger" id="xyz">{{costName}}</mat-label>
+      </div>
+  
+  
+    </div>
+  
+  
+    <div class="row g-3">
+  
+      <div class="col">
+        <mat-form-field class="text-dark display-1 fs-5 fw-bolder " appearance="outline">
+          <mat-label class="text-dark display-1 fs-5 fw-bolder ">رقم الصنف</mat-label>
+          <input matInput class="text-dark display-1 fs-5 fw-bolder " type="text" placeholder="ادخل الرقم"
+            [class.is-valid]="Item_No?.valid" [class.is-invalid]="Item_No?.invalid" formControlName="Item_No"
+            (change)="getItemName()">
+        </mat-form-field>
+      </div>
+  
+      <div class="col">
+        <mat-label class="text-dark display-1 fs-5 fw-bolder " class="text-primary fw-bold" id="xyz">{{itemName}} <span class="text-danger">{{itemUnitName}}</span></mat-label>
+      </div>
+      <div class="col">
+        <mat-form-field class="text-dark display-1 fs-5 fw-bolder " appearance="outline">
+
+          <mat-label class="text-dark display-1 fs-5 fw-bolder ">رصيد الصنف</mat-label>
+          
+          <input class="text-dark display-1 fs-5 fw-bolder " value="{{itemBalance}}" matInput placeholder="هنا سيظهر الرصيد" disabled id="asd">
+        </mat-form-field>
+      </div>
+  
+  
+      <div class="col">
+        <mat-form-field class="text-dark display-1 fs-5 fw-bolder " appearance="outline">
+          <mat-label class="text-dark display-1 fs-5 fw-bolder ">كمية المنصرف</mat-label>
+          <input matInput class="text-dark display-1 fs-5 fw-bolder " type="number" placeholder=" أدخل كمية المنصرف"
+            [class.is-valid]="Quantity?.valid" [class.is-invalid]="Quantity?.invalid" formControlName="Quantity">
+        </mat-form-field>
+      </div>
+  
+      <div class="col">
+        <mat-form-field class="text-dark display-1 fs-5 fw-bolder ">
+          <mat-label class="text-dark display-1 fs-5 fw-bolder "> الوحدة</mat-label>
+          <input matInput class="text-dark display-1 fs-5 fw-bolder " value="{{itemUnitName}}" disabled>
+        </mat-form-field>
+      </div>
+  
+    </div>
+  
+    <Div class="row g-3">
+  
+      <div class="col">
+        <mat-form-field>
+          <mat-label class="text-dark display-1 fs-5 fw-bolder ">رقم بون الصرف</mat-label>
+
+          <input matInput class="text-dark display-1 fs-5 fw-bolder " type="number" placeholder="ادخل رقم علم بون الصرف"
+
+            [class.is-valid]="Exe_Rec_No?.valid" [class.is-invalid]="Exe_Rec_No?.invalid" formControlName="Exe_Rec_No">
+
+        </mat-form-field>
+      </div>
+  
+      <div class="col">
+        <mat-form-field>
+          <mat-label class="text-dark display-1 fs-5 fw-bolder ">تاريخ بون الصرف</mat-label>
+          <input class="text-dark display-1 fs-5 fw-bolder " matInput type="date | date : 'yyyy/MM/dd'"
+            [class.is-valid]="Exe_Rec_Date?.valid" [class.is-invalid]="Exe_Rec_Date?.invalid"
+            formControlName="Exe_Rec_Date">
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field>
+          <mat-label class="text-dark display-1 fs-5 fw-bolder ">رقم علم تصدير</mat-label>
+          <input matInput class="text-dark display-1 fs-5 fw-bolder " type="number" placeholder="ادخل الرقم  "
+            [class.is-valid]="InvoiceOrSendNo?.valid" [class.is-invalid]="InvoiceOrSendNo?.invalid"
+            formControlName="InvoiceOrSendNo"> </mat-form-field>
+      </div>
+  
+      <div class="col">
+        <mat-form-field>
+          <mat-label class="text-dark display-1 fs-5 fw-bolder ">تاريخ علم التصدير</mat-label>
+          <input matInput class="text-dark display-1 fs-5 fw-bolder " mask="yyyy/MM/dd" type="date | date : 'yyyy/MM/dd'"
+            [class.is-valid]="InvoiceOrSendDate?.valid" [class.is-invalid]="InvoiceOrSendDate?.invalid"
+            formControlName="InvoiceOrSendDate" > </mat-form-field>
+      </div>
+      <div class="col ">
+  
+        <mat-form-field>
+          <mat-label class="text-dark display-1 fs-5 fw-bolder ">رقم السيارة</mat-label>
+          <input matInput class="text-dark display-1 fs-5 fw-bolder " type="text" placeholder="ادخل الرقم"
+            [class.is-valid]="Car_No?.valid" [class.is-invalid]="Car_No?.invalid" formControlName="Car_No">
+        </mat-form-field>
+      </div>
+  
+  
+    </Div>
+  
+    <div class="row g-3 ">
+      <div class="col">
+        <mat-form-field class="text-dark display-1 fs-5 fw-bolder ">
+          <mat-label class="text-dark display-1 fs-5 fw-bolder ">إلي المصنع</mat-label>
+          <mat-select class="text-dark display-1 fs-5 fw-bolder " formControlName="Send_Fact">
+            <mat-option class="text-dark display-1 fs-5 fw-bolder " *ngFor="let fact of facts" [value]="fact.id"
+              [class.is-valid]="Send_Fact?.valid" [class.is-invalid]="Send_Fact?.invalid ">{{ fact.name }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+  
+      </div>
+  
+  
+  
+      <div class="col ">
+        <div>
+          <mat-form-field>
+            <mat-label class="text-dark display-1 fs-5 fw-bolder ">رقم الحساب</mat-label>
+            <input matInput class="text-dark display-1 fs-5 fw-bolder " type="text" placeholder="ادخل الرقم"
+              [class.is-valid]="ACC_NO?.valid" [class.is-invalid]="ACC_NO?.invalid" formControlName="ACC_NO"
+              (change)="getAccName()"> </mat-form-field>
+        </div>
+      </div>
+  
+      <div class="col">
+        <mat-label class="text-danger display-1 fs-4 fw-bolder">{{accountName}}</mat-label>
+      </div>
+  
+  
+  
+    </div>
+  
+  
+    <div class="row mx-auto">
+  
+  
+      <button class="col-2  btn-sm fw-bolder fs-5 btn-info " (click)="newForm()">جديد</button>
+  
+      <button class="col-2 mx-auto fw-bolder fs-5 " mat-flat-button color="warn"
+        (click)="addOutTran()"><mat-icon>add_to_queue</mat-icon>إضافة</button>
+  
+      <button class="col-2 mx-auto fw-bolder fs-5  " mat-flat-button color="primary"
+        (click)="updOutTran()"><mat-icon>update</mat-icon>تعديل</button>
+  
+      <button class="col-2 mx-auto fw-bolder fs-5" mat-flat-button color="accent"
+        (click)="deleteOutTran()"><mat-icon>delete_forever</mat-icon>حذف</button>
+  
+  
+    </div>
+  
+  
+  </form>
+  
+  <app-page-trans [Fact]="Fact_Id?.value" [TrCode]="Tran_Code?.value" [TrDate]="Tran_Date?.value" [Page]="Page?.value" ></app-page-trans>

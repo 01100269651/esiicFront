@@ -1,0 +1,93 @@
+<h1 class="display-5 fw-bold fs-4 text-center"><mat-icon>control_camera</mat-icon>مراقبة طلب شراء</h1>
+<button class="btn btn-primary text-center" printSectionId="idprint" styleSheetFile="assets/css/custom1.css" ngxPrint ><mat-icon>print</mat-icon>اطبع</button>
+
+<div class="text-center" *ngIf="isLoading">
+  <app-sh-spinner></app-sh-spinner>
+  </div>
+
+  <mat-form-field>
+    <mat-label>بحث</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="ابحث عن أي شئ" #input>
+  </mat-form-field>
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]"         
+  showFirstLastButtons             
+      aria-label="Select page of periodic elements">
+      
+</mat-paginator>
+<div class="mat-elevation-z8" id="idprint">
+  <table mat-table [dataSource]="dataSource">
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="fact_Id">
+      <th mat-header-cell *matHeaderCellDef> No. </th>
+      <td mat-cell *matCellDef="let element"> {{element.fact_Id}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="tran_Date">
+
+      <th mat-header-cell *matHeaderCellDef> التاريخ </th>
+
+      <td mat-cell *matCellDef="let element"> {{element.tran_Date | date : "yyyy/MM/dd "}} <span class="text-danger"> {{element.tran_Date | date : "hh:mm "}} </span> </td>
+
+    </ng-container>
+    <ng-container matColumnDef="scM_FactName">
+      <th  mat-header-cell *matHeaderCellDef  > اسم المصنع </th>
+      <td  mat-cell *matCellDef="let element" > {{element.scM_FactName}} </td>
+    </ng-container>
+
+    
+  
+    <ng-container matColumnDef="user_Id">
+      <th  mat-header-cell *matHeaderCellDef >المستخدم </th>
+      <td  mat-cell *matCellDef="let element" > {{element.user_Id}} </td>
+    </ng-container>
+    <ng-container matColumnDef="scM_Login_User_Name">
+      <th  mat-header-cell *matHeaderCellDef >اسم المستخدم  </th>
+      <td  mat-cell *matCellDef="let element" > {{element.scM_Login_User_Name}} </td>
+    </ng-container>
+    <!-- <ng-container matColumnDef="dept_Id">
+      <th  mat-header-cell *matHeaderCellDef >الادارة </th>
+      <td  mat-cell *matCellDef="let element" > {{element.dept_Id}} </td>
+    </ng-container> -->
+    <ng-container matColumnDef="app_Name">
+      <th  mat-header-cell *matHeaderCellDef >اسم الادارة </th>
+      <td  mat-cell *matCellDef="let element" > {{element.app_Name}} </td>
+    </ng-container>
+
+   
+
+    <!-- <ng-container matColumnDef="hitem_no">
+      <th  mat-header-cell *matHeaderCellDef >الصنف </th>
+      <td  mat-cell *matCellDef="let element" > {{element.hitem_no}} </td>
+    </ng-container> -->
+
+    <ng-container matColumnDef="win_Name">
+      <th  mat-header-cell *matHeaderCellDef >الشاشة</th>
+      <td  mat-cell *matCellDef="let element" > {{ element.win_Name }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="action">
+      <th  mat-header-cell *matHeaderCellDef > الحدث</th>
+      <td  mat-cell *matCellDef="let element" > {{ element.action}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="order">
+      <th  mat-header-cell *matHeaderCellDef > الطلب </th>
+      <td  mat-cell *matCellDef="let element" > {{ element.order}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="iP_Address">
+      <th  mat-header-cell *matHeaderCellDef > الاي بي </th>
+      <td  mat-cell *matCellDef="let element" > {{ element.iP_Address}}</td>
+    </ng-container>
+
+ 
+
+ 
+    <tr mat-header-row class=" display-5 fs-5 fw-bolder text-center text-white bg-dark " *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+    <tr class="text-dark display-1  text-center fs-5 fw-bolder "  mat-row  *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+ 
+</div>

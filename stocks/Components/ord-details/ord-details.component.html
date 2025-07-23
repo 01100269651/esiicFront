@@ -1,0 +1,114 @@
+<p class="text-center">طلب شراء </p>
+<div class="col" >
+  <div class="card mb-4">
+    <div class="card-header d-flex align-items-center justify-content-between">
+
+      
+    </div>
+    <div class="card-body">
+        
+
+        <div class="card" >
+            <h3 class="card-header">أصناف الطلب</h3>
+            <div class="card-body">
+              <div >
+                <table class="table table-bordered table-responsive"  id="print-section">
+                  <thead>
+                    <tr>
+                      <th>رقم الصنف</th>
+                      <th>اسم الصنف</th>
+                      <th> الكمية</th>
+                      <th>الرصيد</th>
+                      <th>2021</th>
+                      <th>2022</th>
+                      <th>2023</th>
+                      <th>المعدل</th>
+                      <th>وارد</th>
+                      <th>ع أ</th>
+                      <th>تاريخ ع أ</th>
+                      <th>السعر</th>
+                      <th>المورد</th>
+                    </tr>
+                  </thead>
+                  <tbody *ngFor="let i of itms">
+                    <tr >
+                      <td >{{i.item_No}}  <button mat-fab [mat-dialog-close]=[i.item_No,i.quantity] >اضغط للاضافة </button></td>
+                      <td><strong>{{i.scM_Item.name}}</strong> </td>
+                      <td>{{i.quantity}}</td>
+                      <td>{{i.balance}}</td>
+                      <td>{{i.cons1}}</td>
+                      <td>{{i.cons2}}</td>
+                      <td>{{i.cons3}}</td>
+                      <td>{{((i.cons1 +i.cons2 +i.cons3)/3).toFixed(2) }}</td>
+                      <td>{{i.incomeJuly}}</td>
+                      <td>{{i.old_Rec_Id}}</td>
+                      <td>{{i.old_Rec_Date | date : "yyyy/MM/dd"}}</td>
+                      <td>{{i.old_Price.toFixed(2)}}</td>
+                      <td>{{i.old_Sup_Id}}</td>
+                      
+                    
+                    </tr>
+            </tbody>
+                </table> 
+
+
+            
+            </div>
+            
+              <!-- <div class="table-responsive text-nowrap">
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                     
+                      <th>رقم</th>
+             
+                      <th>الكمية</th>
+       
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr  *ngFor="let i of OrdItems">
+                        <td class="text-end">
+                          <div matBadge="4" matBadgeOverlap="false" class="demo-section">{{i.scM_Item.name}}</div>
+                          <strong class="text-end">{{i.scM_Item.name}}</strong>
+                        </td>
+                        <td>{{i.quantity}}</td>
+                
+                   
+                    
+                    
+                 
+                    
+                     
+                      
+                        
+                     
+                        <td>
+                          <div class="dropdown">
+                            <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                              <i class="bx bx-dots-vertical-rounded"></i>
+                            </button>
+                            <div class="dropdown-menu">
+                              <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-edit-alt me-1"></i> Edit</a>
+                              <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i> Delete</a>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+
+                  </tbody>
+                </table>
+              </div> -->
+            </div>
+          </div>
+
+
+        
+    </div>
+  </div>
+
+</div>
+<button   class="btn btn-primary " printSectionId="print-section" ngxPrint>طباعة</button>
+
+<!-- [printStyle]="{h1 : {'color': 'red'}, h2 : {'border': 'solid 1px'}}"
+ -->

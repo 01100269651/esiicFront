@@ -1,0 +1,318 @@
+<div class="container-xxl ">
+  <div class="row ">
+    <div class="  bg-info  col-8">
+      <div class="authentication-inner">
+        <!-- Register Card -->
+        <div class="card" style="width: 500px;">
+          <div class="card-body " >
+            <!-- Logo -->
+      
+            <!-- /Logo -->
+            <p class="mb-1 display-4 text-center">تكويد مستخدم جديد 🚀</p>
+            
+
+            <form id="formAuthentication"  [formGroup]="usrSignUpForm">
+        <div class="row">
+        
+        
+          <!-- <div class="col-6">
+            <div class="mb-1">
+              <label for="username" class="col-form-label">رقم المستخدم</label>
+        
+              <input type="text" class="form-control" [class.is-valid]="Id?.valid" [class.is-invalid]="Id?.invalid"
+                (change)="GetUsrId()" formControlName="Id" name="username" placeholder="أدخل رقم المستخدم" autofocus="">
+        
+        
+              <div class="alert alert-danger" *ngIf="Id?.errors?.['required']&&Id?.touched">كود المستخدم مطلوب</div>
+        
+        
+            </div>
+        
+          </div> -->
+
+          <div class="col-6">
+            <mat-form-field class="text-dark display-1 fs-5 fw-bolder " class="example-full-width" appearance="outline" >
+                <mat-label class="text-dark display-1 fs-5 fw-bolder "> رقم المستخدم</mat-label>
+                
+                <input matInput autofocus class="text-dark display-1 fs-5 fw-bolder " type="text" placeholder="أدخل رقم المستخدم "
+                [class.is-valid]="Id?.valid" [class.is-invalid]="Id?.invalid" 
+                formControlName="Id"  (change)="GetUsrId()">
+                
+                
+              </mat-form-field>
+              <div class="alert alert-danger" *ngIf="Id?.errors?.['required']&&Id?.touched">كود المستخدم مطلوب</div>
+        
+        </div>
+        
+          <!-- <div class="col-6">  
+                
+                              <div class="mb-1">
+                                <label for="username" class="col-form-label">رقم المصنع</label>
+                                <input type="text" [class.is-valid]="Fact_Id?.valid" [class.is-invalid]="Fact_Id?.invalid" class="form-control" formControlName="Fact_Id"  name="username" placeholder="أدخل رقم المصنع" autofocus="">
+                             
+                                <div class ="alert alert-danger" *ngIf="Fact_Id?.errors?.['required'] && Fact_Id?.touched">كود المصنع مطلوب</div>
+                             
+                            
+                            </div>
+                
+                            </div> -->
+          <!-- ////////////////////////////////////////////////////////////////////////// -->
+        
+          <div class="col-6">
+            <mat-form-field class="text-dark display-1 fs-5 fw-bolder " appearance="outline">
+              <mat-label class="text-dark display-1 fs-5 fw-bolder ">اختر المصنع</mat-label>
+              <mat-select class="text-dark display-1 fs-5 fw-bolder " formControlName="Fact_Id">
+                <mat-option class="text-dark display-1 fs-5 fw-bolder " *ngFor="let fact of facts" [value]="fact.id"
+                  [class.is-valid]="Fact_Id?.valid" [class.is-invalid]="Fact_Id?.invalid ">{{ fact.name }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+        
+          </div>
+        
+        
+        
+          <!-- //////////////////////////////////////////////////////////// -->
+        
+        
+        
+        
+        
+        
+        </div>
+
+
+        <div class="row">
+
+
+            <!-- <div class=" col-6 mb-1">
+
+                <label for="email" class="col-form-label">التطبيق</label>
+
+                <input type="text" class="form-control" [class.is-valid]="AppId?.valid" [class.is-invalid]="AppId?.invalid" formControlName="AppId" name="AppId" placeholder="التطبيق المطلوب">
+
+                <div class ="alert alert-danger" *ngIf="AppId?.errors?.['required']&&AppId?.touched">كود التطبيق مطلوب</div>
+             
+              
+            </div> -->
+
+            <div class="col-6">
+              <mat-form-field class="text-dark display-1 fs-5 fw-bolder " appearance="outline">
+                <mat-label class="text-dark display-1 fs-5 fw-bolder ">اختر التطبيق</mat-label>
+                <mat-select class="text-dark display-1 fs-5 fw-bolder " formControlName="AppId">
+                  <mat-option class="text-dark display-1 fs-5 fw-bolder " *ngFor="let app of apps" [value]="app.id"
+                    [class.is-valid]="AppId?.valid" [class.is-invalid]="AppId?.invalid ">{{ app.app_Name }}</mat-option>
+                </mat-select>
+              </mat-form-field>
+          
+            </div>
+
+
+            <div class="mb-1  col-6">
+              <mat-form-field class="text-dark display-1 fs-5 fw-bolder " class="example-full-width" appearance="outline" >
+                  <mat-label class="text-dark display-1 fs-5 fw-bolder "> اسم المستخدم</mat-label>
+                  
+                  <input matInput class="text-dark display-1 fs-5 fw-bolder " type="text" placeholder="أدخل اسم المستخدم "
+                  [class.is-valid]="Id?.valid" [class.is-invalid]="Id?.invalid" 
+                  formControlName="UserName"  >
+                  
+                  
+                </mat-form-field>
+                <div class="alert alert-danger" *ngIf="UserName?.errors?.['required']&&UserName?.touched">اسم المستخدم مطلوب</div>
+          
+          </div>
+          <!-- //========================================================== -->
+            <!-- <div class="mb-1 col-6">
+
+                <label for="username" class="col-form-label">اسم المستخدم</label>
+
+                <input type="text" class="form-control" [class.is-valid]="UserName?.valid" [class.is-invalid]="UserName?.invalid" formControlName="UserName" name="username" placeholder="أدخل اسم المستخدم" autofocus="">
+
+                <div class ="alert alert-danger" *ngIf="UserName?.errors?.['required']&&UserName?.touched">كود المستخدم مطلوب</div>
+             
+              
+            </div> -->
+
+
+            
+        </div>
+           
+
+            
+<!-- //===================================================================================================== -->
+
+
+<div class="col-6">
+  <mat-form-field class="text-dark display-1 fs-5 fw-bolder " appearance="outline">
+    <mat-label class="text-dark display-1 fs-5 fw-bolder ">اختر الصلاحية</mat-label>
+    <mat-select class="text-dark display-1 fs-5 fw-bolder " formControlName="RoleId">
+      <mat-option class="text-dark display-1 fs-5 fw-bolder " *ngFor="let role of roles" [value]="role.roleId"
+        [class.is-valid]="RoleId?.valid" [class.is-invalid]="RoleId?.invalid ">{{ role.name }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+</div>
+
+
+
+<!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+
+
+
+            <!-- <div class="mb-1">
+
+                <label for="username" class="col-form-label">الصلاحية</label>
+
+                <input type="text" class="form-control" [class.is-valid]="RoleId?.valid" [class.is-invalid]="RoleId?.invalid"  formControlName="RoleId" name="username" placeholder="أدخل الصلاحية " autofocus="">
+
+                <div class ="alert alert-danger" *ngIf="RoleId?.errors?.['required']&&RoleId?.touched">  الصلاحية مطلوبة</div>
+             
+              
+            </div> -->
+
+        <div class="row">
+            <div class="mb-1 form-password-toggle col-6">
+                <label class="col-form-label" for="password">كلمة المرور</label>
+                <div class="input-group input-group-merge" >
+                  <input type="password" formControlName="Password" [class.is-valid]="Password?.valid" [class.is-invalid]="Password?.invalid" class="form-control" name="password" placeholder="············" aria-describedby="password">
+                  <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                </div>
+                <div class ="alert alert-danger" *ngIf="Password?.errors?.['required']&&Password?.touched"> كلمة المرور مطلوبة</div>
+             
+
+              </div>
+
+              <div class="mb-1 form-password-toggle col-6">
+                <label class="col-form-label" for="password">تأكيد كلمة المرور</label>
+                <div class="input-group input-group-merge">
+                  <input type="password" formControlName="Con_Password" [class.is-valid]="Con_Password?.valid" [class.is-invalid]="Con_Password?.invalid"  class="form-control" name="password" placeholder="············" aria-describedby="password">
+                 
+                </div>
+                <div class ="alert alert-danger" *ngIf="Con_Password?.errors?.['required']&&Con_Password?.touched"> تأكيد كلمة المرور مطلوبة</div>
+             
+
+              </div>
+
+
+        </div>
+            
+          
+
+         
+              <span class="alert alert-danger" *ngIf="Password?.valid && Con_Password?.dirty && (Password?.value !== Con_Password?.value)">
+                كلمة المرور وتأكيدها غير متطابقتين
+          </span>
+
+          <div class="row">
+            <div class="col">
+            <!-- <mat-form-field class="text-dark display-1 fs-5 fw-bolder " class="example-full-width" appearance="outline" >
+              <mat-label class="text-dark display-1 fs-5 fw-bolder ">رقم المخزن</mat-label>
+              
+              <input matInput class="text-dark display-1 fs-5 fw-bolder " type="file" placeholder="صورة التوقيع "
+              [class.is-valid]="SignImge?.valid" [class.is-invalid]="SignImge?.invalid"               >
+              
+              
+            </mat-form-field> -->
+            
+            <!-- <button type="button" mat-raised-button (click)="fileInput.click()">Choose File</button> -->
+            <!-- <input  formControlName="SignImge"   id="fileInput" #fileInput type="file">
+            <span class="file-name">{{selectedFile?.name}}</span> -->
+
+            <div class="col">
+              <div class="custom-file">
+                <!-- <input type="file" accept="image/*" class="custom-file-input" id="customFile" (change)="handleFileInput($any($event.target).files)"> -->
+                <!-- <input type="file" (change)="onFileChange($event)"> -->
+              </div>
+            </div>
+
+          </div>
+          <img class="img-fluid w-100" src="data:img/jpg;base64,{{selectedFile}}">
+          </div>
+              <!-- <div class="mb-3">
+
+                <div
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="terms-conditions" name="terms">
+                  <label class="form-check-label" for="terms-conditions">
+                    I agree to
+                    <a href="javascript:void(0);">privacy policy &amp; terms</a>
+                  </label>
+                </div>
+              </div> -->
+              <div class="d-flex justify-content-center gap-1">
+                <button class="btn btn-secondary d-grid w-100" (click)="NewUsr()"> جديد</button>
+              <button class="btn btn-primary d-grid w-100" (click)="UserSignUp()"> حفظ </button>
+              <button class="btn btn-success d-grid w-100" (click)="UserUpdate()">تعديل </button>
+              <button class="btn btn-danger d-grid w-100" (click)="UserDel()">حذف</button>
+
+
+
+            </div>
+            </form>
+
+       
+          </div>
+        </div>
+        <!-- Register Card -->
+      </div>
+    </div>
+
+    <div class="col-4">
+  <mat-form-field>
+    <mat-label>بحث</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+    </mat-form-field> 
+
+       <table class="text-dark   mt-4"  mat-table [dataSource]="dataSource"  >
+        
+        <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+      
+        <!-- Position Column -->
+        <ng-container matColumnDef="position">
+          <th mat-header-cell *matHeaderCellDef >م</th>
+          <td class="bg-warning" mat-cell *matCellDef="let element; let i = index">{{i + 1}}</td>
+        </ng-container>
+        <ng-container matColumnDef="id">
+          <th  mat-header-cell *matHeaderCellDef > كود المستخدم</th>
+          <td   mat-cell *matCellDef="let element"> {{element.id}} </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="name">
+            <th  mat-header-cell *matHeaderCellDef > اسم المستخدم  </th>
+            <td  mat-cell *matCellDef="let element" > {{element.name}} </td>
+          </ng-container>
+      
+          <ng-container matColumnDef="fact">
+            <th  mat-header-cell *matHeaderCellDef > اسم المصنع  </th>
+            <td  mat-cell *matCellDef="let element" > {{element.fact}} </td>
+          </ng-container>
+      
+          <ng-container matColumnDef="app">
+            <th  mat-header-cell *matHeaderCellDef > اسم التطبيق  </th>
+            <td  mat-cell *matCellDef="let element" > {{element.app}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="role">
+            <th  mat-header-cell *matHeaderCellDef >  الصلاحية  </th>
+            <td  mat-cell *matCellDef="let element" > {{element.role}} </td>
+          </ng-container>
+       
+      
+      
+      
+      
+      
+      <!-- [ngClass]="{'bg-warning': row.tran_Code==2}" -->
+        <tr mat-header-row class="text-white fw-bolder display-5 fs-5  text-center bg-primary" *matHeaderRowDef="displayedColumns"></tr>
+        <tr class="text-dark display-1 fs-5 fw-bolder "   mat-row  *matRowDef="let row; columns: displayedColumns;" ></tr>
+      </table>
+      <mat-paginator #paginator  [pageSizeOptions]="[5, 10, 20,40]" matSort 
+      showFirstLastButtons     aria-label="Select page of periodic elements">
+      </mat-paginator>
+    </div>
+    </div>
+
+    </div>
+  
+  

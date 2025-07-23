@@ -1,0 +1,6 @@
+.custom-snackbar-background {
+
+    background-color: #f44336; /* Danger color, e.g., red */
+  color: #fff; /* Ensure the text is visible on the danger background */
+}
+

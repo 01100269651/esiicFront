@@ -1,0 +1,121 @@
+
+
+<div class=" container d-flex bg-info flex-column text-center mat-elevation-z15  justify-content-center"
+ style="background-position: center;text-align: center;" >
+    <!--begin::Page bg image--><style>body
+    
+    { background-image: url('assets/img/backgrounds/AI3.jfif'); }
+     [data-bs-theme="dark"] body { background-image: url('assets/img/backgrounds/AI3.jfif'); }
+     </style>
+
+
+
+
+     
+     
+        <div class="container bg-info mat-elevation-z15 m-2" style=" height: 700px;  background-image: url('assets/img/backgrounds/AI.png');
+        background-position: center;
+           color: white;" >
+             <div class="p-5 mt-6" [@jackInTheBox]="{ value: bounce, params: { timing: myTiming || 1, delay: myDelay || 0 } }">
+              <h1 class="text-center fs-2 display-2 fw-bolder text-dark mt-6">شركة السكر والصناعات التكاملية المصرية</h1>
+              <h1 class="text-center fs-2 display-2 fw-bolder text-dark mt-6">قطاعات نظم المعلومات</h1>
+              
+            </div>
+            <div class="mt-3" [@backInLeft]="{ value: backInLeft, params: { timing: myTiming || 1, delay: myDelay || 0 } }">
+              <h1 class="text-center fs-2 display-2 fw-bolder text-dark ">شاشة تسجيل دخول المستخدمين</h1>
+
+            </div>
+
+           
+          <div class=" d-flex  flex-columntext-center justify-content-center">
+            <div class="authentication-inner">
+              <!-- Register -->
+              
+              <div class="card bg-info justify-content-center align-content-center p-0" [@zoomInRight]="{ value: zoomInRight, params: { timing: myTiming || 1, delay: myDelay || 0 } }" 
+              
+              style="width: 400px; align-items: center; align-content: center; "
+
+              >
+
+
+                <form [formGroup]="usrLoginForm"    >
+
+
+                <div class="card-body fill-opacity">
+                  <!-- Logo -->
+                  <div class="app-brand d-flex justify-content-center ">
+                    <a href="#" class="app-brand-link gap-2 text-center">
+                    
+                    <div class="text-center">
+                      <span class=" text-center   fw-bolder">
+                        <h1 class="mb-2  display-5 fs-5 fw-bolder text-dark  ">👋👋{{recAppName}} 👋👋</h1>
+                       </span>
+                      </div>
+                    </a>
+                  </div>
+                  <!-- /Logo -->
+                 
+                  <div class="text-center">
+                    <app-sh-spinner *ngIf="isLoading" ></app-sh-spinner>
+                   
+                  </div>
+    
+                 
+                    <div >
+                      <label for="email" class="form-label  display-5 fs-5 fw-bolder text-dark">كود المستخدم</label>
+                      <input
+                        type="text"
+                        class="form-control bg-white"
+                        id="email" autofocus
+                        formControlName="Id"
+                        placeholder="أدخل كود المستخدم" [class.is-valid]="Id?.valid" [class.is-invalid]="Id?.invalid"
+                        autofocus
+                      />
+                     <small *ngIf=" usrLoginForm.hasError('required','UserId')" class="text-warning">لابد من إدخال كودالمستخدم</small> 
+                    </div>
+                    <div class="mb-3 form-password-toggle">
+                      <div class="d-flex ">
+                        <label class=" text-center form-label display-5 fs-5 fw-bolder text-dark" for="password">كلمة مرور المستخدم</label>
+                     
+                      </div>
+                      <div class="input-group input-group-merge">
+                        <input
+                          type="password"
+                          id="password"
+                          class="form-control bg-white"
+                          formControlName="Password" [class.is-valid]="Password?.valid" [class.is-invalid]="Password?.invalid"
+                          placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
+                          aria-describedby="password"
+                        />
+                       
+                       
+                      </div>
+                      <small *ngIf=" usrLoginForm.hasError('required','Password')" class="text-warning">لابد من إدخال كلمة مرور المستخدم</small> 
+                    </div>
+                  
+              
+               
+                  <div class="mb-3">
+                    <button class="btn btn-info text-white d-grid w-100" (click)="SendUser()" >موافق</button>
+                  </div>
+                  <div >
+                    <button class="btn btn-info  text-danger d-grid w-100"  >إلغاء</button>
+                  </div>
+    
+             
+                
+                </div>
+              </form>
+
+              </div>
+              <!-- /Register -->
+            </div>
+          </div>
+      
+        </div>
+    
+      
+    
+</div>
+      
+

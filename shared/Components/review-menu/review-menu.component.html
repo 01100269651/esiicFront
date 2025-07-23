@@ -1,0 +1,50 @@
+<div class="d-flex">
+   
+</div>
+<div id="container" class="mat-elevation-z24">
+    <ul id="menu" >
+      <li>   <mat-icon aria-hidden="false" aria-label="Example home icon"  [routerLink]="['Home']" fontIcon="home"></mat-icon>
+      </li>
+      <li><a >الاستعلامات</a>
+        <ul>
+          <li><a  [routerLink]="['ordrlist']">اعتمادات طلبات الشراء</a></li>
+          <li><a >الاستعلامات 2</a></li>
+          <li><a>الاستعلامات 3</a></li>
+        </ul>
+      </li>
+      <li><a >التقارير</a>
+        <ul>
+          <li><a >التقارير 1</a></li>
+          <li><a >التقارير 2</a></li>
+          <li><a >التقارير 3</a></li>
+
+        </ul>
+      </li>
+      <li><a > المستخدم:{{usrName}}</a>
+        <ul>
+          <li><a (click)="signOut()">خروج</a></li>
+      
+
+        </ul>
+      </li>
+     
+
+
+      <!-- <li><a href="#">Clients</a>
+        <ul>
+          <li><a href="#">Lorem ipsum dolor</a></li>
+          <li><a href="#">Maecenas lacinia sem</a></li>
+          <li><a href="#">Suspendisse fringilla</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Contact Me</a>
+        <ul>
+          <li><a href="#">Lorem ipsum dolor</a></li>
+          <li><a href="#">Maecenas dignissim fermentum luctus</a></li>
+          <li><a href="#">Suspendisse fringilla</a></li>
+        </ul>
+      </li> -->
+   
+    </ul>
+    </div>
+

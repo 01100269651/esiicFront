@@ -1,0 +1,62 @@
+
+<h1 class="display-4 text-center fw-bold fs-5">إضافة الصنف لملف الأرصدة</h1>
+<div class="col-xxl ">
+    <div class="card mb-4">
+    
+      <div class="card-body">
+        <form class="fw-bold fs-5" [formGroup]="addToMstrForm">
+          <div class="row mb-3">
+            <label class="col-2 col-form-label" for="basic-default-name">كود المصنع</label>
+            <div class="col-2">
+              <input type="text" class="form-control" id="basic-default-name"
+              [class.is-valid]="Fact_Id?.valid" [class.is-invalid]="Fact_Id?.invalid" 
+              formControlName="Fact_Id" (blur)="factName()"
+              placeholder = "أدخل كود الصنف ">
+            </div>
+            <div class="col"> <input class=" form-control text-danger" id="factName" type="text" disabled value=""></div>
+           
+          </div>
+            <div class="row mb-3">
+            <label class="col-sm-2 col-form-label" for="basic-default-company">كود المخزن </label>
+            <div class="col-sm-3">
+              <input type="text" class="form-control" 
+              [class.is-valid]="Store_Id?.valid" [class.is-invalid]="Store_Id?.invalid" 
+              formControlName="Store_Id"
+              id="basic-default-company" placeholder = "أدخل كود المخزن"  (blur)="storeName()">
+            </div>
+            <div class="col"> <input class=" form-control text-danger " type="text" disabled value="" id="storeName"></div>
+          
+          </div>
+          <div class="row mb-3">
+            <label class="col-sm-2 col-form-label" for="basic-default-name">رقم الصنف</label>
+            <div class="col-sm-2">
+              <input type="text" class="form-control"
+              [class.is-valid]="Item_No?.valid" [class.is-invalid]="Item_No?.invalid" 
+              formControlName="Item_No"
+              id="basic-default-name" placeholder="أدخل رقم الصنف" (blur)="itemName()">
+            </div>
+            <div class="col"> <input class=" form-control text-danger " type="text" disabled value="" id="itemName"></div>
+         
+           
+          </div>
+         
+         
+     
+    
+    
+          <div class="row text-center ">
+            <div class="col">
+              <button type="submit" class="btn btn-secondary" (click)="newdMaster()">جديد</button>
+            </div>
+            <div class="col">
+              <button type="submit" class="btn btn-primary" (click)="addNewMaster()">اضافة</button>
+            </div>
+        
+              <div class="col">
+                <button type="submit" class="btn btn-danger" (click)="delAddToMast()">حذف</button>
+              </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,123 @@
+<p class="display-4 text-center">تكويد صنف جديد</p>
+<div class="col-xxl ">
+    <div class="card mb-4">
+    
+      <div class="card-body">
+        <form class="fw-bold fs-5" [formGroup]="itemForm">
+          <div class="row mb-3">
+            <label class="col-sm-2 col-form-label" for="basic-default-name">كود المجموعة</label>
+            <div class="col-sm-2">
+              <input type="text" class="form-control" id="basic-default-name" placeholder=""
+              [class.is-valid]="Group_Id?.valid" [class.is-invalid]="Group_Id?.invalid" 
+              formControlName="Group_Id"
+              >
+            </div>
+         
+            <label class="col-sm-2 col-form-label" for="basic-default-company">رقم الصنف الجديد</label>
+            <div class="col-sm-4">
+              <input type="text" class="form-control"
+              [class.is-valid]="Id?.valid" [class.is-invalid]="Id?.invalid" (blur)="GetItemById()"
+              formControlName="Id"
+              id="basic-default-company" placeholder = "أدخل كود الصنف الجديد">
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label class="col-sm-2 col-form-label" for="basic-default-message">اسم الصنف</label>
+            <div class="col-sm-10"> 
+              <textarea id="basic-default-message" class="form-control" placeholder="اسم الصنف" 
+              [class.is-valid]="Name?.valid" [class.is-invalid]="Name?.invalid" 
+              formControlName="Name"
+              aria-label="Hi, Do you have a moment to talk Joe?" aria-describedby="basic-icon-default-message2"></textarea>
+            </div>
+          </div>
+
+          <div class="row mb-3">
+
+            <label class="col-sm-2 col-form-label" for="basic-default-company">رقم الصنف الهندسي</label>
+            <div class="col-sm-4">
+              <input type="text" class="form-control" id="basic-default-company" placeholder = "أدخل كود الصنف الهندسي">
+            </div>
+            <label class="col-sm-2 col-form-label" for="basic-default-message"> اسم الصنف الهندسي</label>
+            <div class="col-sm-4">
+              <textarea id="basic-default-message" class="form-control" placeholder=" " aria-label="Hi, Do you have a moment to talk Joe?" aria-describedby="basic-icon-default-message2"></textarea>
+            </div>
+          </div>
+
+         
+          <div class="row mb-3">
+
+            
+
+<div class="col-6">
+  <mat-form-field class="text-dark display-1 fs-5 fw-bolder " appearance="outline">
+    <mat-label class="text-dark display-1 fs-5 fw-bolder ">اختر الوحدة</mat-label>
+    <mat-select class="text-dark display-1 fs-5 fw-bolder " formControlName="Unit_Id">
+      <mat-option class="text-dark display-1 fs-5 fw-bolder " *ngFor="let unit of units" [value]="unit.id"
+        [class.is-valid]="Unit_Id?.valid" [class.is-invalid]="Unit_Id?.invalid ">{{ unit.name }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+</div>
+            <!-- <label class="col-2 col-form-label" for="basic-default-phone">وحدة الصرف</label>
+            <div class="col-4">
+              <input type="text" id="basic-default-phone" class="form-control phone-mask"
+              [class.is-valid]="Unit_Id?.valid" [class.is-invalid]="Unit_Id?.invalid" 
+              formControlName="Unit_Id"
+              placeholder="658 799 8941" aria-label="658 799 8941" aria-describedby="basic-default-phone">
+            </div> -->
+         
+<div class="col-6">
+  <mat-form-field class="text-dark display-1 fs-5 fw-bolder " appearance="outline">
+    <mat-label class="text-dark display-1 fs-5 fw-bolder ">نوعية الصنف</mat-label>
+    <mat-select class="text-dark display-1 fs-5 fw-bolder " formControlName="Kind">
+      <mat-option class="text-dark display-1 fs-5 fw-bolder " *ngFor="let kk of kinds" [value]="kk.id"
+        [class.is-valid]="Kind?.valid" [class.is-invalid]="Kind?.invalid ">{{ kk.name }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+</div>
+            <label class="col-2 col-form-label" for="basic-default-phone">نوعية الصنف</label>
+            <div class="col-4">
+              <input type="text" id="basic-default-phone" class="form-control phone-mask" 
+              [class.is-valid]="Kind?.valid" [class.is-invalid]="Kind?.invalid" 
+              formControlName="Kind"
+              placeholder="658 799 8941" aria-label="658 799 8941" aria-describedby="basic-default-phone">
+            </div>
+          </div>
+          <!-- <div class="row mb-3">
+            <label class="col-sm-2 col-form-label" for="basic-default-phone">رقم التليفون 3</label>
+            <div class="col-sm-10">
+              <input type="text" id="basic-default-phone" class="form-control phone-mask" placeholder="658 799 8941" aria-label="658 799 8941" aria-describedby="basic-default-phone">
+            </div>
+          </div> -->
+          <!-- <div class="row mb-3">
+            <label class="col-sm-2 col-form-label" for="basic-default-message">Message</label>
+            <div class="col-sm-10">
+              <textarea id="basic-default-message" class="form-control" placeholder="Hi, Do you have a moment to talk Joe?" aria-label="Hi, Do you have a moment to talk Joe?" aria-describedby="basic-icon-default-message2"></textarea>
+            </div>
+          </div> -->
+          <div class="row text-center ">
+            <div class="col">
+              <button type="submit" class="btn btn-secondary " (click)="NewItem()">جديد</button>
+            </div>
+            <div class="col">
+              <button type="submit" class="btn btn-primary" (click)="addNewItem()">اضافة</button>
+            </div>
+            <div class="col">
+                <button type="submit" class="btn btn-success" (click)="updateItem()">تعديل</button>
+              </div>
+
+              <div class="col">
+                <button type="submit" class="btn btn-danger"(click)="DelItem()">حذف</button>
+              </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <form [formGroup]="searchFormForItem" style="height:27px ;" class="d-flex p-0 " onsubmit="return false">
+    <input class="form-control " style="height: 25px;" type="search" placeholder="بحث عن  رقم صنف " aria-label="Search"
+    formControlName="SearchItmId">
+    <button class="btn btn-info p-0" style="height: 25px;"  (click)="openSearchForItem()" type="submit">ابحث</button>
+  </form>

@@ -1,0 +1,106 @@
+<p>inqr-stroes works!</p>
+
+<mat-form-field class="hi">
+    <mat-label>بحث</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="ابحث رقم صنف" #input>
+  </mat-form-field>
+  <table class="text-dark mt-1 fs-5 fw-bolder bg-info mt-4"  mat-table [dataSource]="dataSource"  >
+
+    <ng-container matColumnDef="position">
+      <th mat-header-cell *matHeaderCellDef >م</th>
+      <td mat-cell *matCellDef="let element; let i = index">{{i + 1}}</td>
+     
+    </ng-container>
+
+    <ng-container matColumnDef="fact_Name">
+      <th mat-header-cell *matHeaderCellDef> المصنع</th>
+      <td mat-cell *matCellDef="let element">{{element.fact_Name ?? ''}}</td>
+   
+    </ng-container>
+    <ng-container matColumnDef="store_Id">
+      <th mat-header-cell *matHeaderCellDef>رقم المخزن</th>
+      <td mat-cell *matCellDef="let element">{{element.store_Id ?? ''}}</td>
+    </ng-container>
+    
+
+    <ng-container matColumnDef="store_Name">
+
+      <th  mat-header-cell *matHeaderCellDef > اسم المخزن </th>
+
+      <td  mat-cell *matCellDef="let element " NOWRAP>  {{element.store_Name ??''}} </td>
+
+    </ng-container>
+    <!-- scM_Item.scM_Unit.name -->
+    <ng-container matColumnDef="kind_Code">
+
+      <th  mat-header-cell *matHeaderCellDef >نوع المخزن</th>
+
+      
+
+      <td  mat-cell *matCellDef="let element" >
+        {{ 
+            element.kind_Code === 1 ? "قيمة" :
+            element.kind_Code === 2 ? "ضريبة" :
+            "جمرك"
+          }}
+    </td>
+
+    </ng-container>
+
+
+
+
+    <ng-container matColumnDef="store_Code">
+
+      <th  mat-header-cell *matHeaderCellDef >نوع المخزون</th>
+
+      <td  mat-cell *matCellDef="let element" > 
+
+        {{ 
+            element.store_Code === 0 ? "خامات رئيسية" :
+            element.store_Code === 1 ? "خ مساعدة" :
+            element.store_Code === 2 ? "وقود" :
+            element.store_Code === 3 ? "ق غ صيانة" :
+            element.store_Code === 4 ? "مواد ومهمات" :
+            element.store_Code === 5 ? "م تعبئة" :
+            element.store_Code === 6 ? "مخلفات" :
+            
+            element.store_Code === 7 ? "زيوت" :
+            element.store_Code === 9 ? "أخري" :element.store_Code
+
+          }}
+    
+    </td>
+
+    </ng-container>
+
+    <ng-container matColumnDef="local_Code">
+
+      <th  mat-header-cell *matHeaderCellDef >بلد المنشأ</th>
+      <td  mat-cell *matCellDef="let element" >
+        {{
+           element.local_Code === 1 ? "محلي" :
+        element.local_Code === 2 ? "مستورد" :  element.local_Code
+       }} 
+   </td>
+    </ng-container>
+ 
+
+
+
+    
+ 
+
+
+    <tr mat-header-row class="text-dark display-1 fs-5 fw-bolder bg-secondary  mt-4" *matHeaderRowDef="displayedColumns"></tr>
+
+    <tr class="text-dark display-1 fs-5 fw-bolder table-row "  mat-row  *matRowDef="let row; columns: displayedColumns;" ></tr>
+
+<tr>
+
+</tr>
+ 
+  </table>
+  <mat-paginator #paginator class="hi" [pageSizeOptions]="[5, 10, 20,40]" matSort 
+  showFirstLastButtons      aria-label="Select page of periodic elements">
+</mat-paginator>

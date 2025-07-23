@@ -1,0 +1,89 @@
+
+
+
+<div class="  text-center bg-warning" style="width: 100%;" *ngIf="isLoading">
+  <app-sh-spinner></app-sh-spinner>
+  </div>
+  <div class="card" *ngIf="!isLoading" >
+    <div  [class.mat-elevation-z2]="!isActive" [class.mat-elevation-z20]="isActive" (click)="isActive =!isActive">
+  <div class="card border   border-dark" style="border-radius: 5px;" >
+     
+    <p class=" display-5 text-dark fw-bold fs-4 text-center bg-primary ">قائمة طلبات الشراء بالمصنع الغير معتمدة</p>
+      
+    <mat-form-field>
+      <mat-label>بحث</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="ابحث عن أي شئ" #input>
+    </mat-form-field>
+
+      <table class="text-dark display-1 fs-5 fw-bolder  bg-info" 
+      matSort (matSortChange)="announceSortChange($event)"
+      mat-table [dataSource]="dataSource"  >
+      
+        <ng-container matColumnDef="fact_Name">
+          <th  mat-header-cell *matHeaderCellDef  > اسم المصنع </th>
+          <td  mat-cell *matCellDef="let element" > {{element.fact_Name}} </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="main_Dept">
+          <th  mat-header-cell *matHeaderCellDef mat-sort-header > قسم طالب </th>
+          <td  mat-cell *matCellDef="let element" > {{element.main_Dept}} </td>
+        </ng-container>
+        <ng-container matColumnDef="ord_Date">
+          <th  mat-header-cell *matHeaderCellDef  >تاريخ</th>
+          <td  mat-cell *matCellDef="let element" > {{ element.ord_Date | date : "yyyy/MM/dd"}}</td>
+        </ng-container>
+  
+        <ng-container matColumnDef="cause">
+          <th  mat-header-cell *matHeaderCellDef >سبب الاستعمال</th>
+          <td  mat-cell *matCellDef="let element" > {{ element.cause}}</td>
+        </ng-container>
+  
+        <ng-container matColumnDef="type_Name">
+          <th  mat-header-cell *matHeaderCellDef >نوع الطلب</th>
+          <td  mat-cell *matCellDef="let element" > {{ element.type_Name}}</td>
+        </ng-container>
+  
+        <ng-container matColumnDef="ord_Id">
+          <th  mat-header-cell *matHeaderCellDef >رقم الطلب</th>
+          <td  mat-cell *matCellDef="let element" > {{ element.ord_Id}}</td>
+        </ng-container>
+        
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef>اجراء</th>
+          <td mat-cell *matCellDef="let row">
+            <button mat-button (click)="fun(row.type_Id,row.ord_Id)" class=" bg-success display-1 fs-5 fw-bolder ">اعتماد</button>
+          </td>
+        </ng-container>
+       
+        <ng-container matColumnDef="actionsNo">
+       
+          <th mat-header-cell *matHeaderCellDef></th>
+       
+          <td mat-cell *matCellDef="let row">
+       
+            <button mat-button (click)="funNo(row.type_Id,row.ord_Id)" class=" bg-danger display-1 fs-5 fw-bolder ">رفض</button>
+       
+          </td>
+        </ng-container>
+  
+        <tr class="bg-dark  text-primary display-1 fs-5 fw-bolder" mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+       
+        <tr class="text-dark display-1 fs-5 fw-bolder " 
+  
+         (dblclick)="openDialog2(row.fact_Id,row.season,row.type_Id,row.ord_Id)" mat-row  *matRowDef="let row; columns: displayedColumns;"
+          [ngClass]="{'bg-warning': row.tran_Code==2}
+          
+      "     (click)="highlight(row)"
+  
+  [ngClass]="{'highlightTableColor': selectedRowIndex == row.position}" ></tr>
+       
+        <!-- (click)="asd(row.fact_Id,row.item_No)" -->
+      </table>
+      <mat-paginator #paginator  [pageSizeOptions]="[5, 10, 20,40]" matSort 
+      showFirstLastButtons      aria-label="Select page of periodic elements">
+    </mat-paginator>
+  
+     
+      
+    </div>
+  </div>

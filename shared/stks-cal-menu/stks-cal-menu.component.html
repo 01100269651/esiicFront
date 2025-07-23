@@ -1,0 +1,88 @@
+<div class="d-flex justify-content-center">
+   
+ 
+  <div id="container" class=" text-center bg-secondary mat-elevation-z24">
+      <ul id="menu" >
+        <li >   <mat-icon  href="#" aria-hidden="false" aria-label="Example home icon"
+            [routerLink]="['stkscalbckgrnd']" fontIcon="home"></mat-icon>
+        </li>
+        <li><a  href="javascript:void(0)">الحركات<mat-icon>keyboard_arrow_down</mat-icon></a>
+          <ul>
+            <li><a   href="javascript:void(0)" [routerLink]="['tranIn']">  الوارد</a></li>
+            <li><a  href="javascript:void(0)" [routerLink]="['tranOut']"> المنصرف</a></li>
+          
+          </ul>
+        </li>
+        <li><a href="javascript:void(0)" >الاستعلامات<mat-icon>keyboard_arrow_down</mat-icon></a>
+          <ul>
+            <li><a  [routerLink]="['odrlist']">طلبات شراء غير معتمدة</a></li>
+
+            <li><a [routerLink]="['signedodrlist']"> طلبات معتمدة</a></li>
+
+            <li><a [routerLink]="['itmBal']" >   رصيد صنف في الشركة</a></li>
+
+            <li><a  [routerLink]="['Review']"> مراجعة الحركة</a></li>
+
+            <li><a  [routerLink]="['SumStores']" >الأجماليات العامة للمخازن</a></li>
+
+            <!-- <li><a  [routerLink]="['DetailsStores']" > الأرصدة التفصيلية</a></li> -->
+
+            <li><a  [routerLink]="['ItmsDist']" >  توزيع الأصناف علي مراكز التكاليف</a></li>
+         
+        
+            <li><a  [routerLink]="['factsInvoices']" >  فواتير المصانع</a></li>
+            
+            <li><a  [routerLink]="['']" >  الوارد طبقاً لعلوم الأستلام</a></li>
+         
+         
+           
+          </ul>
+        </li>
+
+        
+
+    
+        <li><a href="javascript:void(0)" >تحديث البيانات <mat-icon>keyboard_arrow_down</mat-icon> </a>
+          <ul>
+            <li><a [routerLink]="['updmstr']" href="javascript:void(0)" >الترحيل الشهرى</a></li>
+           
+  
+          </ul>
+        </li>
+        <li><a class="text-danger" href="javascript:void(0)" >{{usrName}} <mat-icon>keyboard_arrow_down</mat-icon></a>
+          <ul>
+            <li><a href="javascript:void(0)" (click)="signOut()" > خروج</a></li>
+           
+  
+          </ul>
+        </li>
+
+        <li> <form class="p-0" [formGroup]="itUserSearchForm">
+           <a><input formControlName="userId" type="text" class="text-danger" placeholder="الاستعلام عن صنف" (change)="search()" href="javascript:void(0)" > 
+        </a>
+        
+      </form>
+        </li>
+
+      
+  
+  
+        <!-- <li><a href="#">Clients</a>
+          <ul>
+            <li><a href="#">Lorem ipsum dolor</a></li>
+            <li><a href="#">Maecenas lacinia sem</a></li>
+            <li><a href="#">Suspendisse fringilla</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Contact Me</a>
+          <ul>
+            <li><a href="#">Lorem ipsum dolor</a></li>
+            <li><a href="#">Maecenas dignissim fermentum luctus</a></li>
+            <li><a href="#">Suspendisse fringilla</a></li>
+          </ul>
+        </li> -->
+     
+      </ul>
+      </div>
+  
+    </div>

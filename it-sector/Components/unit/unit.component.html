@@ -1,0 +1,129 @@
+
+<p class="display-4 text-center">أكواد وحدات القياس</p>
+
+<div class="col-xxl ">
+    <div class="card mb-4">
+    
+      <div class="card-body">
+        <form class="fw-bold fs-5"  [formGroup]="factForm" >
+          <div class="row mb-3">
+            <label class="col-sm-2 col-form-label" for="basic-default-name">كود الوحدة</label>
+            <div class="col-sm-2">
+              <input type="text" class="form-control" id="basic-default-name" placeholder="أدخل رقم الوحدة"
+              [class.is-valid]="Id?.valid" [class.is-invalid]="Id?.invalid" (blur)="GetUnitById()"
+                 formControlName="Id">
+            </div>
+       
+            <label class="col-sm-2 col-form-label" for="basic-default-company">اسم الوحدة</label>
+            <div class="col-sm-4">
+              <input type="text" class="form-control"  id="basic-default-company" placeholder="ادخل اسم الوحدة هنا"
+              [class.is-valid]="Name?.valid" [class.is-invalid]="Name?.invalid"       formControlName="Name"        >
+            </div>
+          </div>
+          <!-- <div class="row mb-3">
+            <label class="col-sm-2 col-form-label" for="basic-default-message">العنوان</label>
+            <div class="col-sm-10">
+              <textarea id="basic-default-message" class="form-control" placeholder="عنوان المصنع" aria-label="Hi, Do you have a moment to talk Joe?" aria-describedby="basic-icon-default-message2"></textarea>
+            </div>
+          </div> -->
+<!-- 
+          <div class="row mb-3">
+            <label class="col-sm-2 col-form-label" for="basic-default-message">السجل الضريبي</label>
+            <div class="col-sm-10">
+              <textarea id="basic-default-message" class="form-control" placeholder=" " aria-label="Hi, Do you have a moment to talk Joe?" aria-describedby="basic-icon-default-message2"></textarea>
+            </div>
+          </div>
+
+          <div class="row mb-3">
+            <label class="col-sm-2 col-form-label" for="basic-default-email">البريد الإلكترونى</label>
+            <div class="col-sm-10">
+              <div class="input-group input-group-merge">
+                <input type="text" id="basic-default-email" class="form-control" placeholder="john.doe" aria-label="john.doe" aria-describedby="basic-default-email2">
+                <span class="input-group-text" id="basic-default-email2">@example.com</span>
+              </div>
+              <div class="form-text">You can use letters, numbers &amp; periods</div>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label class="col-sm-2 col-form-label" for="basic-default-phone"> رقم التليفون 1</label>
+            <div class="col-sm-10">
+              <input type="text" id="basic-default-phone" class="form-control phone-mask" placeholder="658 799 8941" aria-label="658 799 8941" aria-describedby="basic-default-phone">
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label class="col-sm-2 col-form-label" for="basic-default-phone"> رقم التليفون 2</label>
+            <div class="col-sm-10">
+              <input type="text" id="basic-default-phone" class="form-control phone-mask" placeholder="658 799 8941" aria-label="658 799 8941" aria-describedby="basic-default-phone">
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label class="col-sm-2 col-form-label" for="basic-default-phone">رقم التليفون 3</label>
+            <div class="col-sm-10">
+              <input type="text" id="basic-default-phone" class="form-control phone-mask" placeholder="658 799 8941" aria-label="658 799 8941" aria-describedby="basic-default-phone">
+            </div>
+          </div> -->
+          <!-- <div class="row mb-3">
+            <label class="col-sm-2 col-form-label" for="basic-default-message">Message</label>
+            <div class="col-sm-10">
+              <textarea id="basic-default-message" class="form-control" placeholder="Hi, Do you have a moment to talk Joe?" aria-label="Hi, Do you have a moment to talk Joe?" aria-describedby="basic-icon-default-message2"></textarea>
+            </div>
+          </div> -->
+          <div class="row text-center ">
+            <div class="col">
+              <button type="submit" class="btn btn-secondary" (click)="newUnit()">جديد</button>
+            </div>
+            <div class="col">
+              <button type="submit" class="btn btn-primary" (click)="createUnit()">اضافة</button>
+            </div>
+            <div class="col">
+                <button type="submit" class="btn btn-success" (click)="updateUnit()">حفظ التعديل</button>
+              </div>
+
+              <div class="col">
+                <button type="submit" class="btn btn-danger" (click)="delUnit()">حذف</button>
+              </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="col">
+    <mat-form-field>
+    <mat-label>بحث</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+    </mat-form-field> 
+   </div>
+   <table class="text-dark   mt-4"  mat-table [dataSource]="dataSource"  >
+    
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+  
+    <!-- Position Column -->
+    <ng-container matColumnDef="position">
+      <th mat-header-cell *matHeaderCellDef >م</th>
+      <td class="bg-warning" mat-cell *matCellDef="let element; let i = index">{{i + 1}}</td>
+    </ng-container>
+    <ng-container matColumnDef="id">
+      <th  mat-header-cell *matHeaderCellDef > رقم وحدة القياس</th>
+      <td   mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+    <ng-container matColumnDef="name">
+        <th  mat-header-cell *matHeaderCellDef > اسم وحدة القياس </th>
+        <td  mat-cell *matCellDef="let element" > {{element.name}} </td>
+      </ng-container>
+  
+   
+
+
+  
+  
+
+  <!-- [ngClass]="{'bg-warning': row.tran_Code==2}" -->
+    <tr mat-header-row class="text-white fw-bolder display-5 fs-5  text-center bg-primary" *matHeaderRowDef="displayedColumns"></tr>
+    <tr class="text-dark display-1 fs-5 fw-bolder "   mat-row  *matRowDef="let row; columns: displayedColumns;" ></tr>
+  </table>
+  <mat-paginator #paginator  [pageSizeOptions]="[5, 10, 20,40]" matSort 
+  showFirstLastButtons      aria-label="Select page of periodic elements">
+</mat-paginator>
+

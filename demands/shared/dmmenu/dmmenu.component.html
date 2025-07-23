@@ -1,0 +1,116 @@
+<nav class="navbar navbar-expand-lg text-dark navbar-light display-6 fs-4 fw-bolder bg-primary mb-1" style="height:30PX ;">
+  <div class="container-fluid">
+    <a class="navbar-brand text-dark fs-4 fw-bold" href="javascript:void(0)"><img src="assets/bx-store.svg" [routerLink]="['Home']"> مراقبة المخزون</a>
+    
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse " id="navbarSupportedContent">
+      <ul class="navbar-nav text-dark me-auto mb-2 mb-lg-0">
+       
+        <!-- <li class="nav-item">
+          <a class="nav-link" href="javascript:void(0)">Link</a>
+        </li> -->
+       
+        <li class="nav-item dropdown text-end">
+          <a class="nav-link dropdown-toggle " href="javascript:void(0)" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            تسجيل الحركة<mat-icon>create</mat-icon> 
+          </a>
+          <ul class="dropdown-menu fs-3 fw-bold text-end" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item  " [routerLink]="['CreateOrd']"   ><mat-label > <mat-icon>create_new_folder</mat-icon>تكويد طلبية </mat-label> </a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li> 
+           
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="javascript:void(0)">   </a></li>
+          </ul>
+        </li>
+
+
+
+        <!-- <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            التقارير
+          </a>
+          <ul class="dropdown-menu  fs-3 fw-bold text-end" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="javascript:void(0)">الطلبات المحلية والإصلاح</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="javascript:void(0)">طلبات الشراء الفنية</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="javascript:void(0)">الطلبيات العامةوالمجمعة</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="javascript:void(0)">الطلبيات العامةوالمجمعة</a></li>
+          </ul>
+        </li> -->
+
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            الاستعلامات<mat-icon>menu</mat-icon>
+          </a>
+          <ul class="dropdown-menu text-end fs-4 fw-bold" aria-labelledby="navbarDropdown">
+            
+            <li><a class="dropdown-item" href="javascript:void(0)"  [routerLink]="['signedOrders']"   > الطلبات  المعتمدة</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" [routerLink]="['repeated']" href="javascript:void(0)"> المكرر</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li><a class="dropdown-item" href="javascript:void(0)" [routerLink]="['oldHistory']" >البيانات التاريخية</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            
+       
+          </ul>
+        </li>
+
+
+
+        <!-- //------------------------------------------ -->
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <span class="text-white fs-6">   {{usrName}} <mat-icon>account_circle</mat-icon> </span>
+          </a>
+          <ul class="dropdown-menu text-end fs-3 fw-bold" aria-labelledby="navbarDropdown">
+            
+            <li><a class="dropdown-item"id="navbarDropdown" href="javascript:void(0)" (click)="SignOut()"   > <mat-icon>exit_to_app</mat-icon>خروج</a></li>
+            
+            
+       
+          </ul>
+        </li>
+
+
+        <!-- //////////---------------- -->
+
+  
+      </ul>
+      <form [formGroup]="searchFormForItem" style="height:27px ;" class="d-flex p-0 " onsubmit="return false">
+        <input class="form-control " style="height: 25px;" type="search" placeholder="بحث عن  رقم صنف " aria-label="Search"
+        formControlName="SearchItmId">
+        <button class="btn btn-info p-0" style="height: 25px;"  (click)="openSearchForItem()" type="submit">ابحث</button>
+      </form>
+
+
+      <form [formGroup]="searchForm" style="height:27px ;" class="d-flex p-0 " onsubmit="return false">
+        <input class="form-control " style="height: 25px;" type="search" placeholder="بحث عن صنف في التاريخي" aria-label="Search"
+        formControlName="SearchId">
+        <button class="btn btn-info p-0" style="height: 25px;"  (click)="openHistory()" type="submit">ابحث</button>
+      </form>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,52 @@
+
+<p class="display-4 text-center">أكواد موقف الطلبات</p>
+
+<div class="col-xxl ">
+    <div class="card mb-4">
+    
+      <div class="card-body">
+        <form class="fw-bold fs-5" [formGroup]="SupOrdStatForm">
+          <div class="row mb-3">
+            <label class="col-sm-2 col-form-label" for="basic-default-name">كود الموقف</label>
+            <div class="col-sm-2">
+              <input type="text" class="form-control" id="basic-default-name" placeholder=""
+              [class.is-valid]="Code?.valid" [class.is-invalid]="Code?.invalid" 
+              formControlName="Code" (blur)="getStatById()"
+              
+              >
+            </div>
+         
+            <label class="col-sm-2 col-form-label " for="basic-default-company"> اسم موقف الطلب </label>
+            <div class="col-sm-6">
+                <textarea type="text" class="form-control" id="basic-default-name" placeholder=""
+                [class.is-valid]="Name?.valid" [class.is-invalid]="Name?.invalid" 
+                formControlName="Name" 
+                >
+                </textarea>
+              </div>
+          </div>
+
+          <div class="row text-center ">
+            <div class="col">
+              <button type="submit" class="btn btn-primary" (click)="ClearForm()">جديد</button>
+            </div>   
+            
+            <div class="col">
+              <button type="submit" class="btn btn-primary" (click)="addState()">اضافة</button>
+            </div>
+            <div class="col">
+                <button type="submit" class="btn btn-success" (click)="updState()">تعديل</button>
+              </div>
+
+              <div class="col">
+                <button type="submit" class="btn btn-danger" (click)="delState()">حذف</button>
+              </div>
+          </div>
+    
+    
+         
+        </form>
+      </div>
+    </div>
+  </div>
+

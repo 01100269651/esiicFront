@@ -1,0 +1,237 @@
+
+<div class="  text-center bg-warning" style="width: 100%;" *ngIf="isLoading">
+  <app-sh-spinner></app-sh-spinner>
+  </div>
+<div style="overflow-y: auto; height:700px ;">
+<button styleSheetFile="assets/css/custom1.css"  class="btn-sm btn-primary  " printSectionId="print-section" ngxPrint>
+  <mat-icon>print</mat-icon>طباعة</button>
+
+
+<div class="card-body" id="print-section"  >
+<app-comp-header></app-comp-header>
+  <p id="asd" class="fs-3 fw-bolder display-3 text-center">طلـــــب أســــــعار</p>
+
+  <table class=" " id="xyz" style=" border: 0px solid white;">
+    <tr style="direction: rtl; border: 0px solid white;">
+      <th class="fs-3 fw-bolder text-dark display-4" 
+      style="direction: rtl; border: 0px solid white; text-align: right;" colspan="3">
+
+مناقصة/ممارسة توريد:-------------------------------------------------    
+    </th>
+    <th colspan="2"> </th>
+    
+
+  </tr>
+  <tbody style="border: 0px solid white;">
+ 
+    <!-- <tr  class="bg-primary"  style="border: 0px solid white;">
+      <td class="fs-4 text-dark fw-bolder" style="width: 50px;"></td>
+ 
+      <td class="fs-4 text-dark fw-bolder" style="width: 50px;"></td>
+      <td  colspan="4" class="fs-4 text-dark fw-bolder" style="width: 50px;"> </td>
+     
+      <td rowspan="2" class="fs-1 display-1 text-dark fw-bolder" 
+      style="text-decoration: underline; font-size: 36px;text-align: right; padding-right:150px;"> 
+      </td>
+      <td></td>
+      <td></td>
+    </tr> -->
+    <tr   style="border: 0px solid white;">
+      <td class="fs-5 text-dark fw-bolder"  colspan="5">السيد مدير شركة/ محلات :----------------------------------------</td>
+      <td class="fs-4 text-dark fw-bolder" colspan="2"></td>
+     
+      <td></td>
+      <td></td>
+      <td> </td>
+    </tr>
+    
+    <tr  style="border: 0px solid white;">
+
+      <td class="fs-5 text-dark   fw-bold" colspan="2" >   </td>
+
+      <td class="fs-4 text-dark fw-bolder  " style="text-align: center;" colspan="2">...تحية طيبة وبعد</td>
+
+      <td class="fs-4 text-dark fw-bolder"></td>
+
+      <td  >                 </td>
+
+      <td class="fs-4 text-dark  fw-bold" style="padding-left:1px ;">
+        <span class="fs-4 text-dark  fw-bold">
+
+      </span></td> 
+      
+      <td  style="padding-right: 1px;"><span class="fs-4 text-dark fw-bold"></span></td> 
+
+    </tr>
+    <tr>
+      <td colspan="6">نرجو موافاتنا بأسعاركم عن توريد الأصناف الموضحة بعد خلال مدة اقصاها-------------
+
+    </td></tr>
+  </tbody>
+  
+  </table>
+
+ 
+    <div class="card" mat-card style=" overflow-x: scroll;
+       overflow-y:scroll;height:500px ;" >
+        <!-- <h3 class="card-header">
+       
+        </h3> -->
+
+       
+        <div class="card-body mat-elevation-z20 " >
+        
+     
+       <div style=" overflow-x: scroll;
+       overflow-y: scroll;" >
+          <mat-form-field class="hi">
+            <mat-label>بحث</mat-label>
+            <input matInput (keyup)="applyFilter($event)" placeholder="ابحث رقم صنف" #input>
+          </mat-form-field>
+          <table class="text-dark mt-1 fs-5 fw-bolder bg-info mt-4"  mat-table [dataSource]="dataSource"  >
+
+            <ng-container matColumnDef="position">
+              <th mat-header-cell *matHeaderCellDef >م</th>
+              <td mat-cell *matCellDef="let element; let i = index">{{i + 1}}</td>
+             
+            </ng-container>
+
+            <!-- <ng-container matColumnDef="Fact_Name">
+              <th mat-header-cell *matHeaderCellDef>المصنع</th>
+              <td mat-cell *matCellDef="let element">{{element.fact_Name ?? ''}}</td>
+            </ng-container> -->
+
+            
+            <ng-container matColumnDef="Fnl_Id">
+
+              <th  mat-header-cell *matHeaderCellDef >رقم الطلب</th>
+
+              <td  mat-cell *matCellDef="let element " >  {{element.fnl_Id??'0'}} </td>
+
+            </ng-container>
+    
+            <ng-container matColumnDef="Item_No">
+              <th mat-header-cell *matHeaderCellDef>رقم الصنف</th>
+              <td mat-cell *matCellDef="let element">{{element.item_No ?? ''}}</td>
+           
+            </ng-container>
+       
+            
+
+            <ng-container matColumnDef="Item_Name">
+
+              <th  mat-header-cell *matHeaderCellDef > الصنف </th>
+
+              <td  mat-cell *matCellDef="let element " NOWRAP>  {{element.item_Name ??''}} </td>
+
+            </ng-container>
+            <!-- scM_Item.scM_Unit.name -->
+            <ng-container matColumnDef="Unit">
+
+              <th  mat-header-cell *matHeaderCellDef >الوحدة</th>
+
+              <td  mat-cell *matCellDef="let element " >  {{element.unit??''}} </td>
+
+            </ng-container>
+    
+            
+
+
+
+          
+         
+
+      
+           
+
+       
+        
+
+            
+    
+            <ng-container matColumnDef="Quantity">
+              <th  mat-header-cell *matHeaderCellDef >الكمية</th>
+              <td  mat-cell *matCellDef="let element " >  {{element.quantity??'0'}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Price_Unit" >
+              <th  mat-header-cell *matHeaderCellDef >سعر الوحدة</th>
+              <td  mat-cell *matCellDef="let element " > ---- </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Total" >
+              <th  mat-header-cell *matHeaderCellDef > الأجمالي</th>
+              <td  mat-cell *matCellDef="let element " > ---- </td>
+            </ng-container>
+            <ng-container matColumnDef="Notes" >
+              <th  mat-header-cell *matHeaderCellDef > الملاحظات</th>
+              <td  mat-cell *matCellDef="let element " > ---- </td>
+            </ng-container>
+
+         
+    
+    
+            <tr mat-header-row class="text-dark display-1 fs-5 fw-bolder bg-secondary  mt-4" *matHeaderRowDef="displayedColumns"></tr>
+  
+            <tr class="text-dark display-1 fs-5 fw-bolder table-row "  mat-row  *matRowDef="let row; columns: displayedColumns;" ></tr>
+     
+      <tr>
+
+      </tr>
+         
+          </table>
+          <mat-paginator class="hi" #paginator  [pageSizeOptions]="[5, 10, 20,40]" matSort 
+          showFirstLastButtons      aria-label="Select page of periodic elements">
+        </mat-paginator>
+        </div>
+ 
+      
+         
+       
+
+        </div>
+     
+        <table>
+          <tbody>
+            <tr>
+              <td>الشروط:-</td>
+        
+              <td></td>
+              <td></td>
+              <td> اللجنة:-</td>
+            </tr>
+            <tr>
+              <td>:مدة التوريد</td>
+        
+              <td></td>
+              <td></td>
+              <td> </td>
+            </tr>
+            <tr>
+              <td>:طريقة الدفع</td>
+        
+              <td></td>
+              <td></td>
+              <td> </td>
+            </tr>
+            <tr>
+              <td>:مكان التسليم</td>
+        
+              <td></td>
+              <td></td>
+              <td> </td>
+            </tr>
+
+          </tbody>
+        </table>
+             
+     
+     
+      </div>
+    
+
+
+
+    
+</div>
+</div>

@@ -1,0 +1,111 @@
+/* You can add global styles to this file, and also import other style files */
+form {
+   background-color:ghostwhite;
+   font-family: "Oswald", Helvetica, Arial, sans-serif!important;
+font-size: 16px;
+
+border: solid 2px rgb(6, 6, 31);
+
+border-radius: 7px;
+
+
+padding: 5px;
+
+padding-bottom: 15px;
+
+}
+body{
+font-family: "Oswald", Helvetica, Arial, sans-serif!important;
+font-size: 16px;
+}
+
+  
+.col-form-label {
+   font-size:18px;
+   font-weight: bolder;
+   text-shadow: 5px;
+   box-shadow: 2px;
+}
+nav{
+   margin-top: 5px;
+
+   height: 50px;
+
+   font-size:20px;
+
+   font-weight: bolder;
+
+  border: 3px;;
+
+   border-radius: 15px;
+
+   box-shadow: 10px;
+
+   border-color: black;
+
+
+
+
+}
+nav dropdown {
+
+   font-size:20px;
+
+   font-weight: bolder;
+
+
+}
+
+.btn
+{
+
+   border-color: rgb(41, 148, 214);
+box-shadow: 10px 10px 10px rgb(red, green, blue);   
+font-size: larger;
+}
+.btn:hover{
+   border-color: rgb(17, 24, 28);
+   box-shadow: 2px 10px 10px rgb(red, green, blue);  
+
+}
+
+
+label{
+   color:blue;
+
+   
+   font-size:22px;
+   font-weight: bolder;
+  
+
+}
+
+.hoverclass {
+   background-color: rgb(50, 59, 189);
+   
+  /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+   animation: blink 3s linear infinite ;
+
+
+
+ }
+ 
+ @keyframes blink {
+   25%{
+     opacity: 0.5;
+   }
+
+   50%{
+     opacity: 0;
+   }
+   75%{
+     opacity: 0.5;
+   }
+   
+ }
+
+ .hoverclass:hover{
+   animation: blink 1s reverse 1 ;
+
+
+ }

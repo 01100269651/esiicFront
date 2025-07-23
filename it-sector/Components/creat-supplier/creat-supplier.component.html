@@ -1,0 +1,151 @@
+<h1 class="display-3 text-center fw-bold fs-3">تكويد مورد جديد</h1>
+
+
+<div class="col-xxl ">
+    <div class="card mb-4">
+    
+      <div class="card-body">
+        <form class="fw-bold fs-5" [formGroup]="SupplierForm">
+          <!-- <div class="row mb-3">
+            <label class="col-sm-2 col-form-label" for="basic-default-name">كود المصنع</label>
+            <div class="col-sm-2">
+              <input type="text" class="form-control" id="basic-default-name" placeholder="">
+            </div>
+         
+            <label class="col-sm-2 col-form-label" for="basic-default-company">كود المورد </label>
+            <div class="col-sm-4">
+              <input type="text" class="form-control" id="basic-default-company" placeholder = "أدخل كود المورد">
+            </div>
+          </div> -->
+
+          <div class="row mb-3">
+            <label class="col-sm-2 col-form-label" for="basic-default-company">رقم التسجيل الضريبي</label>
+            <div class="col-sm-2">
+              <input type="text" class="form-control" id="basic-default-company" 
+            
+              [class.is-valid]="Tax_ID_No?.valid" [class.is-invalid]="Tax_ID_No?.invalid" 
+              formControlName="Tax_ID_No" (blur)="supName()"
+              placeholder = "أدخل كود التسجيل الضريبي">
+            </div>
+            <label class="col-sm-2 col-form-label" for="basic-default-name"> اسم المورد</label>
+            <div class="col-sm-5">
+              
+              <textarea id="basic-default-message"
+              [class.is-valid]="Name?.valid" [class.is-invalid]="Name?.invalid" 
+              formControlName="Name" 
+              class="form-control" placeholder="ادخل اسم المورد" aria-label="Hi, Do you have a moment to talk Joe?" aria-describedby="basic-icon-default-message2"></textarea>
+            </div>
+            
+         
+           
+          </div>
+
+
+          <div class="row mb-3">
+            <label class="col-sm-2 col-form-label" for="basic-default-name"> بطاقة ضريبية</label>
+            <div class="col-sm-2">
+              <input type="text" class="form-control" id="basic-default-name" 
+              [class.is-valid]="Tax_Org_No?.valid" [class.is-invalid]="Tax_Org_No?.invalid" 
+              formControlName="Tax_Org_No" 
+              
+              placeholder="">
+            </div>
+            <label class="col-sm-2 col-form-label" for="basic-default-name"> العنوان</label>
+            <div class="col-sm-5">
+              
+              <input type="text" id="basic-default-message" class="form-control" 
+              [class.is-valid]="Address?.valid" [class.is-invalid]="Address?.invalid" 
+              formControlName="Address" 
+              placeholder="ادخل عنوان المورد" aria-label="Hi, Do you have a moment to talk Joe?" aria-describedby="basic-icon-default-message2">
+            </div>
+            
+         
+        
+          </div>
+
+
+          <div class="row mb-3">
+           
+         
+           
+          </div>
+
+
+          <div class="row mb-3">
+            <label class="col-sm-2 col-form-label" for="basic-default-name">جوال</label>
+            <div class="col-sm-2">
+              <input type="text" class="form-control" id="basic-default-name1"
+              [class.is-valid]="Mobile1?.valid" [class.is-invalid]="Mobile1?.invalid" 
+              formControlName="Mobile1" 
+              placeholder= "أدخل الجوال">
+            </div>
+         
+            <label class="col-sm-2 col-form-label" for="basic-default-name">البريد الالكترونى</label>
+            <div class="col-sm-3">
+              <input type="text" class="form-control" id="basic-default-name"
+              [class.is-valid]="Email?.valid" [class.is-invalid]="Email?.invalid" 
+              formControlName="Email" 
+              placeholder= "أدخل البريد">
+
+
+            </div>
+          </div>
+
+
+          <div class="row mb-3">
+        
+
+            <label class="col-sm-2 col-form-label" for="basic-default-name">البنك</label>
+              <!-- <div class="col-sm-4">
+                 <select class="  p-2 bd-highlight form-select btn btn-outline-primary" id="inputGroupSelect04" aria-label="Example select with button addon">
+                    <option selected=""> أختر البنك</option>
+                    <option value="1">بنك مصر</option>
+                    <option value="2">البنك الأهلي</option>
+                    <option value="3">بنك القاهرة</option>
+                    <option value="3">إسكندرية</option>
+                  </select> 
+                </div> -->
+                <div class="col-2">
+                   <input type="text" class="form-control" 
+                   
+                   [class.is-valid]="Bank_Type?.valid" [class.is-invalid]="Bank_Type?.invalid" 
+                   formControlName="Bank_Type" 
+
+
+                   
+                   id="basic-default-name" placeholder= "أدخل نوع البنك">
+                </div>
+                <div class="col-2"><label class="col-form-label">رقم الحساب</label></div>
+               <div class="col-3"> <input type="text" class="form-control"
+                [class.is-valid]="Bank_No?.valid" [class.is-invalid]="Bank_No?.invalid" 
+                formControlName="Bank_No" 
+                id="basic-default-name" placeholder= "أدخل رقم الحساب">
+               </div>
+          </div>
+
+
+         
+         
+     
+    
+    
+          <div class="row text-center ">
+            <div class="col">
+              <button type="submit" class="btn btn-secondary" (click)="NewSupp()">جديد</button>
+            </div>
+            <div class="col">
+              <button type="submit" class="btn btn-primary" (click)="addSupp()">اضافة</button>
+            </div>
+            <div class="col">
+                <button type="submit" class="btn btn-success" (click)="updSupp()">تعديل</button>
+              </div>
+
+              <div class="col">
+                <button type="submit" class="btn btn-danger" (click)="delSup()">حذف</button>
+              </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+

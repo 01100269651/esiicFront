@@ -1,0 +1,54 @@
+<h1 class="display-4 text-center">أكواد أنواع أوامر التوريد</h1>
+
+<!-- <h1="display-4 text-center">أكواد أنواع الطلبات</h1> -->
+
+<div class="col-xxl ">
+    <div class="card mb-4">
+    
+      <div class="card-body">
+        <form class="fw-bold fs-5" [formGroup]="SupOrdForm">
+          <div class="row mb-3">
+            <label class="col-sm-2 col-form-label" for="basic-default-name">كود  أمر التوريد</label>
+            <div class="col-sm-2">
+              <input type="text" class="form-control" 
+              
+              [class.is-valid]="Code?.valid" [class.is-invalid]="Code?.invalid" 
+              formControlName="Code" (blur)="getSupById()"
+              id="basic-default-name" placeholder="">
+            </div>
+         
+            <label class="col-sm-2 col-form-label " for="basic-default-company"> اسم أمر التوريد </label>
+            <div class="col-sm-6">
+                <textarea type="text" class="form-control" id="basic-default-name" placeholder=""
+                [class.is-valid]="Name?.valid" [class.is-invalid]="Name?.invalid" 
+                formControlName="Name" 
+                >
+                </textarea>
+              </div>
+          </div>
+
+          <div class="row text-center ">
+
+            <div class="col">
+              <button type="submit" class="btn btn-secondary" (click)="ClearForm()">جديد</button>
+            </div>
+         
+            <div class="col">
+                <button type="submit" class="btn btn-primary" (click)="addSup()" >اضافة</button>
+              </div>
+            <div class="col">
+                <button type="submit" class="btn btn-success" (click)="updSup()" >تعديل</button>
+              </div>
+
+              <div class="col">
+                <button type="submit" class="btn btn-danger" (click)="delSup()" >حذف</button>
+              </div>
+          </div>
+    
+    
+         
+        </form>
+      </div>
+    </div>
+  </div>
+

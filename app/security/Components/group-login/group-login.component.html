@@ -1,178 +1,88 @@
+<div class="container mt-0 my-1 p-1 login-wrapper shadow-lg rounded glass-wrapper">
 
+  <!-- الهيدر -->
 
+  <div class="text-center mb-1 fade-header header-glass">
 
-<div class="container border border-warning  mt-3" style="border-radius: 15px;
+    <img src="assets/img/Pro.jpg" class="rounded-circle border border-white shadow-lg m-1" 
+         style="width:90px;height:90px;" />
 
+    <h1 class="title-main text-white">شركة السكر والصناعات التكاملية المصرية</h1>
 
-background: rgb(211, 216, 221);
-background: radial-gradient(circle, rgb(60, 71, 168) 0%, rgba(12,105,223,0.3897934173669467) 50%);">
+    <h5 class="title-sub">قطاعات نظم المعلومات</h5>
 
-  <div style="height: 200px;">
-    <div [@fadeInBottomRight]="{ value: fadeInBottomRight, params: { timing: myTiming || 1, delay: myDelay   ,a:5} }"
-      class=" text-center">
-      <img src="assets/img/Pro.jpg" style="width:80px;height:80px;"
-        class="image  rounded-circle border border-primary" />
-    </div>
-    <div class="mb-3"
-      [@zoomInDown]="{ value: zoomInRight, params: { timing: myTiming || 2, delay: myDelay || 0  ,a:5} }">
-      <h1 class="display-4 fs-2 text-center text-dark p-0 text-wrap fw-bolder m-0"> شركة السكر والصناعات التكاملية
-        المصرية
+    <h5 class="title-sub">منظومة المخزون الجديدة SCM</h5>
 
-      </h1>
-      <h5 class="display-5 fs-5 text-center text-dark p-0 text-wrap fw-bolder mb-3" NOWARP>قطاعات نظم المعلومات</h5>
-      <h5 class="display-5 fs-5 text-center text-dark p-0 text-wrap fw-bolder mb-3" NOWARP>منظومة المخزون الجديدة SCM
-      </h5>
-
-
-    </div>
   </div>
-  <div class="row">
-    <div class="col example" style="width: 500px; height: 500px;">
 
+  <div class="row justify-content-center">
 
-      <div style="border-radius:33px;">
-        <div style="border-radius:33px;">
-          <!-- Register -->
-          <div [@zoomInLeft]="{ value: zoomInLeft, params: { timing: myTiming || 1, delay: myDelay   ,a:5} }"
-            class="card  border border-radius   mat-elevation-z22" style="box-shadow: 5px 5px green;">
+    <!-- Login Card -->
 
+    <div class="col-md-5">
 
-            <form [formGroup]="grLoginForm" class="mat-elevation-z24 " style="border-radius:33px;">
+      <div class="card login-card shadow-lg p-1">
 
+        <div class="text-center mb-3">
 
-              <div class="card-body bg-secondary " style="border-radius:33px;
-               background-image: url('assets/img/backgrounds/back.jfif');
-               background-size: contain; ">
+          <img src="assets/img/backgrounds/Logo.jfif"
+               class="rounded-circle shadow-sm border border-white"
+               style="width:150px;height:150px;">
 
-                <!-- Logo -->
-                <div class="text-center ">
-                  <div class="text-center">
-                    <a>
-
-                      <!-- <span class="app-brand-text demo text-body fw-bolder mt-0">ESIIC</span> -->
-                      <img src="assets/img/backgrounds/Logo.jfif" style="width:200px;height:200px; 
-                      align-items: center;
-                      
-                      " class="image  rounded-circle " />
-
-                    </a>
-                  </div>
-
-
-                </div>
-                <!-- /Logo -->
-
-                <div class="row">
-                  <div class="col">
-                    <app-sh-spinner *ngIf="isLoading"></app-sh-spinner>
-
-                  </div>
-                </div>
-
-                <h4 class="mb-0 mt-0 bg-warning display-5 fs-5 fw-bolder text-center text-dark"
-                  style="text-shadow: 2px 2px white;">أهلا بك في منظومة المخزون👋</h4>
-
-                <div class=" d-flex  justify-content-center">
-                  <div>
-                    <div class="text-center border border-danger bg-dark   mat-elevation-z15">
-                      <mat-form-field class="text-dark border border-danger   display-1 fs-5 fw-bolder "
-                        appearance="outline">
-                        <mat-label
-                          class="text-white display-1 border border-danger fs-5   fw-bolder ">كودالتطبيق</mat-label>
-                        <input matInput autofocus
-                          class="text-white  border border-danger  display-1 fs-5 fw-bolder text-end " type="number"
-                          placeholder="أدخل كود التطبيق" [class.is-valid]="App_Id?.valid"
-                          [class.is-invalid]="App_Id?.invalid" formControlName="App_Id">
-                      </mat-form-field>
-                           <small class="text-center" *ngIf=" grLoginForm.hasError('required','App_Id') && 
-                  grLoginForm.get('App_Id')?.touched && grLoginForm.get('App_Id')?.dirty " class="text-danger">لابد من
-                      إدخال كود التطبيق</small>
-
-                    </div>
-
-               
-
-                  </div>
-
-
-                </div>
-                <div class="d-flex   justify-content-center">
-                  <div>
-
-                    <div class="text-center  bg-dark mat-elevation-z15 border border-danger">
-
-                      <mat-form-field class="text-dark border border-danger display-1 fs-5 fw-bolder "
-                        appearance="outline">
-
-                        <mat-label class="text-white  border border-danger  display-1 fs-5 fw-bolder ">كلمة مرور
-                          التطبيق</mat-label>
-
-                        <input matInput class="text-dark border border-danger  display-1 fs-5 fw-bolder "
-                          type="password" placeholder="أدخل كلمة مرور التطبيق" [class.is-valid]="App_Password?.valid"
-                          [class.is-invalid]="App_Password?.invalid" formControlName="App_Password">
-
-                      </mat-form-field>
-
-                    </div>
-                    <div class="row ">
-
-                      <small *ngIf=" grLoginForm.hasError('required','App_Password')
-  
-                         && grLoginForm.get('App_Password')?.touched && grLoginForm.get('App_Password')?.dirty  "
-  
-                        class="text-danger">لابد من إدخال كلمة مرور التطبيق</small>
-  
-                    </div>
-
-                  </div>
-
-
-               
-
-                </div>
-
-                <div class="row">
-                  <div class=" col">
-                    <button class="btn btn-primary  text-white d-grid w-100" (click)="SendGrp()">موافق</button>
-                  </div>
-                  <div class="col">
-                    <button class="btn btn-info  text-danger d-grid w-100" (click)="cancel()">إلغاء</button>
-                  </div>
-                </div>
-
-
-
-
-
-              </div>
-            </form>
-          </div>
-       
         </div>
+
+        <h4 class="welcome-text">أهلاً بك في منظومة المخزون 👋</h4>
+
+        <form [formGroup]="grLoginForm">
+
+          <!-- App Id -->
+          <mat-form-field appearance="outline" class="w-100 mt-3">
+
+            <mat-label>كود التطبيق</mat-label>
+
+            <input matInput type="number" formControlName="App_Id" placeholder="أدخل كود التطبيق">
+            
+          </mat-form-field>
+
+          <small class="error-message" 
+                *ngIf="grLoginForm.hasError('required','App_Id') &&
+                       grLoginForm.get('App_Id')?.touched">
+            لابد من إدخال كود التطبيق
+          </small>
+
+          <!-- Password -->
+          <mat-form-field appearance="outline" class="w-100 mt-3">
+            <mat-label>كلمة مرور التطبيق</mat-label>
+            <input matInput type="password" formControlName="App_Password" placeholder="••••••••">
+          </mat-form-field>
+
+          <small class="error-message"
+                *ngIf="grLoginForm.hasError('required','App_Password') &&
+                       grLoginForm.get('App_Password')?.touched">
+            لابد من إدخال كلمة المرور
+          </small>
+
+          <!-- Buttons -->
+          <div class="row mt-4">
+            <div class="col">
+              <button class="btn btn-outline-success w-100 login-btn" (click)="SendGrp()">موافق</button>
+            </div>
+            <div class="col">
+              <button class="btn btn-outline-danger w-100 cancel-btn" (click)="cancel()">إلغاء</button>
+            </div>
+          </div>
+
+        </form>
       </div>
     </div>
 
-
-
-    <div class="col">
-      <!-- <div  [@zoomOutRight]="{ value:zoomOutRight , params: { timing: myTiming || 1, delay: exDel   ,a:5} }"> -->
-
-      <div [@zoomInRight]="{ value:zoomInRight , params: { timing: myTiming || 1, delay: 0   ,a:5} }"
-        class="container  mat-elevation-z15 image  image-flud card  border border-radius mb-5  mat-elevation-z22 "
-        style="background-image: url('assets/img/backgrounds/erp-(6).jpg');box-shadow: 5px 5px green;
-      
-      height: 500px; width: 500px;">
-
+    <!-- Image -->
+    <div class="col-md-5">
+      <div class="preview-box shadow-lg"
+           style="background-image: url('assets/img/backgrounds/erp-(6).jpg'); height: 520px;">
       </div>
-
-      <!-- </div> -->
     </div>
+
   </div>
 
-  <!-- / Content -->
-
-
-
-</div>
-
-<!-- ======================================================================================================================================= -->
+</div> 

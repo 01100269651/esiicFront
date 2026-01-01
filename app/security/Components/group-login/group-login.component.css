@@ -12,7 +12,7 @@
   .content {
     position: auto;
  
-    background: rgba(0, 0, 0, 0.5);
+    /* background: rgba(0, 0, 0, 0.5); */
     color: #f1f1f1;
     width: auto;
     padding: 20px;
@@ -33,3 +33,95 @@
     from {background-color: red;}
     to {background-color: yellow;}
   } */
+    .login-wrapper {
+  border-radius: 20px;
+   background:  radial-gradient(circle, rgb(247, 244, 244) 0%, rgba(95, 166, 236, 0.39) 50%);
+  padding: 30px;
+}
+
+.title-main {
+  font-size: 1.7rem;
+  color: #003366;
+  font-weight: 800;
+}
+
+.title-sub {
+  color: #444;
+  font-weight: 700;
+  margin-top: -5px;
+}
+
+.login-card {
+  border-radius: 20px !important;
+  background: #ffffffd9;
+  backdrop-filter: blur(4px);
+
+}
+
+.welcome-text {
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #222;
+}
+
+.error-message {
+  background: #ffc107;
+  padding: 3px 10px;
+  display: inline-block;
+  color: #b30000;
+  border-radius: 5px;
+  font-weight: 600;
+  margin-top: -8px;
+  margin-bottom: 15px;
+}
+
+.login-btn {
+  font-weight: 800;
+  border-radius: 12px;
+  padding: 10px 0;
+}
+
+.cancel-btn {
+  font-weight: 800;
+  border-radius: 12px;
+  padding: 10px 0;
+}
+
+.preview-box {
+  height: 500px;
+  border-radius: 20px;
+  background-size: cover;
+  background-position: center;
+} 
+/* خلفية عامة */
+
+.glass-wrapper {
+  padding: 40px;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #dbe0e6 0%, #b9c2cc 100%);
+  backdrop-filter: blur(4px);
+}
+/* Header glass block */
+.header-glass {
+  margin-top: 2px;
+  padding: 10px 20px;
+  border-radius: 25px;
+  background: rgba(255, 255, 255, 0.20);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  backdrop-filter: blur(10px);
+}
+.logo-top {
+  width: 85px;
+  height: 65px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.6);
+  box-shadow: 0 0 12px rgba(255,255,255,0.4);
+}
+.glass-card {
+  background: rgba(255, 255, 255, 0.30);
+  border-radius: 25px;
+  backdrop-filter: blur(15px);
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.20);
+  border: 1px solid rgba(255,255,255,0.3);
+}

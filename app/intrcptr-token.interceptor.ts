@@ -38,10 +38,10 @@ export class IntrcptrTokenInterceptor implements HttpInterceptor {
       headers = headers.set('Content-Type', 'application/json');
 
    
-      // headers = headers.set('Access-Control-Allow-Origin','http://www.scm.erpesiic.com');
-       headers = headers.set('Access-Control-Allow-Origin','https://scm.erpesiic.com');
+      // headers = headers.set('Access-Control-Allow-Origin','https://www.scm.erpesiic.com');
+      headers = headers.set('Access-Control-Allow-Origin','https://scm.erpesiic.com');
        
-      // headers = headers.set('Access-Control-Allow-Origin','http://localhost:4200');
+      //  headers = headers.set('Access-Control-Allow-Origin','https://localhost:4200');
 
       // headers = headers.set('Cache-Control','no-cache');
       

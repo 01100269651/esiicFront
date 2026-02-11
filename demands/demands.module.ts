@@ -41,6 +41,7 @@ import { DataTablesModule } from 'angular-datatables';
 import { DmBckGrndComponent } from './Components/dm-bck-grnd/dm-bck-grnd.component';
 import { ReaptedInFactComponent } from './Components/reapted-in-fact/reapted-in-fact.component';
 import { RptdItmsOrdrsComponent } from './Components/rptd-itms-ordrs/rptd-itms-ordrs.component';
+import { OrdrProcComponent } from './ordr-proc/ordr-proc.component';
 
 
 
@@ -52,7 +53,7 @@ import { RptdItmsOrdrsComponent } from './Components/rptd-itms-ordrs/rptd-itms-o
         OrderComponent,
         DMInqrComponent,
         SpinnerComponent, CreateOrderComponent, DiagComponent, OldHistoryComponent
-        , DmBckGrndComponent, ReaptedInFactComponent, RptdItmsOrdrsComponent
+        , DmBckGrndComponent, ReaptedInFactComponent, RptdItmsOrdrsComponent, OrdrProcComponent
     ],
     providers: [
         {

@@ -14,6 +14,7 @@ import { OrderBuyListComponent } from 'src/shared/Components/order-buy-list/orde
 import { DmBckGrndComponent } from './Components/dm-bck-grnd/dm-bck-grnd.component';
 import { SignedOrderBuyComponent } from 'src/shared/Components/signed-order-buy/signed-order-buy.component';
 import { ReaptedInFactComponent } from './Components/reapted-in-fact/reapted-in-fact.component';
+import { OrdrProcComponent } from './Components/ordr-proc/ordr-proc.component';
 
 
 const routes: Routes = [{path:'',component:DmBckGrndComponent},
@@ -32,7 +33,11 @@ const routes: Routes = [{path:'',component:DmBckGrndComponent},
 
 {path:'signedOrders',component:SignedOrderBuyComponent} ,
 
-{path:'repeated',component:ReaptedInFactComponent}
+{path:'repeated',component:ReaptedInFactComponent},
+
+
+{path:'Ordr-Proc',component:OrdrProcComponent},
+
 
 ];
 

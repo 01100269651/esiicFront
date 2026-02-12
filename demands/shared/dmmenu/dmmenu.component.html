@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg text-dark navbar-light display-6 fs-4 fw-bolder bg-primary mb-1" style="height:30PX ;">
+<nav class="dmmenu-navbar navbar navbar-expand-lg text-dark navbar-light display-6 fs-4 fw-bolder bg-primary mb-1">
   <div class="container-fluid">
     <a class="navbar-brand text-dark fs-4 fw-bold" href="javascript:void(0)"><img src="assets/bx-store.svg" [routerLink]="['Home']"> مراقبة المخزون</a>
     
@@ -102,17 +102,17 @@
 
   
       </ul>
-      <form [formGroup]="searchFormForItem" style="height:27px ;" class="d-flex p-0 " onsubmit="return false">
-        <input class="form-control " style="height: 25px;" type="search" placeholder="بحث عن  رقم صنف " aria-label="Search"
+      <form [formGroup]="searchFormForItem" class="dmmenu-search-form d-flex p-0" onsubmit="return false">
+        <input class="form-control dmmenu-search-input" type="search" placeholder="بحث عن  رقم صنف " aria-label="Search"
         formControlName="SearchItmId">
-        <button class="btn btn-info p-0" style="height: 25px;"  (click)="openSearchForItem()" type="submit">ابحث</button>
+        <button class="btn btn-info dmmenu-search-btn" (click)="openSearchForItem()" type="submit">ابحث</button>
       </form>
 
 
-      <form [formGroup]="searchForm" style="height:27px ;" class="d-flex p-0 " onsubmit="return false">
-        <input class="form-control " style="height: 25px;" type="search" placeholder="بحث عن صنف في التاريخي" aria-label="Search"
+      <form [formGroup]="searchForm" class="dmmenu-search-form d-flex p-0" onsubmit="return false">
+        <input class="form-control dmmenu-search-input" type="search" placeholder="بحث عن صنف في التاريخي" aria-label="Search"
         formControlName="SearchId">
-        <button class="btn btn-info p-0" style="height: 25px;"  (click)="openHistory()" type="submit">ابحث</button>
+        <button class="btn btn-info dmmenu-search-btn" (click)="openHistory()" type="submit">ابحث</button>
       </form>
     </div>
   </div>

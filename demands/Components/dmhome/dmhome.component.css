@@ -1,0 +1,39 @@
+.dmhome-container {
+  min-height: 100vh;
+  background-color: #f8f9fa;
+}
+
+.dmhome-content {
+  padding: 1rem;
+}
+
+.dmhome-row {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.dmhome-sidebar-col {
+  flex: 0 0 250px;
+  max-width: 250px;
+}
+
+.dmhome-main-col {
+  flex: 1;
+  min-width: 0;
+  background-color: #ffffff;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+@media (max-width: 768px) {
+  .dmhome-row {
+    flex-direction: column;
+  }
+
+  .dmhome-sidebar-col {
+    flex: none;
+    max-width: 100%;
+  }
+}

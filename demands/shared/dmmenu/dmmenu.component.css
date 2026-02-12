@@ -1,0 +1,84 @@
+.dmmenu-navbar {
+  height: 50px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.dmmenu-navbar .navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.dmmenu-navbar .navbar-brand img {
+  height: 28px;
+  width: auto;
+}
+
+.dmmenu-navbar .nav-link {
+  color: #333 !important;
+  padding: 0.5rem 1rem;
+  transition: color 0.2s ease;
+}
+
+.dmmenu-navbar .nav-link:hover {
+  color: #0d6efd !important;
+}
+
+.dmmenu-navbar .nav-link.dropdown-toggle::after {
+  margin-right: 0.5rem;
+}
+
+.dmmenu-navbar .dropdown-menu {
+  border: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  border-radius: 0.5rem;
+  padding: 0.5rem 0;
+}
+
+.dmmenu-navbar .dropdown-item {
+  padding: 0.5rem 1.5rem;
+  transition: background-color 0.2s ease;
+}
+
+.dmmenu-navbar .dropdown-item:hover {
+  background-color: #f8f9fa;
+}
+
+.dmmenu-navbar .dropdown-item mat-icon {
+  margin-left: 0.5rem;
+  vertical-align: middle;
+}
+
+.dmmenu-search-form {
+  height: 35px;
+  margin-right: 0.5rem;
+}
+
+.dmmenu-search-input {
+  height: 28px;
+  font-size: 0.875rem;
+  border-radius: 0.25rem 0 0 0.25rem;
+  border: 1px solid #dee2e6;
+}
+
+.dmmenu-search-btn {
+  height: 28px;
+  padding: 0 0.75rem;
+  font-size: 0.875rem;
+  border-radius: 0 0.25rem 0.25rem 0;
+  background-color: #17a2b8;
+  border-color: #17a2b8;
+  color: white;
+  transition: background-color 0.2s ease;
+}
+
+.dmmenu-search-btn:hover {
+  background-color: #138496;
+  border-color: #117a8b;
+}
+
+@media (max-width: 991.98px) {
+  .dmmenu-search-form {
+    margin: 0.5rem 0;
+  }
+}

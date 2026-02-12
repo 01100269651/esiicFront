@@ -29,7 +29,8 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 
 import { MatOptionModule } from '@angular/material/core';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatCardModule } from '@angular/material/card';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { OldHistoryComponent } from './Components/old-history/old-history.component';
 import {  MatPaginatorModule } from '@angular/material/paginator';
@@ -41,7 +42,7 @@ import { DataTablesModule } from 'angular-datatables';
 import { DmBckGrndComponent } from './Components/dm-bck-grnd/dm-bck-grnd.component';
 import { ReaptedInFactComponent } from './Components/reapted-in-fact/reapted-in-fact.component';
 import { RptdItmsOrdrsComponent } from './Components/rptd-itms-ordrs/rptd-itms-ordrs.component';
-import { OrdrProcComponent } from './ordr-proc/ordr-proc.component';
+import { OrdrProcComponent } from './Components/ordr-proc/ordr-proc.component';
 
 
 
@@ -67,7 +68,7 @@ import { OrdrProcComponent } from './ordr-proc/ordr-proc.component';
         DemandsRoutingModule, NgxPrintModule, MatOptionModule, MatInputModule, MatDialogModule,
         DMMenuComponent, MatDialogModule, ReactiveFormsModule, MatSortModule, MatTableModule, MatPaginatorModule,
         MatBadgeModule, MatButtonModule, MatIconModule,
-        MatSelectModule, HttpClientModule,DataTablesModule,
+        MatSelectModule, MatCardModule, HttpClientModule,DataTablesModule,
         SharedModule
     ]
 })

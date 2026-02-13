@@ -1,0 +1,213 @@
+<!-- LOGIN COMPONENT - Redesigned with Improved UX, Accessibility & Visuals -->
+<div class="login-page" (click)="playAudio()">
+  <!-- Animated Background Canvas -->
+  <canvas id="fx" class="particles-canvas"></canvas>
+
+  <!-- Animated Gradient Orbs -->
+  <div class="gradient-orb orb-1"></div>
+  <div class="gradient-orb orb-2"></div>
+  <div class="gradient-orb orb-3"></div>
+
+  <!-- Main Container -->
+  <section class="login-container">
+    
+    <!-- Quick Links Section -->
+    <div class="quick-links">
+      <a class="quick-link" href="https://erpesiic.streamlit.app/" target="_blank" rel="noopener noreferrer">
+        <i class="bi bi-speedometer2"></i>
+        <span>لوحة تحكم المنظومة الجديدة</span>
+        <i class="bi bi-arrow-left-circle"></i>
+      </a>
+      <a class="quick-link" href="https://scm.erpesiic.com/" target="_blank" rel="noopener noreferrer">
+        <i class="bi bi-box-seam"></i>
+        <span>تجربة المنظومة الجديدة</span>
+        <i class="bi bi-arrow-left-circle"></i>
+      </a>
+    </div>
+
+    <!-- Company Titles -->
+    <div class="company-titles">
+      <h4 class="title-main">جمهورية مصر العربية</h4>
+      <h4 class="title-sub">الشركة القابضة للصناعات الغذائية</h4>
+      <h4 class="title-highlight">شركة السكر والصناعات التكاملية المصرية</h4>
+    </div>
+
+    <!-- Flip Card Container -->
+    <div class="flip-card-container">
+      <div class="flip-card" 
+           [class.flipped]="flipState === 'back'"
+           (click)="toggleFlip()"
+           role="region" 
+           aria-label="مربع تسجيل الدخول">
+        
+        <div class="flip-inner" [style.transform]="flipTransform">
+          
+          <!-- FRONT - Logo Side -->
+          <div class="face front" role="img" aria-label="شعار شركة السكر والصناعات التكاملية">
+            <div class="logo-container">
+              <img src="assets/img/esiic-logo.png" 
+                   class="logo" 
+                   alt="شعار شركة السكر والصناعات التكاملية"
+                   loading="lazy" />
+            </div>
+            
+            <div class="security-badge">
+              <i class="bi bi-shield-check"></i>
+              <span>نظام آمن مشفر</span>
+            </div>
+
+            <div class="flip-hint" *ngIf="isDesktop">
+              <i class="bi bi-arrow-left"></i>
+              <span>اضغط أو مرر لبدء تسجيل الدخول</span>
+              <i class="bi bi-arrow-left"></i>
+            </div>
+          </div>
+
+          <!-- BACK - Form Side -->
+          <div class="face back">
+            <div class="form-wrapper">
+              
+              <!-- Error Message -->
+              <div class="error-alert" *ngIf="errorMessage" role="alert">
+                <i class="bi bi-exclamation-triangle-fill"></i>
+                <span>{{ errorMessage }}</span>
+                <button type="button" class="close-btn" (click)="closeError(); $event.stopPropagation()">
+                  <i class="bi bi-x-lg"></i>
+                </button>
+              </div>
+
+              <!-- Login Form Header -->
+              <div class="form-header">
+                <i class="bi bi-shield-lock"></i>
+                <h5>تسجيل الدخول الآمن</h5>
+              </div>
+
+              <!-- Login Form -->
+              <form (ngSubmit)="onSubmit()" #loginForm="ngForm" autocomplete="off">
+                
+                <!-- Username Field -->
+                <div class="form-group">
+                  <label for="username" class="form-label">
+                    <i class="bi bi-person-fill"></i>
+                    اسم المستخدم
+                  </label>
+                  <div class="input-wrapper">
+                    <input 
+                      #usernameInput
+                      type="text" 
+                      id="username"
+                      name="username"
+                      [(ngModel)]="username"
+                      class="form-control"
+                      placeholder="أدخل اسم المستخدم"
+                      autocomplete="username"
+                      required
+                      [class.is-invalid]="errorMessage && !username" />
+                    <i class="bi bi-person input-icon"></i>
+                  </div>
+                </div>
+
+                <!-- Password Field -->
+                <div class="form-group">
+                  <label for="password" class="form-label">
+                    <i class="bi bi-key-fill"></i>
+                    كلمة المرور
+                  </label>
+                  <div class="input-wrapper">
+                    <input 
+                      #passwordInput
+                      [type]="showPassword ? 'text' : 'password'"
+                      id="password"
+                      name="password"
+                      [(ngModel)]="password"
+                      class="form-control"
+                      placeholder="أدخل كلمة المرور"
+                      autocomplete="current-password"
+                      required
+                      [class.is-invalid]="errorMessage && !password" />
+                    <button 
+                      type="button" 
+                      class="password-toggle"
+                      (click)="togglePasswordVisibility(); $event.stopPropagation()"
+                      [attr.aria-label]="showPassword ? 'إخفاء كلمة المرور' : 'إظهار كلمة المرور'">
+                      <i [class]="showPassword ? 'bi bi-eye-slash-fill' : 'bi bi-eye-fill'"></i>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Remember Me & Forgot Password Row -->
+                <div class="form-options">
+                  <div class="remember-me">
+                    <input 
+                      type="checkbox" 
+                      id="rememberMe"
+                      name="rememberMe"
+                      [(ngModel)]="rememberMe"
+                      class="form-check-input" />
+                    <label for="rememberMe" class="form-check-label">
+                      <span class="checkmark"></span>
+                      تذكرني
+                    </label>
+                  </div>
+                  
+                  <button 
+                    type="button" 
+                    class="forgot-password"
+                    (click)="onForgotPassword(); $event.stopPropagation()">
+                    <i class="bi bi-question-circle"></i>
+                    نسيت كلمة المرور؟
+                  </button>
+                </div>
+
+                <!-- Submit Button -->
+                <button 
+                  type="submit" 
+                  class="btn-login"
+                  [disabled]="isLoading"
+                  role="button">
+                  
+                  <ng-container *ngIf="!isLoading">
+                    <i class="bi bi-box-arrow-in-left"></i>
+                    تسجيل الدخول
+                  </ng-container>
+                  
+                  <ng-container *ngIf="isLoading">
+                    <span class="spinner">
+                      <span class="spinner-ring"></span>
+                      <span class="spinner-ring"></span>
+                      <span class="spinner-ring"></span>
+                    </span>
+                    <span>جاري التحقق...</span>
+                  </ng-container>
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="login-footer">
+      <div class="footer-content">
+        <p class="developed-by">
+          <i class="bi bi-code-slash"></i>
+          تم التطوير بواسطة قطاع نظم المعلومات
+        </p>
+        <p class="copyright">
+          <i class="bi bi-copyright"></i>
+          شركة السكر والصناعات التكاملية المصرية © 2026
+        </p>
+        <p class="location">
+          <i class="bi bi-geo-alt-fill"></i>
+          القاهرة، جمهورية مصر العربية
+        </p>
+      </div>
+    </footer>
+  </section>
+
+  <!-- Welcome Audio -->
+  <audio id="welcomeAudio" preload="auto">
+    <source src="assets/audio/welcome.mp3" type="audio/mpeg" />
+  </audio>
+</div>

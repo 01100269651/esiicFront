@@ -431,6 +431,13 @@ SignOkFin(ty:any,id:any){
       }
 
 
+      //======================================================================================================
+      getOrderProcessing(factId:any,season:any,typ:any ,f_id:any,e_id:any)
+      {
+        return this.http.get(environment.apiUrl+"SCM_Order/OrderProcess?factId="+factId+"&season="+season+"&typ="+typ+"&f_id="+f_id+"&e_id="+e_id);
+      }
+
+
 
  
 }

@@ -1,23 +1,31 @@
-<div class="dmsidebar-container d-flex justify-content-center">
-  <aside id="layout-menu" class="dmsidebar layout-menu menu-vertical menu bg-menu-theme text-center">
+<div class="dmsidebar-container">
+  <aside class="dmsidebar">
+    <!-- Menu Section -->
+    <div class="dmsidebar-header">
+      <mat-icon>menu_book</mat-icon>
+      <span>عناصر مهمة</span>
+    </div>
+    
     <div class="dmsidebar-menu-container">
-      <ul class="menu-inner mt-0 py-1 ps ps--active-y">
-        <!-- Layouts -->
-        <li class="menu-item open">
-          <a href="javascript:void(0);" class="menu-link menu-toggle">
-            <i class="menu-icon tf-icons bx bx-layout"></i>
-            <div data-i18n="Layouts">عناصر مهمة</div>
+      <ul class="dmsidebar-menu">
+        <li class="dmsidebar-menu-item" [class.open]="isMenuOpen">
+          <a href="javascript:void(0)" class="dmsidebar-menu-toggle" (click)="toggleMenu()">
+            <mat-icon class="dmsidebar-icon">dashboard</mat-icon>
+            <span>عناصر مهمة</span>
+            <mat-icon class="dmsidebar-arrow">chevron_right</mat-icon>
           </a>
-
-          <ul class="menu-sub">
-            <li class="menu-item">
-              <a [routerLink]="['OrdList']" class="menu-link text-primary">
-                الطلبات الغير معتمدة
+          
+          <ul class="dmsidebar-submenu" [class.show]="isMenuOpen">
+            <li>
+              <a [routerLink]="['OrdList']" class="dmsidebar-submenu-link" routerLinkActive="active">
+                <mat-icon>pending_actions</mat-icon>
+                <span>الطلبات الغير معتمدة</span>
               </a>
             </li>
-            <li class="menu-item">
-              <a [routerLink]="['signedOrders']" class="menu-link text-primary">
-                الطلبات المعتمدة
+            <li>
+              <a [routerLink]="['signedOrders']" class="dmsidebar-submenu-link" routerLinkActive="active">
+                <mat-icon>check_circle</mat-icon>
+                <span>الطلبات المعتمدة</span>
               </a>
             </li>
           </ul>
@@ -25,23 +33,31 @@
       </ul>
     </div>
 
+    <!-- Table Section -->
     <div class="dmsidebar-table-container">
-      <table class="dmsidebar-table text-dark mt-0 display-1 fs-5 fw-bolder" mat-table [dataSource]="itms">
+      <div class="dmsidebar-table-header">
+        <mat-icon>assignment</mat-icon>
+        <span>الطلبات الأخيرة</span>
+      </div>
+      <table class="dmsidebar-table" mat-table [dataSource]="itms">
         <ng-container matColumnDef="main_Dept">
-          <th mat-header-cell *matHeaderCellDef class="text-dark display-1 fs-5 fw-bolder">قسم طالب</th>
+          <th mat-header-cell *matHeaderCellDef>قسم طالب</th>
           <td mat-cell *matCellDef="let element">{{element.main_Dept}}</td>
         </ng-container>
+        
         <ng-container matColumnDef="ord_Date">
-          <th mat-header-cell *matHeaderCellDef class="text-dark display-1 fs-5 fw-bolder">تاريخ</th>
+          <th mat-header-cell *matHeaderCellDef>تاريخ</th>
           <td mat-cell *matCellDef="let element">{{element.ord_Date | date: "yyyy/MM/dd"}}</td>
         </ng-container>
+        
         <ng-container matColumnDef="ord_Id">
-          <th mat-header-cell *matHeaderCellDef class="text-dark display-1 fs-5 fw-bolder">رقم الطلب</th>
+          <th mat-header-cell *matHeaderCellDef>رقم</th>
           <td mat-cell *matCellDef="let element">{{element.ord_Id}}</td>
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr class="text-dark display-1 fs-5 fw-bolder" mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{'bg-warning': row.tran_Code==2}"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;" 
+            [ngClass]="{'dmsidebar-row-warning': row.tran_Code==2}"></tr>
       </table>
     </div>
   </aside>

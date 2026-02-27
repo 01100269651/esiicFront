@@ -1,119 +1,105 @@
-<nav class="dmmenu-navbar navbar navbar-expand-lg text-dark navbar-light display-6 fs-4 fw-bolder bg-primary mb-1">
+<nav class="dmmenu-navbar navbar navbar-expand-lg navbar-dark mb-1">
   <div class="container-fluid">
-    <a class="navbar-brand text-dark fs-4 fw-bold" href="javascript:void(0)"><img src="assets/bx-store.svg" [routerLink]="['Home']"> مراقبة المخزون</a>
+    <a class="navbar-brand d-flex align-items-center gap-2" href="javascript:void(0)">
+      <img src="assets/bx-store.svg" [routerLink]="['Home']" alt="Logo" class="dmmenu-logo">
+      <span class="dmmenu-brand-text">مراقبة المخزون</span>
+    </a>
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse " id="navbarSupportedContent">
-      <ul class="navbar-nav text-dark me-auto mb-2 mb-lg-0">
-       
-        <!-- <li class="nav-item">
-          <a class="nav-link" href="javascript:void(0)">Link</a>
-        </li> -->
-       
-        <li class="nav-item dropdown text-end">
-          <a class="nav-link dropdown-toggle " href="javascript:void(0)" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            تسجيل الحركة<mat-icon>create</mat-icon> 
-          </a>
-          
-          <ul class="dropdown-menu fs-3 fw-bold text-end" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item  " [routerLink]="['CreateOrd']"   ><mat-label > <mat-icon>create_new_folder</mat-icon>تكويد طلبية </mat-label> </a></li>
-           
-            <li>
-              <hr class="dropdown-divider">
-            </li> 
-              <li><a class="dropdown-item  " [routerLink]="['Ordr-Proc']"   ><mat-label > <mat-icon>create_new_folder</mat-icon> 'طلبات الشراء' </mat-label> </a></li>
-           
-          
-            <li><a class="dropdown-item" href="javascript:void(0)">   </a></li>
-          </ul>
-
-          
-        </li>
-
-
-
-        <!-- <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            التقارير
-          </a>
-          <ul class="dropdown-menu  fs-3 fw-bold text-end" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="javascript:void(0)">الطلبات المحلية والإصلاح</a></li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            <li><a class="dropdown-item" href="javascript:void(0)">طلبات الشراء الفنية</a></li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            <li><a class="dropdown-item" href="javascript:void(0)">الطلبيات العامةوالمجمعة</a></li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            <li><a class="dropdown-item" href="javascript:void(0)">الطلبيات العامةوالمجمعة</a></li>
-          </ul>
-        </li> -->
-
-
+    
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 dmmenu-nav">
+        
+        <!-- تسجيل الحركة Dropdown -->
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            الاستعلامات<mat-icon>menu</mat-icon>
+          <a class="nav-link dropdown-toggle dmmenu-dropdown-toggle" href="javascript:void(0)" id="recordDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <mat-icon class="dmmenu-icon">create</mat-icon>
+            <span>تسجيل الحركة</span>
           </a>
-          <ul class="dropdown-menu text-end fs-4 fw-bold" aria-labelledby="navbarDropdown">
-            
-            <li><a class="dropdown-item" href="javascript:void(0)"  [routerLink]="['signedOrders']"   > الطلبات  المعتمدة</a></li>
+          <ul class="dropdown-menu dmmenu-dropdown" aria-labelledby="recordDropdown">
             <li>
-              <hr class="dropdown-divider">
+              <a class="dropdown-item dmmenu-dropdown-item" [routerLink]="['CreateOrd']">
+                <mat-icon>create_new_folder</mat-icon>
+                <span>تكويد طلبية</span>
+              </a>
             </li>
-            <li><a class="dropdown-item" [routerLink]="['repeated']" href="javascript:void(0)"> المكرر</a></li>
+            <li><hr class="dropdown-divider"></li>
             <li>
-              <hr class="dropdown-divider">
+              <a class="dropdown-item dmmenu-dropdown-item" [routerLink]="['Ordr-Proc']">
+                <mat-icon>shopping_cart</mat-icon>
+                <span>طلبات الشراء</span>
+              </a>
             </li>
-
-            <li><a class="dropdown-item" href="javascript:void(0)" [routerLink]="['oldHistory']" >البيانات التاريخية</a></li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            
-       
           </ul>
         </li>
 
-
-
-        <!-- //------------------------------------------ -->
-
+        <!-- الاستعلامات Dropdown -->
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <span class="text-white fs-6">   {{usrName}} <mat-icon>account_circle</mat-icon> </span>
+          <a class="nav-link dropdown-toggle dmmenu-dropdown-toggle" href="javascript:void(0)" id="inqDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <mat-icon class="dmmenu-icon">search</mat-icon>
+            <span>الاستعلامات</span>
           </a>
-          <ul class="dropdown-menu text-end fs-3 fw-bold" aria-labelledby="navbarDropdown">
-            
-            <li><a class="dropdown-item"id="navbarDropdown" href="javascript:void(0)" (click)="SignOut()"   > <mat-icon>exit_to_app</mat-icon>خروج</a></li>
-            
-            
-       
+          <ul class="dropdown-menu dmmenu-dropdown" aria-labelledby="inqDropdown">
+            <li>
+              <a class="dropdown-item dmmenu-dropdown-item" [routerLink]="['signedOrders']">
+                <mat-icon>check_circle</mat-icon>
+                <span>الطلبات المعتمدة</span>
+              </a>
+            </li>
+            <li><hr class="dropdown-divider"></li>
+            <li>
+              <a class="dropdown-item dmmenu-dropdown-item" [routerLink]="['repeated']">
+                <mat-icon>repeat</mat-icon>
+                <span>المكرر</span>
+              </a>
+            </li>
+            <li><hr class="dropdown-divider"></li>
+            <li>
+              <a class="dropdown-item dmmenu-dropdown-item" [routerLink]="['oldHistory']">
+                <mat-icon>history</mat-icon>
+                <span>البيانات التاريخية</span>
+              </a>
+            </li>
           </ul>
         </li>
 
-
-        <!-- //////////---------------- -->
-
-  
+        <!-- User Menu Dropdown -->
+        <li class="nav-item dropdown dmmenu-user-menu">
+          <a class="nav-link dropdown-toggle dmmenu-user-toggle" href="javascript:void(0)" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <mat-icon class="dmmenu-user-icon">account_circle</mat-icon>
+            <span class="dmmenu-username">{{usrName}}</span>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end dmmenu-dropdown dmmenu-user-dropdown" aria-labelledby="userDropdown">
+            <li>
+              <a class="dropdown-item dmmenu-dropdown-item dmmenu-logout" (click)="SignOut()">
+                <mat-icon>logout</mat-icon>
+                <span>خروج</span>
+              </a>
+            </li>
+          </ul>
+        </li>
       </ul>
-      <form [formGroup]="searchFormForItem" class="dmmenu-search-form d-flex p-0" onsubmit="return false">
-        <input class="form-control dmmenu-search-input" type="search" placeholder="بحث عن  رقم صنف " aria-label="Search"
-        formControlName="SearchItmId">
-        <button class="btn btn-info dmmenu-search-btn" (click)="openSearchForItem()" type="submit">ابحث</button>
-      </form>
 
+      <!-- Search Forms -->
+      <div class="dmmenu-search-container">
+        <form [formGroup]="searchFormForItem" class="dmmenu-search-form" onsubmit="return false">
+          <mat-icon class="dmmenu-search-icon">search</mat-icon>
+          <input class="form-control dmmenu-search-input" type="search" placeholder="بحث عن رقم صنف" aria-label="Search" formControlName="SearchItmId">
+          <button class="btn dmmenu-search-btn" (click)="openSearchForItem()" type="submit">
+            <mat-icon>arrow_back</mat-icon>
+          </button>
+        </form>
 
-      <form [formGroup]="searchForm" class="dmmenu-search-form d-flex p-0" onsubmit="return false">
-        <input class="form-control dmmenu-search-input" type="search" placeholder="بحث عن صنف في التاريخي" aria-label="Search"
-        formControlName="SearchId">
-        <button class="btn btn-info dmmenu-search-btn" (click)="openHistory()" type="submit">ابحث</button>
-      </form>
+        <form [formGroup]="searchForm" class="dmmenu-search-form" onsubmit="return false">
+          <mat-icon class="dmmenu-search-icon">history</mat-icon>
+          <input class="form-control dmmenu-search-input" type="search" placeholder="بحث في التاريخي" aria-label="Search" formControlName="SearchId">
+          <button class="btn dmmenu-search-btn" (click)="openHistory()" type="submit">
+            <mat-icon>arrow_back</mat-icon>
+          </button>
+        </form>
+      </div>
     </div>
   </div>
 </nav>

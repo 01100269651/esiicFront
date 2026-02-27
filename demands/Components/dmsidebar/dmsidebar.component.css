@@ -1,115 +1,301 @@
+/* ============================================
+   DMSidebar Container
+   ============================================ */
 .dmsidebar-container {
   width: 100%;
+  height: 100%;
 }
 
+/* ============================================
+   Main Sidebar
+   ============================================ */
 .dmsidebar {
-  width: 220px;
-  height: 600px;
-  overflow-y: auto;
-  border-radius: 0.5rem;
-  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  width: 260px;
+  max-height: calc(100vh - 180px);
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
+/* ============================================
+   Sidebar Header
+   ============================================ */
+.dmsidebar-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 20px;
+  background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.dmsidebar-header mat-icon {
+  font-size: 24px;
+  width: 24px;
+  height: 24px;
+}
+
+/* ============================================
+   Menu Container
+   ============================================ */
 .dmsidebar-menu-container {
-  padding: 0.5rem 0;
+  padding: 15px 10px;
+  border-bottom: 1px solid #e9ecef;
 }
 
-.dmsidebar .menu-inner {
+.dmsidebar-menu {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-.dmsidebar .menu-item {
-  margin: 0.25rem 0;
+/* ============================================
+   Menu Item
+   ============================================ */
+.dmsidebar-menu-item {
+  margin: 8px 0;
 }
 
-.dmsidebar .menu-link {
+.dmsidebar-menu-toggle {
   display: flex;
   align-items: center;
-  padding: 0.75rem 1rem;
-  color: #333;
+  gap: 12px;
+  padding: 14px 16px;
+  color: #333333;
   text-decoration: none;
-  transition: all 0.2s ease;
-  border-radius: 0.25rem;
-  margin: 0 0.5rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  cursor: pointer;
 }
 
-.dmsidebar .menu-link:hover {
-  background-color: #f8f9fa;
-  color: #0d6efd;
+.dmsidebar-menu-toggle:hover {
+  background: linear-gradient(90deg, rgba(17, 153, 142, 0.1) 0%, rgba(56, 239, 125, 0.1) 100%);
+  color: #11998e;
 }
 
-.dmsidebar .menu-link.text-primary {
-  color: #0d6efd !important;
+.dmsidebar-icon {
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+  color: #11998e;
 }
 
-.dmsidebar .menu-icon {
-  margin-left: 0.75rem;
-  font-size: 1.25rem;
-}
-
-.dmsidebar .menu-toggle::after {
-  content: '\f054';
-  font-family: 'BoxIcons', sans-serif;
+.dmsidebar-arrow {
   margin-right: auto;
-  transition: transform 0.2s ease;
+  font-size: 18px;
+  width: 18px;
+  height: 18px;
+  transition: transform 0.3s ease;
 }
 
-.dmsidebar .menu-item.open > .menu-toggle::after {
+.dmsidebar-menu-item.open .dmsidebar-arrow {
   transform: rotate(90deg);
 }
 
-.dmsidebar .menu-sub {
+/* ============================================
+   Submenu
+   ============================================ */
+.dmsidebar-submenu {
   list-style: none;
   padding: 0;
-  margin: 0;
-  display: none;
+  margin: 5px 0 0 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
 }
 
-.dmsidebar .menu-item.open > .menu-sub {
-  display: block;
+.dmsidebar-submenu.show {
+  max-height: 300px;
 }
 
-.dmsidebar .menu-sub .menu-link {
-  padding-right: 2.5rem;
+.dmsidebar-submenu-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px 12px 48px;
+  color: #666666;
+  text-decoration: none;
   font-size: 0.9rem;
+  font-weight: 500;
+  border-radius: 8px;
+  margin: 4px 8px;
+  transition: all 0.2s ease;
+  border-right: 3px solid transparent;
 }
 
+.dmsidebar-submenu-link:hover {
+  background: linear-gradient(90deg, #11998e 0%, #38ef7d 100%);
+  color: #ffffff;
+  border-right-color: #ffd700;
+  margin-right: 4px;
+  padding-right: 52px;
+}
+
+.dmsidebar-submenu-link.active {
+  background: linear-gradient(90deg, #11998e 0%, #38ef7d 100%);
+  color: #ffffff;
+  border-right-color: #ffd700;
+}
+
+.dmsidebar-submenu-link mat-icon {
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+}
+
+/* ============================================
+   Table Container
+   ============================================ */
 .dmsidebar-table-container {
-  padding: 1rem;
-  overflow-x: auto;
+  flex: 1;
+  overflow-y: auto;
+  padding: 15px;
 }
 
+.dmsidebar-table-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 15px;
+  background: #f8f9fa;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #333333;
+}
+
+.dmsidebar-table-header mat-icon {
+  color: #11998e;
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+}
+
+/* ============================================
+   Table Styles
+   ============================================ */
 .dmsidebar-table {
   width: 100%;
-  border-collapse: collapse;
-}
-
-.dmsidebar-table th,
-.dmsidebar-table td {
-  padding: 0.5rem;
-  text-align: center;
-  border-bottom: 1px solid #dee2e6;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 10px;
+  overflow: hidden;
 }
 
 .dmsidebar-table th {
-  background-color: #f8f9fa;
-  font-weight: bold;
+  background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.85rem;
+  padding: 12px 8px;
+  text-align: center;
+  border: none;
 }
 
-.dmsidebar-table tr:hover {
-  background-color: #f8f9fa;
+.dmsidebar-table td {
+  padding: 10px 8px;
+  text-align: center;
+  font-size: 0.85rem;
+  color: #333333;
+  border-bottom: 1px solid #e9ecef;
+  background: #ffffff;
 }
 
-.dmsidebar-table .bg-warning {
-  background-color: #ffc107 !important;
+.dmsidebar-table tr:last-child td {
+  border-bottom: none;
 }
 
+.dmsidebar-table tr:hover td {
+  background: #f8f9fa;
+}
+
+.dmsidebar-row-warning {
+  background: #fff3cd !important;
+}
+
+.dmsidebar-row-warning td {
+  background: #fff3cd !important;
+  color: #856404;
+  font-weight: 600;
+}
+
+/* ============================================
+   Scrollbar Styling
+   ============================================ */
+.dmsidebar-table-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.dmsidebar-table-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.dmsidebar-table-container::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #11998e 0%, #38ef7d 100%);
+  border-radius: 10px;
+}
+
+.dmsidebar-table-container::-webkit-scrollbar-thumb:hover {
+  background: #0d806d;
+}
+
+/* ============================================
+   Responsive Styles
+   ============================================ */
 @media (max-width: 768px) {
   .dmsidebar {
     width: 100%;
-    height: auto;
-    max-height: 400px;
+    max-height: 500px;
+    border-radius: 12px;
   }
+  
+  .dmsidebar-header {
+    padding: 15px;
+    font-size: 1rem;
+  }
+  
+  .dmsidebar-menu-toggle {
+    padding: 12px 14px;
+    font-size: 0.9rem;
+  }
+  
+  .dmsidebar-submenu-link {
+    padding: 10px 14px 10px 40px;
+    font-size: 0.85rem;
+  }
+  
+  .dmsidebar-submenu-link:hover {
+    padding-right: 44px;
+  }
+}
+
+/* ============================================
+   Animation
+   ============================================ */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dmsidebar-menu-item {
+  animation: slideDown 0.3s ease forwards;
+}
+
+.dmsidebar-menu-item:nth-child(1) {
+  animation-delay: 0.1s;
 }

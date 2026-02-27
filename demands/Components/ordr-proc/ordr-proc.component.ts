@@ -40,7 +40,8 @@ export class OrdrProcComponent implements OnInit {
         locale: formData.locale
       };
 
-      // Call the API
+      // Call the API getOrderProcessing
+      // correct this
       this.http.get('api/OrderProcess', { params }).subscribe({
         next: (response) => {
           console.log('Order Process response:', response);

@@ -33,7 +33,7 @@ export interface IuserCtrl {
   selector: 'app-group-login',
   templateUrl: './group-login.component.html',
   styleUrls: ['./group-login.component.css'], animations: [
- 
+  
     trigger('fadeInDown', [transition('* => *', useAnimation(jackInTheBox, {   
       params: { timing: 2,  a: '-3000px',
     b: '25px',
@@ -64,9 +64,9 @@ export interface IuserCtrl {
       d: '5px', }    }))])
       ,
       trigger('zoomInRight', [transition('* => *', useAnimation(zoomInRight, {   params: { timing: 3, delay: 0 , a: '3000px',
-        b: '25px',
-        c: '-10px',
-        d: '5px', }    }))])
+      b: '25px',
+      c: '-10px',
+      d: '5px', }    }))])
   ],
   
 
@@ -78,17 +78,20 @@ export class GroupLoginComponent implements OnInit {
   grLoginForm:FormGroup;
   
   isLoading=false;
-bounce: any;
-flash: any;
-myTiming!: any;
-myDelay:number= 0;
-fadeInDown: any;
-fadeInBottomRight: any;
-zoomInRight: any;
-zoomInLeft :any;
-zoomInDown: any;
-zoomOutRight: any;
-exDel:number=100;
+  showPassword = false;
+  flipState = 'front';
+  showError = false;
+  bounce: any;
+  flash: any;
+  myTiming!: any;
+  myDelay:number= 0;
+  fadeInDown: any;
+  fadeInBottomRight: any;
+  zoomInRight: any;
+  zoomInLeft :any;
+  zoomInDown: any;
+  zoomOutRight: any;
+  exDel:number=100;
 
 ngOnInit(): void {
 
@@ -122,7 +125,6 @@ ngOnInit(): void {
       entertotab.handleEnterKey();
        
       //      sessionStorage.setItem('FinYear',x.seson);
-
           
 
       //   },error=>{}
@@ -137,6 +139,7 @@ this.grLoginForm= this.fb.group({
   App_Password :['',Validators.required] });
 
  
+
 this.usrCtrl.getIPAddress().subscribe(
  
   (Response: any) => {
@@ -146,7 +149,6 @@ this.usrCtrl.getIPAddress().subscribe(
     Dept_Id:'',Tran_Date:new Date(), Tran_Time:new Date(),
 
     Win_Name:'شاشة تسجيل دخول المجموعة',Action:'open window',Order:'',
-
 
       Ip_Address: Response.ip
     } ;
@@ -171,18 +173,25 @@ this.usrCtrl.getIPAddress().subscribe(
 
   get App_Password(){return this.grLoginForm.get('App_Password');}
 
+  togglePassword(): void {
+    this.showPassword = !this.showPassword;
+  }
 
-  SendGrp(){
+  toggleFlip(): void {
+    this.flipState = this.flipState === 'front' ? 'back' : 'front';
+  }
 
+  closeError(): void {
+    this.showError = false;
+  }
 
+  SendGrp(): void {
     if(this.grLoginForm.valid)
     {
       this.isLoading=true;
 
-
      // console.log(this.grLoginForm.value)
    
-
 
 //       this.toastr.info('جارى التأكد من البيانات', 'معلومات');
 //  // this.ff= this.au.GroupLogin(this.grLoginForm.value);
@@ -206,7 +215,6 @@ this.usrCtrl.getIPAddress().subscribe(
      this.toastr.error("كلمة مرور التطبيق غير صحيحة","رسالة هامة");
      this.isLoading=false;
     
-    
     }
 
 
@@ -229,10 +237,10 @@ this.usrCtrl.getIPAddress().subscribe(
   // } 
     //  else  this.toastr.warning("كود التطبيق أو كلمة المرور غير صحيحة","تحذير");
     // 
-  }
+    }
 
     else
-    this.toastr.error('  يرجي استكمال البيانات ', ' توجد مشكلة في بيانات النموذج');
+    this.toastr.error('يرجي استكمال البيانات ', 'توجد مشكلة في بيانات النموذج');
 
   }
   cancel(){
@@ -242,14 +250,8 @@ this.usrCtrl.getIPAddress().subscribe(
 
 
   }
-
   
-/////////////////////////////////////////////////////////////////
-
-
-
-
-  
+/////////////////////////////////////////////////////////////
 
 
 

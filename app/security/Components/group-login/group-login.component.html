@@ -1,88 +1,151 @@
-<div class="container mt-0 my-1 p-1 login-wrapper shadow-lg rounded glass-wrapper">
+<div class="login-page">
+  <!-- Animated Background -->
+  <canvas id="fx" class="particles-canvas"></canvas>
+  <div class="gradient-orb orb-1"></div>
+  <div class="gradient-orb orb-2"></div>
+  <div class="gradient-orb orb-3"></div>
 
-  <!-- الهيدر -->
-
-  <div class="text-center mb-1 fade-header header-glass">
-
-    <img src="assets/img/Pro.jpg" class="rounded-circle border border-white shadow-lg m-1" 
-         style="width:90px;height:90px;" />
-
-    <h1 class="title-main text-white">شركة السكر والصناعات التكاملية المصرية</h1>
-
-    <h5 class="title-sub">قطاعات نظم المعلومات</h5>
-
-    <h5 class="title-sub">منظومة المخزون الجديدة SCM</h5>
-
+  <!-- Company Titles -->
+  <div class="company-titles">
+    <h4 class="title-main">جمهورية مصر العربية</h4>
+    <h4 class="title-sub">الشركة القابضة للصناعات الغذائية</h4>
+    <h4 class="title-highlight">شركة السكر والصناعات التكاملية المصرية</h4>
+    <h5 class="title-system">قطاعات نظم المعلومات - منظومة المخزون الجديدة SCM</h5>
   </div>
 
-  <div class="row justify-content-center">
-
-    <!-- Login Card -->
-
-    <div class="col-md-5">
-
-      <div class="card login-card shadow-lg p-1">
-
-        <div class="text-center mb-3">
-
-          <img src="assets/img/backgrounds/Logo.jfif"
-               class="rounded-circle shadow-sm border border-white"
-               style="width:150px;height:150px;">
-
-        </div>
-
-        <h4 class="welcome-text">أهلاً بك في منظومة المخزون 👋</h4>
-
-        <form [formGroup]="grLoginForm">
-
-          <!-- App Id -->
-          <mat-form-field appearance="outline" class="w-100 mt-3">
-
-            <mat-label>كود التطبيق</mat-label>
-
-            <input matInput type="number" formControlName="App_Id" placeholder="أدخل كود التطبيق">
-            
-          </mat-form-field>
-
-          <small class="error-message" 
-                *ngIf="grLoginForm.hasError('required','App_Id') &&
-                       grLoginForm.get('App_Id')?.touched">
-            لابد من إدخال كود التطبيق
-          </small>
-
-          <!-- Password -->
-          <mat-form-field appearance="outline" class="w-100 mt-3">
-            <mat-label>كلمة مرور التطبيق</mat-label>
-            <input matInput type="password" formControlName="App_Password" placeholder="••••••••">
-          </mat-form-field>
-
-          <small class="error-message"
-                *ngIf="grLoginForm.hasError('required','App_Password') &&
-                       grLoginForm.get('App_Password')?.touched">
-            لابد من إدخال كلمة المرور
-          </small>
-
-          <!-- Buttons -->
-          <div class="row mt-4">
-            <div class="col">
-              <button class="btn btn-outline-success w-100 login-btn" (click)="SendGrp()">موافق</button>
-            </div>
-            <div class="col">
-              <button class="btn btn-outline-danger w-100 cancel-btn" (click)="cancel()">إلغاء</button>
-            </div>
+  <!-- Flip Card Container -->
+  <div class="flip-card-container">
+    <div class="flip-card" [class.flipped]="flipState === 'back'" (click)="toggleFlip()">
+      <div class="flip-inner">
+        
+        <!-- FRONT - Logo Side -->
+        <div class="face front">
+          <div class="logo-section">
+            <img src="assets/img/Pro.jpg" class="company-logo" alt="شركة السكر">
+            <img src="assets/img/backgrounds/Logo.jfif" class="app-logo" alt="SCM">
+          </div>
+          
+          <h2 class="front-title">تسجيل دخول المجموعة</h2>
+          <p class="front-subtitle">منظومة المخزون الجديدة</p>
+          
+          <div class="security-badge">
+            <i class="bi bi-shield-check"></i>
+            <span>نظام آمن مشفر</span>
           </div>
 
-        </form>
+          <div class="flip-hint">
+            <i class="bi bi-arrow-left"></i>
+            <span>اضغط لبدء تسجيل الدخول</span>
+            <i class="bi bi-arrow-left"></i>
+          </div>
+        </div>
+
+        <!-- BACK - Form Side -->
+        <div class="face back">
+          <div class="form-wrapper" (click)="$event.stopPropagation()">
+            
+            <!-- Error Alert -->
+            <div class="error-alert" *ngIf="showError" role="alert">
+              <i class="bi bi-exclamation-triangle-fill"></i>
+              <span>كود التطبيق أو كلمة المرور غير صحيحة</span>
+              <button type="button" class="close-btn" (click)="closeError(); $event.stopPropagation()">
+                <i class="bi bi-x-lg"></i>
+              </button>
+            </div>
+
+            <!-- Form Header -->
+            <div class="form-header">
+              <i class="bi bi-shield-lock"></i>
+              <h5>تسجيل دخول التطبيق</h5>
+            </div>
+
+            <!-- Login Form -->
+            <form [formGroup]="grLoginForm" autocomplete="off" (click)="$event.stopPropagation()">
+              
+              <!-- App ID -->
+              <div class="form-group">
+                <label for="appId" class="form-label">
+                  <i class="bi bi-hash"></i>
+                  كود التطبيق
+                </label>
+                <div class="input-wrapper">
+                  <input 
+                    type="number" 
+                    id="appId"
+                    formControlName="App_Id" 
+                    placeholder="أدخل كود التطبيق"
+                    [class.is-invalid]="grLoginForm.get('App_Id')?.touched && grLoginForm.get('App_Id')?.invalid"
+                  >
+                  <i class="bi bi-app input-icon"></i>
+                </div>
+                <small class="error-text" *ngIf="grLoginForm.get('App_Id')?.touched && grLoginForm.get('App_Id')?.invalid">
+                  لابد من إدخال كود التطبيق
+                </small>
+              </div>
+
+              <!-- Password -->
+              <div class="form-group">
+                <label for="password" class="form-label">
+                  <i class="bi bi-key"></i>
+                  كلمة مرور التطبيق
+                </label>
+                <div class="input-wrapper">
+                  <input 
+                    [type]="showPassword ? 'text' : 'password'" 
+                    id="password"
+                    formControlName="App_Password" 
+                    placeholder="أدخل كلمة المرور"
+                    [class.is-invalid]="grLoginForm.get('App_Password')?.touched && grLoginForm.get('App_Password')?.invalid"
+                  >
+                  <i class="bi bi-lock input-icon"></i>
+                  <button type="button" class="toggle-password" (click)="togglePassword(); $event.stopPropagation()">
+                    <i [class]="showPassword ? 'bi bi-eye-slash' : 'bi bi-eye'"></i>
+                  </button>
+                </div>
+                <small class="error-text" *ngIf="grLoginForm.get('App_Password')?.touched && grLoginForm.get('App_Password')?.invalid">
+                  لابد من إدخال كلمة المرور
+                </small>
+              </div>
+
+              <!-- Buttons -->
+              <div class="button-group">
+                <button 
+                  type="button" 
+                  class="btn btn-submit" 
+                  (click)="SendGrp(); $event.stopPropagation()"
+                  [disabled]="isLoading"
+                >
+                  <span *ngIf="!isLoading">
+                    <i class="bi bi-box-arrow-in-left"></i>
+                    دخول
+                  </span>
+                  <span *ngIf="isLoading" class="loading-spinner">
+                    <i class="bi bi-arrow-repeat fa-spin"></i>
+                    جاري التحقق...
+                  </span>
+                </button>
+                
+                <button 
+                  type="button" 
+                  class="btn btn-cancel"
+                  (click)="cancel(); $event.stopPropagation()"
+                >
+                  <i class="bi bi-x-lg"></i>
+                  إلغاء
+                </button>
+              </div>
+
+            </form>
+
+          </div>
+        </div>
+
       </div>
     </div>
-
-    <!-- Image -->
-    <div class="col-md-5">
-      <div class="preview-box shadow-lg"
-           style="background-image: url('assets/img/backgrounds/erp-(6).jpg'); height: 520px;">
-      </div>
-    </div>
-
   </div>
 
-</div> 
+  <!-- Footer -->
+  <div class="login-footer">
+    <p>© 2024 شركة السكر والصناعات التكاملية المصرية | الإصدار 1.0.0</p>
+  </div>
+</div>

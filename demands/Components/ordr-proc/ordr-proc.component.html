@@ -1,7 +1,7 @@
 <div class="container mt-4">
   <mat-card>
     <mat-card-header>
-      <mat-card-title>Order Process</mat-card-title>
+      <mat-card-title>تكوين طلبات الشراء</mat-card-title>
     </mat-card-header>
     <mat-card-content>
       <form [formGroup]="orderProcessForm" (ngSubmit)="onSubmit()">
@@ -10,7 +10,7 @@
             <mat-label>المصنع</mat-label>
             <input matInput type="number" formControlName="factId">
             <mat-error *ngIf="orderProcessForm.get('factId')?.hasError('required')">
-              Factory ID is required
+              رقم المصنع مطلوب
             </mat-error>
           </mat-form-field>
         </div>
@@ -20,7 +20,7 @@
             <mat-label>الموسم</mat-label>
             <input matInput type="number" formControlName="season">
             <mat-error *ngIf="orderProcessForm.get('season')?.hasError('required')">
-              Season is required
+              الموسم مطلوب
             </mat-error>
           </mat-form-field>
         </div>
@@ -30,7 +30,7 @@
             <mat-label>نوع الطلب</mat-label>
             <input matInput formControlName="typ">
             <mat-error *ngIf="orderProcessForm.get('typ')?.hasError('required')">
-              Type is required
+              نوع الطلب مطلوب
             </mat-error>
           </mat-form-field>
         </div>
@@ -40,8 +40,7 @@
             <mat-label>من رقم</mat-label>
             <input matInput type="number" formControlName="f_id">
             <mat-error *ngIf="orderProcessForm.get('f_id')?.hasError('required')">
-              Factory ID is required
-            </mat-error>
+من رقم            </mat-error>
           </mat-form-field>
         </div>
 
@@ -50,7 +49,8 @@
             <mat-label>إلي رقم</mat-label>
             <input matInput type="number" formControlName="e_id">
             <mat-error *ngIf="orderProcessForm.get('e_id')?.hasError('required')">
-              Employee ID is required
+            إلي رقم
+
             </mat-error>
           </mat-form-field>
         </div>

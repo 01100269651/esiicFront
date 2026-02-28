@@ -27,6 +27,7 @@ import { EnterToTabService } from 'src/app/Services/enter-to-tab.service';
 })
 export class UserLoginComponent implements OnInit {
   isLoading=false;
+  showPassword = false;
   usrLoginForm!:FormGroup;
  // ff?:IAppUser[];
   recAppName?:string='';
@@ -51,6 +52,14 @@ zoomInRight!:any;
   }
 get Id(){return this.usrLoginForm.get('Id');}
 get Password(){return this.usrLoginForm.get('Password');}
+
+togglePassword() {
+  this.showPassword = !this.showPassword;
+}
+
+cancel() {
+  this.usrLoginForm.reset();
+}
 
 
 
